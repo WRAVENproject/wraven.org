@@ -46,6 +46,7 @@
 
 html {
     scroll-behavior: smooth;
+    zoom: 0.95;
 }
 
 /* Performance optimizations */
@@ -1788,8 +1789,8 @@ body::before {
 .tool-btn:hover {
     border-color: var(--accent-blue);
     background: rgba(30, 144, 255, 0.08);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.1);
 }
 .tool-icon {
     color: #9ca3af;
@@ -1807,7 +1808,7 @@ body::before {
 }
 
 .tool-btn:hover .tool-icon {
-    transform: scale(1.15) rotate(5deg);
+    transform: scale(1.2);
     color: #d1d5db;
 }
 
