@@ -1581,3 +1581,42 @@ a.ops-done-card {
     .qr-hero-actions .btn { width: 100%; justify-content: center; }
     .qr-stats-row { flex-wrap: wrap; gap: 1.5rem; }
 }
+
+/* ========================================================================
+   ACCESSIBILITY — USER PREFERENCE MEDIA QUERIES
+   ======================================================================== */
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-radar { display: none !important; }
+    .redirect-progress { animation: none !important; transform: scaleX(1) !important; }
+    .redirect-icon span { animation: none !important; }
+}
+
+/* ---- Increased Contrast ---- */
+@media (prefers-contrast: more) {
+    :root {
+        --text-muted:      #aaaaaa;   /* was #555555 (~2.6:1) → ~9.2:1 */
+        --text-secondary:  #c8c8c8;   /* was #999999 (~5.5:1) → ~12.5:1 */
+        --border:          #444444;   /* was #1a1a1a — borders become visible */
+        --border-hover:    #666666;   /* was #2a2a2a */
+    }
+    *:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: 3px;
+    }
+}
+
+/* ---- Forced Colors (Windows High Contrast) ---- */
+@media (forced-colors: active) {
+    .status-dot       { forced-color-adjust: none; }
+    .hero-radar       { display: none !important; }
+    .btn-primary      { forced-color-adjust: none; }
+    .threat-indicator { forced-color-adjust: none; }
+}

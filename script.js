@@ -95,9 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Radar
     const radarCanvas = document.getElementById('hero-radar');
     if (radarCanvas) {
-        // Skip animation on small screens / low-power devices
+        // Skip animation on small screens, low-power devices, or when the
+        // user has requested reduced motion via their OS accessibility settings.
         const isMobile = window.innerWidth < 768;
-        if (isMobile) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (isMobile || prefersReducedMotion) {
             radarCanvas.style.display = 'none';
         } else {
         const ctx = radarCanvas.getContext('2d');
