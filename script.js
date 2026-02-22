@@ -54,31 +54,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
-    const revealElements = document.querySelectorAll(
+    /* ── Scroll-reveal: staggered children with subtle blur-lift ── */
+    const revealContainers = document.querySelectorAll(
         '.about-grid, .threat-table, .ops-grid, .platforms-row, .ctf-split, .partners-row'
     );
 
-    if (revealElements.length && 'IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            revealObserver.observe(el);
-        });
+    if (revealContainers.length && 'IntersectionObserver' in window) {
 
         const style = document.createElement('style');
-        style.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
+        style.textContent = `
+            .reveal-child {
+                opacity: 0;
+                transform: translateY(12px) scale(0.985);
+                filter: blur(4px);
+                will-change: opacity, transform, filter;
+                transition:
+                    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter  0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .reveal-child.revealed {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        `;
         document.head.appendChild(style);
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const children = entry.target.querySelectorAll('.reveal-child');
+                children.forEach((child, i) => {
+                    setTimeout(() => child.classList.add('revealed'), i * 90);
+                });
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+
+        revealContainers.forEach(container => {
+            const kids = container.children;
+            if (kids.length <= 1) {
+                container.classList.add('reveal-child');
+                const wrapper = container.parentElement || container;
+                revealObserver.observe(wrapper === container ? container : wrapper);
+                // still observe the container itself
+                revealObserver.observe(container);
+            } else {
+                Array.from(kids).forEach(child => child.classList.add('reveal-child'));
+                revealObserver.observe(container);
+            }
+        });
     }
 
     const logoImg = document.querySelector('.nav-logo-img');
@@ -95,11 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Radar
     const radarCanvas = document.getElementById('hero-radar');
     if (radarCanvas) {
-        // Skip animation on small screens, low-power devices, or when the
-        // user has requested reduced motion via their OS accessibility settings.
-        const isMobile = window.innerWidth < 768;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (isMobile || prefersReducedMotion) {
+        if (prefersReducedMotion) {
             radarCanvas.style.display = 'none';
         } else {
         const ctx = radarCanvas.getContext('2d');

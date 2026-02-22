@@ -132,8 +132,8 @@
         <!-- ===== HERO ===== -->
         <section class="hero">
             <div class="hero-bg">
-                <!-- DROP YOUR HERO IMAGE: /imgs/hero-bg.jpg (team photo, operations shot, etc.) -->
-                <img src="/imgs/hero-bg.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.style.display='none'">
+                <source srcset="/imgs/team-office.webp" type="image/webp">
+                <img src="/imgs/team-office.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.parentElement.classList.add('img-fallback')">
                 <div class="hero-overlay"></div>
             </div>
             <canvas id="hero-radar" class="hero-radar" aria-hidden="true"></canvas>
@@ -185,7 +185,7 @@
         </section>
 
         <!-- ===== THREAT FEED ===== -->
-        <section class="section section-dark" id="threats">
+        <section class="section" id="threats">
             <div class="container">
                 <div class="section-top">
                     <p class="label-mono">Threat Feed</p>
@@ -227,76 +227,80 @@
             </div>
         </section>
 
-        <!-- ===== OPERATIONS ===== -->
+        <!-- ===== OPERATIONS & PLATFORMS ===== -->
         <section class="section" id="operations">
             <div class="container">
-                <div class="section-top">
-                    <p class="label-mono">Operations</p>
-                    <span class="ops-counter">2 Active &middot; 12 Completed</span>
-                </div>
-                <div class="ops-grid">
-                    <div class="ops-card">
-                        <div class="ops-card-top">
-                            <span class="ops-badge badge-active">ACTIVE</span>
-                            <span class="ops-pct">95%</span>
+                <div class="ops-platforms-split">
+                    <!-- Operations (left) -->
+                    <div class="ops-platforms-col">
+                        <div class="section-top">
+                            <p class="label-mono">Operations</p>
+                            <span class="ops-counter">2 Active &middot; 12 Completed</span>
                         </div>
-                        <h3 class="ops-name">HURRICANE WATCH</h3>
-                        <p class="ops-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
-                        <div class="ops-bar"><div class="ops-fill" style="width:95%"></div></div>
-                    </div>
-                    <div class="ops-card">
-                        <div class="ops-card-top">
-                            <span class="ops-badge badge-testing">TESTING</span>
-                            <span class="ops-pct">80%</span>
-                        </div>
-                        <h3 class="ops-name">HORIZON</h3>
-                        <p class="ops-desc">Student-run SOC built on SecurityOnion</p>
-                        <div class="ops-bar"><div class="ops-fill" style="width:80%"></div></div>
-                    </div>
-                    <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                        <div class="ops-card-top">
-                            <span class="ops-badge badge-done">COMPLETED</span>
-                            <span class="ops-pct">100%</span>
-                        </div>
-                        <h3 class="ops-name">LAZARUS-HUNT</h3>
-                        <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
-                        <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
-                    </a>
-                    <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                        <div class="ops-card-top">
-                            <span class="ops-badge badge-done">COMPLETED</span>
-                            <span class="ops-pct">100%</span>
-                        </div>
-                        <h3 class="ops-name">TYPHOON-TRACK</h3>
-                        <p class="ops-desc">Salt Typhoon telecom compromise analysis</p>
-                        <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PLATFORMS ===== -->
-        <section class="section section-dark">
-            <div class="container">
-                <p class="label-mono">Platforms</p>
-                <div class="platforms-row">
-                    <a href="https://public.wraven.org" class="platform-card" target="_blank" rel="noopener noreferrer">
-                        <div>
-                            <h3 class="platform-name">Watchtower</h3>
-                            <p class="platform-desc">Real-time threat monitoring</p>
-                        </div>
-                        <span class="platform-arrow">&rarr;</span>
-                    </a>
-                    <div class="platform-card platform-locked">
-                        <div>
-                            <h3 class="platform-name">Horizon <span class="platform-badge">Internal</span></h3>
-                            <p class="platform-desc">Student SOC</p>
+                        <div class="ops-grid">
+                            <div class="ops-card">
+                                <div class="ops-card-top">
+                                    <span class="ops-badge badge-active">ACTIVE</span>
+                                    <span class="ops-pct">95%</span>
+                                </div>
+                                <h3 class="ops-name">HURRICANE WATCH</h3>
+                                <p class="ops-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
+                                <div class="ops-bar"><div class="ops-fill" style="width:95%"></div></div>
+                            </div>
+                            <div class="ops-card">
+                                <div class="ops-card-top">
+                                    <span class="ops-badge badge-testing">TESTING</span>
+                                    <span class="ops-pct">80%</span>
+                                </div>
+                                <h3 class="ops-name">HORIZON</h3>
+                                <p class="ops-desc">Student-run SOC built on SecurityOnion</p>
+                                <div class="ops-bar"><div class="ops-fill" style="width:80%"></div></div>
+                            </div>
+                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
+                                <div class="ops-card-top">
+                                    <span class="ops-badge badge-done">COMPLETED</span>
+                                    <span class="ops-pct">100%</span>
+                                </div>
+                                <h3 class="ops-name">LAZARUS-HUNT</h3>
+                                <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
+                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
+                            </a>
+                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
+                                <div class="ops-card-top">
+                                    <span class="ops-badge badge-done">COMPLETED</span>
+                                    <span class="ops-pct">100%</span>
+                                </div>
+                                <h3 class="ops-name">TYPHOON-TRACK</h3>
+                                <p class="ops-desc">Salt Typhoon telecom compromise analysis</p>
+                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
+                            </a>
                         </div>
                     </div>
-                    <div class="platform-card platform-locked">
-                        <div>
-                            <h3 class="platform-name">Orbit <span class="platform-badge">Soon</span></h3>
-                            <p class="platform-desc">Recon & intel gathering</p>
+                    <!-- Platforms (right) -->
+                    <div class="ops-platforms-col">
+                        <div class="section-top">
+                            <p class="label-mono">Platforms</p>
+                        </div>
+                        <div class="platforms-col">
+                            <a href="https://public.wraven.org" class="platform-card" target="_blank" rel="noopener noreferrer">
+                                <div>
+                                    <h3 class="platform-name">Watchtower</h3>
+                                    <p class="platform-desc">Real-time threat monitoring</p>
+                                </div>
+                                <span class="platform-arrow">&rarr;</span>
+                            </a>
+                            <div class="platform-card platform-locked">
+                                <div>
+                                    <h3 class="platform-name">Horizon <span class="platform-badge">Internal</span></h3>
+                                    <p class="platform-desc">Student SOC</p>
+                                </div>
+                            </div>
+                            <div class="platform-card platform-locked">
+                                <div>
+                                    <h3 class="platform-name">Orbit <span class="platform-badge">Soon</span></h3>
+                                    <p class="platform-desc">Recon & intel gathering</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -337,7 +341,7 @@
         </section>
 
         <!-- ===== PARTNERS ===== -->
-        <section class="section section-dark">
+        <section class="section">
             <div class="container">
                 <div class="section-top">
                     <p class="label-mono">Partners</p>

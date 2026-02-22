@@ -4,11 +4,11 @@
 
 /* ---- Variables ---- */
 :root {
-    --black: #000000;
+    --black: #050505;
     --bg: #050505;
-    --bg-elevated: #0a0a0a;
-    --bg-card: #0f0f0f;
-    --bg-hover: #141414;
+    --bg-elevated: #050505;
+    --bg-card: #050505;
+    --bg-hover: #0f0f0f;
     --border: #1a1a1a;
     --border-hover: #2a2a2a;
     --text: #e5e5e5;
@@ -68,6 +68,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .section {
     padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
 }
 .section-dark {
     background: var(--black);
@@ -295,12 +298,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     min-height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
 }
 
 .hero-bg {
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     z-index: 0;
 }
 
@@ -332,6 +337,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     z-index: 0;
     pointer-events: none;
     opacity: 0.3;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 90%);
 }
 
 .hero-content {
@@ -534,6 +541,17 @@ a.ops-done-card {
     color: var(--text-muted);
 }
 
+/* ---- OPERATIONS & PLATFORMS SPLIT ---- */
+.ops-platforms-split {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+.ops-platforms-col {
+    min-width: 0;
+}
+
 /* ---- OPERATIONS ---- */
 .ops-counter {
     font-family: var(--mono);
@@ -543,7 +561,7 @@ a.ops-done-card {
 
 .ops-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -620,6 +638,14 @@ a.ops-done-card {
     background: var(--border);
     border: 1px solid var(--border);
     margin-top: 2rem;
+}
+
+.platforms-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
 }
 
 .platform-card {
@@ -812,6 +838,8 @@ a.ops-done-card {
     background: var(--black);
     border-top: 1px solid var(--border);
     padding: 4rem 0 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-grid {
@@ -892,6 +920,7 @@ a.ops-done-card {
     .about-grid,
     .ctf-split { grid-template-columns: 1fr; gap: 2.5rem; }
 
+    .ops-platforms-split { grid-template-columns: 1fr; }
     .ops-grid { grid-template-columns: 1fr; }
     .platforms-row { grid-template-columns: 1fr; }
     .partners-row { grid-template-columns: repeat(2, 1fr); }
