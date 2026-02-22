@@ -47,7 +47,6 @@ User-agent: Scrapy
 User-agent: SemrushBot-OCOB
 User-agent: SemrushBot-SWA
 User-agent: Sidetrade indexer bot
-# WMU{n0t_ju5t_f0r_cr4wl3rs_uxHrAYmvqSzfrGPRgV}
 User-agent: Timpibot
 User-agent: VelenPublicWebCrawler
 User-agent: Webzio-Extended

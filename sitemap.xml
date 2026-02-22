@@ -3,7 +3,7 @@
     <!-- Main Homepage -->
     <url>
         <loc>https://wraven.org/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
     </url>
@@ -11,31 +11,31 @@
     <!-- Main Site Pages -->
     <url>
         <loc>https://wraven.org/watchtower/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.9</priority>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://wraven.org/discord/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://wraven.org/store/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://wraven.org/qr/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://wraven.org/privacy/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
@@ -43,7 +43,7 @@
     <!-- External Blog (hosted separately) -->
     <url>
         <loc>https://blog.wraven.org/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
@@ -51,7 +51,7 @@
     <!-- Public Resources -->
     <url>
         <loc>https://public.wraven.org/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.6</priority>
         <changefreq>weekly</changefreq>
     </url>
@@ -59,25 +59,25 @@
     <!-- External Links (Lower Priority) -->
     <url>
         <loc>https://wravenproject.github.io/ECXIncSite/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.5</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://github.com/WRAVENproject</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.4</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://experiencewmu.wmich.edu/organization/wraven</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.6</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://wraven.myspreadshop.com/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.4</priority>
         <changefreq>monthly</changefreq>
     </url>

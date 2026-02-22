@@ -24,6 +24,7 @@ Hiring: https://wraven.org/#join
 # - Do not use automated scanners that cause excessive traffic.
 # - Avoid any denial-of-service attacks (DoS/DDoS).
 # - Social engineering (e.g. phishing) against WRAVEN members or WMU is out of bounds.
+# - Automated, low-effort, or AI-generated reports and emails will be ignored.
 
 # Safe Harbor:
 # WRAVEN supports good-faith research and responsible disclosure.

@@ -4,294 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="WRAVEN">
-    <title>404 - Access Denied | WRAVEN</title>
-    <meta name="description" content="The requested resource could not be located. Return to WRAVEN's cybersecurity operations dashboard.">
-    <meta name="keywords" content="cybersecurity, WMU, WRAVEN, 404, not found">
+    <title>404 - Not Found | WRAVEN</title>
+    <meta name="description" content="The requested resource could not be located.">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="language" content="en">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="404 - Not Found | WRAVEN">
-    <meta property="og:description" content="The requested resource could not be located. Return to WRAVEN's homepage or contact support.">
-    <meta property="og:image" content="https://wraven.org/imgs/og-image.png">
-    <meta property="og:url" content="https://wraven.org/404">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="WRAVEN">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Theme & Canonical -->
+
+    <!-- Theme -->
     <meta name="theme-color" content="#000000">
-    
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    
-    <!-- Performance Optimizations -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- Icons -->
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
     <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/imgs/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="/imgs/icon-512x512.png">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="WRAVEN">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#0b0b0d">
-    <meta name="msapplication-TileImage" content="/imgs/icon-192x192.png">
-    
-    <!-- Stylesheets -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="/styles.css">
-    
-    <!-- Fonts with display=swap for faster rendering -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Custom 404 Styles -->
-    <style>
-        .error-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        
-        .error-content {
-            text-align: center;
-            max-width: 600px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .error-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--danger), var(--accent-orange), var(--danger));
-            animation: scanLine 3s ease-in-out infinite;
-        }
-        
-        .error-code {
-            font-family: var(--font-mono);
-            font-size: 4rem;
-            font-weight: 600;
-            color: var(--danger);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
-            letter-spacing: 0.1em;
-        }
-        
-        .error-title {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .error-message {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .threat-alert {
-            background: rgba(255, 71, 87, 0.1);
-            border: 1px solid var(--danger);
-            border-radius: 4px;
-            padding: 1rem;
-            margin: 2rem 0;
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-        }
-        
-        .threat-alert-title {
-            color: var(--danger);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .threat-alert-content {
-            color: var(--text-secondary);
-        }
-        
-        .error-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .error-btn {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: var(--font-mono);
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .error-btn:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-            transform: translateY(-1px);
-        }
-        
-        .error-btn.primary {
-            background: var(--accent-blue);
-            border-color: var(--accent-blue);
-            color: #000;
-        }
-        
-        .error-btn.primary:hover {
-            background: transparent;
-            color: var(--accent-blue);
-        }
-        
-        .system-info {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-        
-        .system-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .system-info-item {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        
-        .glitch {
-            animation: glitch 2s infinite;
-        }
-        
-        @keyframes scanLine {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
-        
-        @keyframes glitch {
-            0% { text-shadow: 0 0 20px rgba(255, 71, 87, 0.3); }
-            25% { 
-                text-shadow: 
-                    -2px 0 0 var(--danger),
-                    2px 0 0 var(--accent-blue),
-                    0 0 20px rgba(255, 71, 87, 0.5);
-            }
-            50% { text-shadow: 0 0 20px rgba(255, 71, 87, 0.3); }
-            75% {
-                text-shadow: 
-                    2px 0 0 var(--danger),
-                    -2px 0 0 var(--accent-blue),
-                    0 0 20px rgba(255, 71, 87, 0.5);
-            }
-            100% { text-shadow: 0 0 20px rgba(255, 71, 87, 0.3); }
-        }
-        
-        @media (max-width: 768px) {
-            .error-content {
-                padding: 2rem;
-                margin: 1rem;
-            }
-            
-            .error-code {
-                font-size: 3rem;
-            }
-            
-            .error-title {
-                font-size: 1.25rem;
-            }
-            
-            .error-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .error-btn {
-                width: 100%;
-                max-width: 200px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="background-grid"></div>
-    
-    <div class="error-container">
-        <div class="error-content">
-            <div class="error-code glitch">404</div>
-            <div class="error-title">NOT FOUND</div>
-            <div class="error-message">
-                The requested resource could not be located within WRAVEN's site. 
-                This endpoint may have been moved, deleted, or never existed.
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== NAV ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
+                <picture>
+                    <source srcset="/imgs/widelogo.webp" type="image/webp">
+                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager">
+                </picture>
+                <span class="nav-logo-text">WRAVEN</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#threats" class="nav-link">Threats</a>
+                <a href="/#operations" class="nav-link">Operations</a>
+                <a href="/#ctf" class="nav-link">CTF</a>
+                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                <a href="https://discord.gg/uYkvSU8DHy" class="nav-cta" target="_blank" rel="noopener noreferrer">Join Us</a>
             </div>
-            
-            
-            <div class="error-actions">
-                <a href="/" class="error-btn primary">Return to Base</a>
-                <a href="/blog" class="error-btn">Research Blog</a>
-                <a href="https://discord.gg/uYkvSU8DHy" class="error-btn" target="_blank">Contact Support</a>
-            </div>
-            
-            <div class="system-info">
-                <div class="system-info-grid">
-                    <div class="system-info-item">
-                        <span>Request ID:</span>
-                        <span id="request-id">Loading...</span>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <a href="/#threats" class="mobile-link">Threats</a>
+            <a href="/#operations" class="mobile-link">Operations</a>
+            <a href="/#ctf" class="mobile-link">CTF</a>
+            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
+            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
+            <div class="mobile-divider"></div>
+            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        </div>
+    </div>
+
+    <main id="main-content" class="subpage">
+        <div class="subpage-center">
+            <div class="error-card">
+                <div class="error-header">
+                    <div class="error-code">404</div>
+                    <span class="error-status">Not Found</span>
+                </div>
+                <div class="error-body">
+                    <p class="error-desc">The requested resource could not be located. This endpoint may have been moved, decommissioned, or never existed.</p>
+                    <div class="error-actions">
+                        <a href="/" class="btn btn-primary btn-sm">Return to Base</a>
+                        <a href="https://blog.wraven.org" class="btn btn-ghost btn-sm">Blog</a>
+                        <a href="https://discord.gg/uYkvSU8DHy" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Discord</a>
                     </div>
+                </div>
+                <div class="error-divider"></div>
+                <div class="error-meta">
+                    <span>WRAVEN // wraven.org</span>
+                    <span>HTTP 404</span>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <script>
-        document.getElementById('request-id').textContent = 
-            Math.random().toString(36).substr(2, 8).toUpperCase();
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const errorCode = document.querySelector('.error-code');
-            setInterval(() => {
-                if (Math.random() > 0.95) {
-                    errorCode.classList.add('glitch');
-                    setTimeout(() => {
-                        errorCode.classList.remove('glitch');
-                    }, 1000);
-                }
-            }, 2000);
-        });
-    </script>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand">WRAVEN</p>
+                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, &amp; Networks</p>
+                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Resources</p>
+                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Community</p>
+                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
+                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
+                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
+                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Security</p>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
+                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
+                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024&ndash;2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
+                <span class="footer-uptime">Uptime <code id="uptime">...</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
 </body>
 </html>

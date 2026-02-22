@@ -1,21 +1,20 @@
 {
   "name": "WRAVEN - Western Research Advisory for Vulnerabilities, Exploits, & Networks",
   "short_name": "WRAVEN",
-  "description": "A student-run cybersecurity organization based at WMU. Research, CTF Competitions, Community Outreach & more.",
+  "description": "Student-led cybersecurity research and CTF team at Western Michigan University.",
+  "lang": "en-US",
+
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
+
   "background_color": "#0b0b0d",
   "theme_color": "#0b0b0d",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "en-US",
+
+  "categories": ["education", "security", "research"],
+
   "icons": [
-    {
-      "src": "/imgs/littlelogo.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
     {
       "src": "/imgs/icon-192x192.png",
       "sizes": "192x192",
@@ -41,22 +40,14 @@
       "purpose": "maskable"
     }
   ],
-  "categories": ["education", "security", "research"],
+
   "screenshots": [
     {
       "src": "/imgs/og-image.png",
       "sizes": "1200x630",
       "type": "image/png",
-      "form_factor": "wide"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "What is WRAVEN?",
-      "short_name": "About",
-      "description": "Learn more about WRAVEN and our mission",
-      "url": "/?modal=about",
-      "icons": [{ "src": "/imgs/icon-192x192.png", "sizes": "192x192" }]
+      "form_factor": "wide",
+      "label": "WRAVEN platform overview"
     }
   ]
 }

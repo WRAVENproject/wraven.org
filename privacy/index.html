@@ -5,345 +5,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="WRAVEN">
     <title>Privacy Policy | WRAVEN</title>
-    <meta name="description" content="Privacy policy for WRAVEN (Western Research Advisory for Vulnerabilities, Exploits, & Networks) - WMU cybersecurity organization.">
-    <meta name="keywords" content="privacy policy, cybersecurity, WMU, WRAVEN, data protection">
+    <meta name="description" content="Privacy policy for WRAVEN — WMU's cybersecurity organization.">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="en">
-    
-    <!-- Theme & Security -->
+
+    <!-- Theme -->
     <meta name="theme-color" content="#000000">
     <meta name="referrer" content="no-referrer">
     <link rel="canonical" href="https://wraven.org/privacy">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    
-    <!-- Performance -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
+
     <!-- Icons -->
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
-    <link rel="apple-touch-icon" href="/imgs/littlelogo.png">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="/styles.css">
-    
+    <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        .privacy-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            line-height: 1.6;
-        }
-        
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .privacy-header h1 {
-            color: var(--accent-blue);
-            font-family: var(--font-mono);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .privacy-header .last-updated {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            font-family: var(--font-mono);
-        }
-        
-        .privacy-section {
-            margin-bottom: 2rem;
-        }
-        
-        .privacy-section h2 {
-            color: var(--accent-blue);
-            font-family: var(--font-mono);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-blue);
-            padding-left: 1rem;
-        }
-        
-        .privacy-section h3 {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin: 1.5rem 0 0.75rem 0;
-        }
-        
-        .privacy-section p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .privacy-section ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-        
-        .privacy-section li {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .privacy-section strong {
-            color: var(--text-primary);
-        }
-        
-        .privacy-section code {
-            background: var(--bg-tertiary);
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--accent-blue);
-        }
-        
-        .contact-info {
-            background: var(--bg-tertiary);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--accent-green);
-            margin: 2rem 0;
-        }
-        
-        .contact-info h3 {
-            color: var(--accent-green);
-            margin-top: 0;
-        }
-        
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-blue);
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-        
-        .back-link:hover {
-            background: rgba(30, 144, 255, 0.1);
-            transform: translateX(-2px);
-        }
-        
-        .tor-notice {
-            background: var(--bg-tertiary);
-            padding: 1rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--accent-purple);
-            margin: 1rem 0;
-        }
-        
-        .tor-notice h4 {
-            color: var(--accent-purple);
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
-        }
-        
-        .tor-notice p {
-            margin: 0;
-            font-size: 0.875rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="background-grid"></div>
-    
-    <div class="privacy-container">
-        <a href="/" class="back-link">
-            <span>←</span>
-            <span>Back to WRAVEN</span>
-        </a>
-        
-        <div class="privacy-header">
-            <h1>Privacy Policy</h1>
-            <div class="last-updated">Last Updated: July 18, 2025</div>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Overview</h2>
-            <p>WRAVEN (Western Research Advisory for Vulnerabilities, Exploits, & Networks) is committed to protecting your privacy and maintaining transparency about our data practices. This privacy policy explains how we collect, use, and protect information when you visit our website and use our services.</p>
-            
-            <div class="tor-notice">
-                <h4>🧅 Enhanced Privacy with Tor</h4>
-                <p>For maximum privacy, we recommend accessing our site through Tor at: <code>fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion</code></p>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== NAV ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
+                <picture>
+                    <source srcset="/imgs/widelogo.webp" type="image/webp">
+                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager">
+                </picture>
+                <span class="nav-logo-text">WRAVEN</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#threats" class="nav-link">Threats</a>
+                <a href="/#operations" class="nav-link">Operations</a>
+                <a href="/#ctf" class="nav-link">CTF</a>
+                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                <a href="https://discord.gg/uYkvSU8DHy" class="nav-cta" target="_blank" rel="noopener noreferrer">Join Us</a>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
         </div>
-        
-        <div class="privacy-section">
-            <h2>Information We Collect</h2>
-            
-            <h3>Automatically Collected Information</h3>
-            <p>When you visit our website, we may automatically collect certain technical information:</p>
-            <ul>
-                <li><strong>IP Address:</strong> For security monitoring and analytics</li>
-                <li><strong>Browser Type & Version:</strong> To ensure compatibility</li>
-                <li><strong>Device Information:</strong> Basic device and screen information</li>
-                <li><strong>Access Logs:</strong> Timestamps and pages visited</li>
-                <li><strong>Referrer Information:</strong> Where you came from (when available)</li>
-            </ul>
-            
-            <h3>Information You Provide</h3>
-            <p>We only collect information you voluntarily provide:</p>
-            <ul>
-                <li><strong>Contact Forms:</strong> Name, email, and message content</li>
-                <li><strong>Research Submissions:</strong> Academic or professional inquiries</li>
-                <li><strong>Newsletter Subscriptions:</strong> Email address for updates</li>
-            </ul>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>How We Use Information</h2>
-            
-            <h3>Primary Uses</h3>
-            <ul>
-                <li><strong>Security:</strong> Monitor for threats and protect our infrastructure</li>
-                <li><strong>Communication:</strong> Respond to inquiries and provide updates</li>
-                <li><strong>Analytics:</strong> Understand usage patterns to improve our services</li>
-                <li><strong>Research:</strong> Aggregate data for cybersecurity research (anonymized)</li>
-            </ul>
-            
-            <h3>We Do NOT</h3>
-            <ul>
-                <li>Sell, rent, or share your personal information with third parties</li>
-                <li>Use tracking cookies for advertising purposes</li>
-                <li>Store sensitive personal information unnecessarily</li>
-                <li>Profile users for commercial purposes</li>
-            </ul>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Data Protection & Security</h2>
-            
-            <h3>Security Measures</h3>
-            <p>As a cybersecurity organization, we implement industry-standard security practices:</p>
-            <ul>
-                <li><strong>Encryption:</strong> All data transmission uses HTTPS/TLS encryption</li>
-                <li><strong>Access Controls:</strong> Strict access controls and authentication</li>
-                <li><strong>Regular Audits:</strong> Ongoing security assessments and updates</li>
-                <li><strong>Incident Response:</strong> Established procedures for security incidents</li>
-            </ul>
-            
-            <h3>Data Retention</h3>
-            <p>We retain information only as long as necessary:</p>
-            <ul>
-                <li><strong>Contact Information:</strong> Until you request removal</li>
-                <li><strong>Access Logs:</strong> 90 days for security purposes</li>
-                <li><strong>Analytics Data:</strong> Aggregated and anonymized after 1 year</li>
-            </ul>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Third-Party Services</h2>
-            
-            <h3>External Links</h3>
-            <p>Our website contains links to external services (GitHub, Discord, etc.). These services have their own privacy policies, and we are not responsible for their practices.</p>
-            
-            <h3>Hosted Services</h3>
-            <p>Our website may use minimal third-party services:</p>
-            <ul>
-                <li><strong>Fonts:</strong> Google Fonts (cached locally when possible)</li>
-                <li><strong>Analytics:</strong> Self-hosted analytics tools (no external tracking)</li>
-                <li><strong>CDN:</strong> Content delivery networks for performance</li>
-            </ul>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Your Rights</h2>
-            
-            <h3>Privacy Rights</h3>
-            <p>You have the right to:</p>
-            <ul>
-                <li><strong>Access:</strong> Request information about what data we have</li>
-                <li><strong>Correction:</strong> Request corrections to inaccurate information</li>
-                <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                <li><strong>Portability:</strong> Request your data in a machine-readable format</li>
-                <li><strong>Opt-out:</strong> Unsubscribe from communications at any time</li>
-            </ul>
-            
-            <h3>International Users</h3>
-            <p>We comply with applicable privacy laws including GDPR, CCPA, and other regional regulations.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Cookies & Local Storage</h2>
-            
-            <h3>Essential Cookies Only</h3>
-            <p>We use minimal cookies and local storage:</p>
-            <ul>
-                <li><strong>Session Cookies:</strong> For basic site functionality</li>
-                <li><strong>Preferences:</strong> Remember your settings (theme, language)</li>
-                <li><strong>Security:</strong> Protect against CSRF and other attacks</li>
-            </ul>
-            
-            <p>We do not use tracking cookies, advertising cookies, or third-party analytics cookies.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Academic & Research Use</h2>
-            
-            <h3>Educational Context</h3>
-            <p>As a university-affiliated organization, some activities may involve:</p>
-            <ul>
-                <li><strong>Research Publications:</strong> Anonymized data in academic papers</li>
-                <li><strong>Student Projects:</strong> Data used for educational purposes</li>
-                <li><strong>Cybersecurity Research:</strong> Threat intelligence and security analysis</li>
-            </ul>
-            
-            <p>All research use follows ethical guidelines and institutional review processes.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h2>Updates to This Policy</h2>
-            <p>We may update this privacy policy periodically. Changes will be posted on this page with an updated "Last Updated" date. For significant changes, we may provide additional notice through our website or email communications.</p>
-        </div>
-        
-        <div class="contact-info">
-            <h3>Contact Us</h3>
-            <p>If you have questions about this privacy policy or our data practices, please contact us:</p>
-            <ul>
-                <li><strong>Email:</strong> <code>privacy@wraven.org</code></li>
-                <li><strong>General Contact:</strong> <code>contact@wraven.org</code></li>
-                <li><strong>Mailing Address:</strong> WRAVEN, Western Michigan University, Kalamazoo, MI 49008</li>
-            </ul>
-            <p>We will respond to privacy inquiries within 30 days.</p>
+    </nav>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <a href="/#threats" class="mobile-link">Threats</a>
+            <a href="/#operations" class="mobile-link">Operations</a>
+            <a href="/#ctf" class="mobile-link">CTF</a>
+            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
+            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
+            <div class="mobile-divider"></div>
+            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
         </div>
     </div>
-    
-    <script>
-        // Simple back button functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const backLink = document.querySelector('.back-link');
-            if (backLink && document.referrer && document.referrer.includes(window.location.hostname)) {
-                backLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.history.back();
-                });
-            }
-        });
-    </script>
+
+    <main id="main-content" class="subpage">
+        <div class="doc-container">
+            <a href="/" class="doc-back">&larr; Back to WRAVEN</a>
+
+            <div class="doc-header">
+                <h1 class="doc-title">Privacy Policy</h1>
+                <p class="doc-meta">Last Updated: July 18, 2025</p>
+            </div>
+
+            <!-- Overview -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Overview</h2>
+                <p>WRAVEN (Western Research Advisory for Vulnerabilities, Exploits, &amp; Networks) is committed to protecting your privacy. This policy explains how we collect, use, and protect information when you visit our website and use our services.</p>
+                <div class="doc-callout">
+                    <p class="doc-callout-heading">Enhanced Privacy via Tor</p>
+                    <p>For maximum privacy, access our site through Tor at: <code>fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion</code></p>
+                </div>
+            </div>
+
+            <!-- Information We Collect -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Information We Collect</h2>
+
+                <h3 class="doc-section-subheading">Automatically Collected</h3>
+                <p>When you visit our website, we may automatically collect certain technical information:</p>
+                <ul>
+                    <li><strong>IP Address:</strong> For security monitoring and analytics</li>
+                    <li><strong>Browser Type &amp; Version:</strong> To ensure compatibility</li>
+                    <li><strong>Device Information:</strong> Basic device and screen data</li>
+                    <li><strong>Access Logs:</strong> Timestamps and pages visited</li>
+                    <li><strong>Referrer Information:</strong> Where you came from (when available)</li>
+                </ul>
+
+                <h3 class="doc-section-subheading">Voluntarily Provided</h3>
+                <p>We only collect information you choose to provide:</p>
+                <ul>
+                    <li><strong>Contact Forms:</strong> Name, email, and message content</li>
+                    <li><strong>Research Submissions:</strong> Academic or professional inquiries</li>
+                    <li><strong>Newsletter Subscriptions:</strong> Email address for updates</li>
+                </ul>
+            </div>
+
+            <!-- How We Use Information -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">How We Use Information</h2>
+
+                <h3 class="doc-section-subheading">Primary Uses</h3>
+                <ul>
+                    <li><strong>Security:</strong> Monitor for threats and protect infrastructure</li>
+                    <li><strong>Communication:</strong> Respond to inquiries and provide updates</li>
+                    <li><strong>Analytics:</strong> Understand usage patterns to improve services</li>
+                    <li><strong>Research:</strong> Aggregate anonymized data for cybersecurity research</li>
+                </ul>
+
+                <h3 class="doc-section-subheading">We Do Not</h3>
+                <ul>
+                    <li>Sell, rent, or share personal information with third parties</li>
+                    <li>Use tracking cookies for advertising</li>
+                    <li>Store sensitive personal information unnecessarily</li>
+                    <li>Profile users for commercial purposes</li>
+                </ul>
+            </div>
+
+            <!-- Data Protection -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Data Protection &amp; Security</h2>
+
+                <h3 class="doc-section-subheading">Security Measures</h3>
+                <p>As a cybersecurity organization, we implement industry-standard practices:</p>
+                <ul>
+                    <li><strong>Encryption:</strong> All data transmission uses HTTPS/TLS</li>
+                    <li><strong>Access Controls:</strong> Strict authentication and authorization</li>
+                    <li><strong>Regular Audits:</strong> Ongoing security assessments</li>
+                    <li><strong>Incident Response:</strong> Established procedures for security events</li>
+                </ul>
+
+                <h3 class="doc-section-subheading">Data Retention</h3>
+                <p>We retain information only as long as necessary:</p>
+                <ul>
+                    <li><strong>Contact Information:</strong> Until you request removal</li>
+                    <li><strong>Access Logs:</strong> 90 days for security purposes</li>
+                    <li><strong>Analytics Data:</strong> Aggregated and anonymized after 1 year</li>
+                </ul>
+            </div>
+
+            <!-- Third-Party Services -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Third-Party Services</h2>
+
+                <h3 class="doc-section-subheading">External Links</h3>
+                <p>Our website links to external services (GitHub, Discord, etc.). These services maintain their own privacy policies and we are not responsible for their practices.</p>
+
+                <h3 class="doc-section-subheading">Hosted Services</h3>
+                <p>Our website may use minimal third-party services:</p>
+                <ul>
+                    <li><strong>Fonts:</strong> Google Fonts (cached locally when possible)</li>
+                    <li><strong>Analytics:</strong> Self-hosted analytics (no external tracking)</li>
+                    <li><strong>CDN:</strong> Content delivery networks for performance</li>
+                </ul>
+            </div>
+
+            <!-- Your Rights -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request information about what data we hold</li>
+                    <li><strong>Correction:</strong> Request corrections to inaccurate data</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal information</li>
+                    <li><strong>Portability:</strong> Request data in a machine-readable format</li>
+                    <li><strong>Opt-out:</strong> Unsubscribe from communications at any time</li>
+                </ul>
+                <p>We comply with applicable privacy laws including GDPR, CCPA, and other regional regulations.</p>
+            </div>
+
+            <!-- Cookies -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Cookies &amp; Local Storage</h2>
+                <p>We use minimal cookies and local storage:</p>
+                <ul>
+                    <li><strong>Session Cookies:</strong> Basic site functionality</li>
+                    <li><strong>Preferences:</strong> Theme and language settings</li>
+                    <li><strong>Security:</strong> CSRF protection</li>
+                </ul>
+                <p>We do not use tracking cookies, advertising cookies, or third-party analytics cookies.</p>
+            </div>
+
+            <!-- Academic Use -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Academic &amp; Research Use</h2>
+                <p>As a university-affiliated organization, some activities may involve:</p>
+                <ul>
+                    <li><strong>Research Publications:</strong> Anonymized data in academic papers</li>
+                    <li><strong>Student Projects:</strong> Data used for educational purposes</li>
+                    <li><strong>Cybersecurity Research:</strong> Threat intelligence and security analysis</li>
+                </ul>
+                <p>All research follows ethical guidelines and institutional review processes.</p>
+            </div>
+
+            <!-- Updates -->
+            <div class="doc-section">
+                <h2 class="doc-section-heading">Policy Updates</h2>
+                <p>We may update this policy periodically. Changes will be posted on this page with an updated date. For significant changes, we may provide additional notice through our website or email.</p>
+            </div>
+
+            <!-- Contact -->
+            <div class="doc-callout doc-callout-accent">
+                <p class="doc-callout-heading">Contact Us</p>
+                <p>Questions about this policy or our data practices:</p>
+                <ul>
+                    <li><strong>Privacy:</strong> <code>privacy@wraven.org</code></li>
+                    <li><strong>General:</strong> <code>contact@wraven.org</code></li>
+                    <li><strong>Address:</strong> WRAVEN, Western Michigan University, Kalamazoo, MI 49008</li>
+                </ul>
+                <p>We respond to privacy inquiries within 30 days.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand">WRAVEN</p>
+                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, &amp; Networks</p>
+                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Resources</p>
+                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Community</p>
+                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
+                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
+                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
+                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Security</p>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
+                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
+                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024&ndash;2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
+                <span class="footer-uptime">Uptime <code id="uptime">...</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
 </body>
 </html>

@@ -1,835 +1,288 @@
-// ========================================================================
-// WRAVEN.ORG MAIN JAVASCRIPT - ENHANCED EDITION
-// ========================================================================
+// WRAVEN.ORG
 
-document.addEventListener('DOMContentLoaded', function() {
-    // --------------------------------------------------------------------
-    // 1. PARTICLE EFFECT FOR BACKGROUND
-    // --------------------------------------------------------------------
-    function initializeParticleEffect() {
-        // Skip on mobile devices for better performance
-        if (window.innerWidth < 768) {
-            return;
-        }
-        
-        const canvas = document.createElement('canvas');
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '-1';
-        canvas.style.opacity = '0.4';
-        document.body.appendChild(canvas);
-        
-        const ctx = canvas.getContext('2d', { alpha: true });
-        let particles = [];
-        let animationFrameId;
-        let lastFrame = Date.now();
-        const targetFPS = 60;
-        const frameInterval = 1000 / targetFPS;
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.3; // Reduced speed
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-            
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            
-            draw() {
-                ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        function init() {
-            particles = [];
-            // Reduced particle count for better performance
-            const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 20000), 60);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-        
-        function animate() {
-            const now = Date.now();
-            const delta = now - lastFrame;
-            
-            // Throttle frame rate
-            if (delta < frameInterval) {
-                animationFrameId = requestAnimationFrame(animate);
-                return;
-            }
-            
-            lastFrame = now - (delta % frameInterval);
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                
-                // Reduced connection distance and checks for performance
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 120) { // Reduced from 150
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.15 * (1 - distance / 120)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            animationFrameId = requestAnimationFrame(animate);
-        }
-        
-        init();
-        animate();
-        
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(animationFrameId);
+document.addEventListener('DOMContentLoaded', () => {
+
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
         });
     }
 
-    // --------------------------------------------------------------------
-    // 2. SCROLL-BASED ANIMATIONS
-    // --------------------------------------------------------------------
-    function initializeScrollEffects() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    const nav = document.getElementById('nav');
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            nav.style.borderBottomColor = window.pageYOffset > 100 ? 'rgba(255,255,255,0.08)' : '';
+        }, { passive: true });
+    }
+
+    const uptimeEl = document.getElementById('uptime');
+    if (uptimeEl) {
+        const startTime = new Date('2024-11-30T15:00:00-05:00');
+        function updateUptime() {
+            const ms = Date.now() - startTime.getTime();
+            const d = Math.floor(ms / 86400000);
+            const h = Math.floor((ms % 86400000) / 3600000);
+            const m = Math.floor((ms % 3600000) / 60000);
+            uptimeEl.textContent = `${d}d ${h}h ${m}m`;
+        }
+        updateUptime();
+        setInterval(updateUptime, 60000);
+    }
+
+
+
+    const revealElements = document.querySelectorAll(
+        '.about-grid, .threat-table, .ops-grid, .platforms-row, .ctf-split, .partners-row'
+    );
+
+    if (revealElements.length && 'IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.grid-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(item);
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            revealObserver.observe(el);
         });
-    }
 
-    // --------------------------------------------------------------------
-    // 3. CUSTOM CURSOR GLOW EFFECT - DISABLED FOR CLEANER LOOK
-    // --------------------------------------------------------------------
-    /*
-    function initializeCursorGlow() {
-        // Cursor glow disabled - kept for future reference
-    }
-    */
-
-    // --------------------------------------------------------------------
-    // 4. SYSTEM UPTIME & LAST UPDATE
-    // --------------------------------------------------------------------
-    const updateSystemUptime = () => {
-        const uptimeElement = document.querySelector('.uptime-code');
-        const lastUpdateElement = document.querySelector('.footer-stat-value code:not(.uptime-code):not(#user-ip)');
-        
-        if (uptimeElement) {
-            // Calculate uptime from November 30th, 2024 at 3pm EST
-            const startTime = new Date('2024-11-30T15:00:00-05:00');
-            const now = new Date();
-            const uptimeMs = now.getTime() - startTime.getTime();
-            const days = Math.floor(uptimeMs / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((uptimeMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((uptimeMs % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((uptimeMs % (1000 * 60)) / 1000);
-            uptimeElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-        
-        if (lastUpdateElement) {
-            const now = new Date();
-            const estTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            const month = monthNames[estTime.getMonth()];
-            const day = estTime.getDate();
-            const year = estTime.getFullYear();
-            const hours = String(estTime.getHours()).padStart(2, '0');
-            const mins = String(estTime.getMinutes()).padStart(2, '0');
-            lastUpdateElement.textContent = `${month} ${day} ${year} ${hours}:${mins} EST`;
-        }
-    };
-
-    // --------------------------------------------------------------------
-    // 5. REAL-TIME UPDATES (Uptime, Dashboard, etc)
-    // --------------------------------------------------------------------
-    const startRealTimeUpdates = () => {
-        setInterval(checkDashboardStatus, 5 * 60 * 1000); // Check dashboard every 5 min
-        setInterval(updateSystemUptime, 1000); // Update uptime every second
-        updateSystemUptime();
-    };
-
-    // --------------------------------------------------------------------
-    // 6. LOGO FALLBACK (Image/Text)
-    // --------------------------------------------------------------------
-    const setupLogoFallback = () => {
-        const logoImage = document.querySelector('.logo-image');
-        const logoText = document.querySelector('.logo-text');
-        if (logoImage && logoText) {
-            logoImage.addEventListener('error', () => {
-                logoImage.style.display = 'none';
-                logoText.style.display = 'inline';
-            });
-            logoImage.addEventListener('load', () => {
-                logoImage.style.display = 'block';
-                logoText.style.display = 'none';
-            });
-        }
-    };
-
-    // --------------------------------------------------------------------
-    // 7. GET USER IP (Async, Tries Multiple Services)
-    // --------------------------------------------------------------------
-    const getUserIP = async () => {
-        const ipElement = document.getElementById('user-ip');
-        if (!ipElement) return;
-        
-        ipElement.textContent = 'Detecting...';
-        
-        try {
-            const services = [
-                { url: 'https://api.ipify.org?format=json', key: 'ip' },
-                { url: 'https://ipapi.co/json/', key: 'ip' },
-                { url: 'https://httpbin.org/ip', key: 'origin' }
-            ];
-            
-            for (const service of services) {
-                try {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000);
-                    
-                    const response = await fetch(service.url, { 
-                        signal: controller.signal,
-                        cache: 'no-store'
-                    });
-                    
-                    clearTimeout(timeoutId);
-                    
-                    if (!response.ok) continue;
-                    
-                    const data = await response.json();
-                    const ip = data[service.key];
-                    
-                    if (ip && ip !== 'Unknown') {
-                        ipElement.textContent = ip;
-                        ipElement.style.color = 'var(--accent-blue)';
-                        return;
-                    }
-                } catch (error) { 
-                    console.log('IP service failed:', service.url, error.message);
-                    continue; 
-                }
-            }
-            
-            // If all services fail
-            ipElement.textContent = 'Privacy Protected';
-            ipElement.style.color = 'var(--text-muted)';
-        } catch (error) {
-            console.error('IP detection error:', error);
-            ipElement.textContent = 'Privacy Protected';
-            ipElement.style.color = 'var(--text-muted)';
-        }
-    };
-
-    // --------------------------------------------------------------------
-    // 8. MODAL SETUP (What is WRAVEN?)
-    // --------------------------------------------------------------------
-    const setupWRAVENModal = () => {
-        const modal = document.getElementById('wraven-modal');
-        const btn = document.getElementById('what-is-wraven-btn');
-        const closeBtn = document.querySelector('.modal-close');
-        
-        // Open via URL param
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('modal') === 'about') {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            history.replaceState({}, document.title, window.location.pathname);
-        }
-        
-        // Open modal
-        if (btn) {
-            btn.addEventListener('click', () => {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                // Add fade-in animation
-                modal.style.animation = 'fadeIn 0.3s ease';
-            });
-        }
-        
-        // Close modal
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                modal.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 300);
-            });
-        }
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 300);
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                modal.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 300);
-            }
-        });
-    };
-
-    // --------------------------------------------------------------------
-    // 9. CLICK HANDLERS (Threats, Projects) WITH ENHANCED EFFECTS
-    // --------------------------------------------------------------------
-    const setupClickHandlers = () => {
-        // Threat items open public dashboard with ripple effect
-        document.querySelectorAll('.threat-item').forEach(item => {
-            item.style.cursor = 'pointer';
-            item.addEventListener('click', (e) => {
-                // Don't interfere with link clicks
-                if (e.target.tagName === 'A') return;
-                createRipple(e, item);
-                setTimeout(() => {
-                    window.open('https://public.wraven.org', '_blank');
-                }, 150);
-            });
-        });
-        
-        // Completed projects open blog
-        document.querySelectorAll('.project-card').forEach(project => {
-            const statusElement = project.querySelector('.project-status');
-            if (statusElement && statusElement.textContent.trim() === 'COMPLETED') {
-                project.addEventListener('click', (e) => {
-                    createRipple(e, project);
-                    setTimeout(() => {
-                        window.open('https://blog.wraven.org', '_blank');
-                    }, 150);
-                });
-                project.style.cursor = 'pointer';
-                project.classList.add('clickable');
-            }
-        });
-        
-        // Add ripple effect to buttons
-        document.querySelectorAll('.hero-btn, .access-btn, .tool-btn, .link-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                if (!btn.href && !btn.onclick) return; // Skip if not interactive
-                createRipple(e, btn);
-            });
-        });
-    };
-    
-    function createRipple(event, element) {
-        const ripple = document.createElement('span');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.5);
-            left: ${x}px;
-            top: ${y}px;
-            transform: scale(0);
-            animation: ripple 0.6s ease-out;
-            pointer-events: none;
-            z-index: 1000;
-        `;
-        
-        element.style.position = 'relative';
-        element.style.overflow = 'hidden';
-        element.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    }
-    
-    // Add ripple animation to CSS
-    if (!document.getElementById('ripple-style')) {
         const style = document.createElement('style');
-        style.id = 'ripple-style';
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: scale(0.9);
-                }
-                to {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-            }
-            @keyframes fadeOut {
-                from {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                to {
-                    opacity: 0;
-                    transform: scale(0.9);
-                }
-            }
-        `;
+        style.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
         document.head.appendChild(style);
     }
 
-    // --------------------------------------------------------------------
-    // 10. DASHBOARD STATUS CHECK (Cloudflare Error Detection)
-    // --------------------------------------------------------------------
-    async function checkDashboardStatus() {
-        try {
-            const response = await fetch('https://dashboard.wraven.org', { 
-                method: 'GET',
-                cache: 'no-store',
-                signal: AbortSignal.timeout(10000)
-            });
-            if (response.ok || response.status >= 400) {
-                const text = await response.text();
-                const isCloudflareError = 
-                    text.includes('502 Bad gateway') || 
-                    text.includes('503 Service Temporarily Unavailable') ||
-                    text.includes('504 Gateway timeout') ||
-                    text.includes('520 Web server is returning an unknown error') ||
-                    text.includes('521 Web server is down') ||
-                    text.includes('522 Connection timed out') ||
-                    text.includes('523 Origin is unreachable') ||
-                    text.includes('524 A timeout occurred') ||
-                    text.includes('525 SSL handshake failed') ||
-                    (text.includes('cloudflare') && text.includes('error')) ||
-                    text.includes('CF-RAY');
-                updateDashboardStatus(!isCloudflareError);
-                return;
-            }
-        } catch (error) {
-            // CORS fallback
-            if (error.name === 'TypeError' && error.message.includes('CORS')) {
-                try {
-                    await fetch('https://dashboard.wraven.org', { 
-                        method: 'HEAD',
-                        mode: 'no-cors',
-                        cache: 'no-store',
-                        signal: AbortSignal.timeout(8000)
-                    });
-                    updateDashboardStatus(true);
-                    return;
-                } catch {}
-            }
-            updateDashboardStatus(false);
+    const logoImg = document.querySelector('.nav-logo-img');
+    const logoText = document.querySelector('.nav-logo-text');
+    if (logoImg && logoText) {
+        if (logoImg.complete && logoImg.naturalWidth > 0) {
+            logoImg.style.opacity = '1';
+            logoText.style.display = 'none';
         }
-    }
-    
-    function updateDashboardStatus(isOnline) {
-        const feedStatus = document.querySelector('.feed-status');
-        if (feedStatus) {
-            if (isOnline) {
-                feedStatus.innerHTML = `
-                    <span class="status-dot status-live"></span>
-                    <a href="https://public.wraven.org" target="_blank" class="dashboard-link">Online</a>
-                `;
-            } else {
-                feedStatus.innerHTML = `
-                    <span class="status-dot status-offline"></span>
-                    <a href="https://public.wraven.org" target="_blank" class="dashboard-link dashboard-offline">Offline</a>
-                `;
-            }
-        }
+        logoImg.addEventListener('load', () => { logoImg.style.opacity = '1'; logoText.style.display = 'none'; });
+        logoImg.addEventListener('error', () => { logoImg.style.display = 'none'; logoText.style.display = 'inline'; });
     }
 
-    // --------------------------------------------------------------------
-    // 11. SERVICE WORKER REGISTRATION & UPDATE NOTIFICATION
-    // --------------------------------------------------------------------
-    async function registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            try {
-                const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
-                if (registration.waiting) showUpdateNotification();
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    if (newWorker) {
-                        newWorker.addEventListener('statechange', () => {
-                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                showUpdateNotification();
-                            }
-                        });
-                    }
-                });
-            } catch {}
+    // Radar
+    const radarCanvas = document.getElementById('hero-radar');
+    if (radarCanvas) {
+        // Skip animation on small screens / low-power devices
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+            radarCanvas.style.display = 'none';
+        } else {
+        const ctx = radarCanvas.getContext('2d');
+        const isSmallScreen = window.innerWidth < 1024;
+        const size = isSmallScreen ? 700 : 1100;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        radarCanvas.width = size * dpr;
+        radarCanvas.height = size * dpr;
+        radarCanvas.style.width = (isSmallScreen ? 700 : 1100) + 'px';
+        radarCanvas.style.height = (isSmallScreen ? 700 : 1100) + 'px';
+        ctx.scale(dpr, dpr);
+
+        const cx = size / 2;
+        const cy = size / 2;
+        const maxR = size / 2 - 20;
+        let angle = 0;
+        const PI2 = Math.PI * 2;
+        const rings = [0.25, 0.5, 0.75, 1.0];
+        let time = 0;
+
+        function getSpeed() {
+            return 0.0025 + Math.sin(time * 0.0007) * 0.0012 + Math.sin(time * 0.003) * 0.0004;
         }
-    }
-    
-    function showUpdateNotification() {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed; top: 20px; right: 20px; 
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
-            color: var(--text-primary);
-            padding: 16px 20px; border-radius: 10px; 
-            border: 2px solid var(--accent-blue); 
-            font-size: 14px; z-index: 10000;
-            cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
-            animation: slideInRight 0.5s ease;
-        `;
-        notification.innerHTML = `
-            <div style="margin-bottom: 8px; font-weight: 600;">🔄 New version available!</div>
-            <div style="font-size: 12px; color: var(--text-secondary);">Click to refresh</div>
-        `;
-        notification.addEventListener('click', () => window.location.reload());
-        notification.addEventListener('mouseenter', () => {
-            notification.style.transform = 'translateY(-5px)';
-            notification.style.boxShadow = '0 12px 40px rgba(0, 212, 255, 0.5)';
-        });
-        notification.addEventListener('mouseleave', () => {
-            notification.style.transform = 'translateY(0)';
-            notification.style.boxShadow = '0 8px 32px rgba(0, 212, 255, 0.3)';
-        });
-        document.body.appendChild(notification);
-        setTimeout(() => { 
-            if (notification.parentNode) {
-                notification.style.animation = 'slideOutRight 0.5s ease';
-                setTimeout(() => notification.remove(), 500);
-            }
-        }, 10000);
-    }
-    
-    // Add slide animations
-    if (!document.getElementById('slide-style')) {
-        const style = document.createElement('style');
-        style.id = 'slide-style';
-        style.textContent = `
-            @keyframes slideInRight {
-                from {
-                    transform: translateX(400px);
-                    opacity: 0;
+
+        const ticks = [];
+        for (let deg = 0; deg < 360; deg += 10) {
+            ticks.push({ rad: deg * Math.PI / 180, major: deg % 30 === 0 });
+        }
+
+        const blips = [
+            { r: 0.30, a: 0.8,  label: 'T-01', size: 2.5 },
+            { r: 0.55, a: 2.4,  label: null,    size: 2 },
+            { r: 0.70, a: 4.1,  label: 'T-03', size: 3 },
+            { r: 0.42, a: 5.5,  label: null,    size: 2 },
+            { r: 0.85, a: 1.2,  label: 'T-05', size: 2.5 },
+            { r: 0.62, a: 3.6,  label: null,    size: 1.5 },
+            { r: 0.20, a: 0.3,  label: null,    size: 2 },
+            { r: 0.78, a: 5.0,  label: 'T-08', size: 3 },
+            { r: 0.48, a: 1.8,  label: null,    size: 1.5 },
+            { r: 0.90, a: 3.1,  label: 'T-10', size: 2 },
+        ];
+
+        const arcs = [
+            { r: 0.38, start: 0.4, len: 0.5 },
+            { r: 0.63, start: 2.8, len: 0.7 },
+            { r: 0.88, start: 4.5, len: 0.4 },
+        ];
+
+        function drawRadar() {
+            if (!radarRunning) return;
+            ctx.clearRect(0, 0, size, size);
+            time++;
+
+            const breathe = Math.sin(time * 0.008) * 0.08;
+
+            rings.forEach((pct, i) => {
+                const pulse = i === rings.length - 1 ? breathe : 0;
+                ctx.beginPath();
+                ctx.arc(cx, cy, maxR * pct, 0, PI2);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${0.22 + pulse})`;
+                ctx.lineWidth = i === rings.length - 1 ? 1.2 : 0.7;
+                ctx.stroke();
+            });
+
+            ctx.save();
+            ctx.setLineDash([4, 8]);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.10)';
+            ctx.lineWidth = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(cx - maxR, cy); ctx.lineTo(cx + maxR, cy);
+            ctx.moveTo(cx, cy - maxR); ctx.lineTo(cx, cy + maxR);
+            ctx.stroke();
+            ctx.restore();
+
+            ctx.save();
+            ctx.setLineDash([2, 12]);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+            ctx.lineWidth = 0.5;
+            const diag = maxR * 0.707;
+            ctx.beginPath();
+            ctx.moveTo(cx - diag, cy - diag); ctx.lineTo(cx + diag, cy + diag);
+            ctx.moveTo(cx + diag, cy - diag); ctx.lineTo(cx - diag, cy + diag);
+            ctx.stroke();
+            ctx.restore();
+
+            ticks.forEach(t => {
+                const innerR = maxR * (t.major ? 0.95 : 0.97);
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(t.rad) * innerR, cy + Math.sin(t.rad) * innerR);
+                ctx.lineTo(cx + Math.cos(t.rad) * maxR, cy + Math.sin(t.rad) * maxR);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${t.major ? 0.25 : 0.10})`;
+                ctx.lineWidth = t.major ? 1 : 0.5;
+                ctx.stroke();
+            });
+
+            arcs.forEach(a => {
+                ctx.beginPath();
+                ctx.arc(cx, cy, maxR * a.r, a.start, a.start + a.len);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+                ctx.lineWidth = 0.7;
+                ctx.stroke();
+            });
+
+            const lineGrad = ctx.createLinearGradient(cx, cy, cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+            lineGrad.addColorStop(0, 'rgba(255, 255, 255, 0.0)');
+            lineGrad.addColorStop(0.15, 'rgba(255, 255, 255, 0.4)');
+            lineGrad.addColorStop(1, 'rgba(255, 255, 255, 0.6)');
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+            ctx.strokeStyle = lineGrad;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            blips.forEach(b => {
+                const bx = cx + Math.cos(b.a) * (maxR * b.r);
+                const by = cy + Math.sin(b.a) * (maxR * b.r);
+                const diff = ((angle - b.a) % PI2 + PI2) % PI2;
+                const brightness = diff < 3.0 ? Math.pow(Math.max(0, 1 - diff / 3.0), 2) : 0;
+
+                if (brightness > 0.05) {
+                    ctx.beginPath();
+                    ctx.arc(bx, by, 10, 0, PI2);
+                    ctx.fillStyle = `rgba(200, 60, 60, ${brightness * 0.05})`;
+                    ctx.fill();
                 }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
+                if (brightness > 0.1) {
+                    ctx.beginPath();
+                    ctx.arc(bx, by, 5, 0, PI2);
+                    ctx.fillStyle = `rgba(200, 60, 60, ${brightness * 0.10})`;
+                    ctx.fill();
                 }
-            }
-            @keyframes slideOutRight {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
+
+                ctx.beginPath();
+                ctx.arc(bx, by, b.size, 0, PI2);
+                ctx.fillStyle = `rgba(200, 60, 60, ${0.12 + brightness * 0.55})`;
+                ctx.fill();
+
+                if (b.label && brightness > 0.2) {
+                    ctx.font = '9px JetBrains Mono, monospace';
+                    ctx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.45})`;
+                    ctx.fillText(b.label, bx + 8, by - 6);
                 }
-                to {
-                    transform: translateX(400px);
-                    opacity: 0;
+            });
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, 8, 0, PI2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${0.04 + breathe * 0.3})`;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(cx, cy, 2.5, 0, PI2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+            ctx.fill();
+
+            angle += getSpeed();
+            if (angle > PI2) angle -= PI2;
+            requestAnimationFrame(drawRadar);
+        }
+
+        const heroSection = document.querySelector('.hero');
+        let radarRunning = false;
+        const radarObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !radarRunning) {
+                    radarRunning = true;
+                    drawRadar();
+                } else if (!entry.isIntersecting) {
+                    radarRunning = false;
                 }
-            }
-        `;
-        document.head.appendChild(style);
+            });
+        }, { threshold: 0.1 });
+        radarObserver.observe(heroSection);
+        } // end !isMobile
     }
 
-    // --------------------------------------------------------------------
-    // 12. INTERACTIVE EFFECTS (Tool/Link/Threat/Project Buttons)
-    // --------------------------------------------------------------------
-    const addInteractiveEffects = () => {
-        // Tool button click flash
-        document.querySelectorAll('.tool-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.background = 'rgba(30, 144, 255, 0.1)';
-                setTimeout(() => { this.style.background = ''; }, 200);
-            });
-        });
-        // Link button click flash
-        document.querySelectorAll('.link-btn').forEach(link => {
-            link.addEventListener('click', function() {
-                this.style.background = 'rgba(30, 144, 255, 0.1)';
-                setTimeout(() => { this.style.background = ''; }, 200);
-            });
-        });
-        // Threat item selection effect
-        const threatItems = document.querySelectorAll('.threat-item');
-        threatItems.forEach(item => {
-            item.addEventListener('click', function() {
-                threatItems.forEach(t => t.classList.remove('selected'));
-                this.classList.add('selected');
-                this.style.transform = 'scale(1.02)';
-                setTimeout(() => { this.style.transform = ''; }, 150);
-            });
-        });
-        // Project card click effect
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'translateY(-2px)';
-                setTimeout(() => { this.style.transform = ''; }, 200);
-            });
-        });
-    };
-    addInteractiveEffects();
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+    }
 
-    // --------------------------------------------------------------------
-    // 10. DYNAMIC STYLE INJECTION (Selected State, PWA Notification, etc)
-    // --------------------------------------------------------------------
-    const style = document.createElement('style');
-    style.textContent = `
-        .threat-item.selected {
-            border-left-color: var(--accent-blue) !important;
-            background: rgba(30, 144, 255, 0.08) !important;
-        }
-        .project-card:hover,
-        .tool-btn:hover,
-        .link-btn:hover {
-            transform: translateY(-1px);
-        }
-        .access-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        .pwa-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            padding: 16px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--accent-blue);
-            font-size: 14px;
-            z-index: 10000;
-            max-width: 300px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease-out;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        .pwa-notification .pwa-icon { font-size: 24px; flex-shrink: 0; }
-        .pwa-notification .pwa-message { flex: 1; line-height: 1.4; }
-        .pwa-notification .pwa-dismiss {
-            background: none; border: none; color: var(--text-secondary); font-size: 18px; cursor: pointer;
-            padding: 0; margin-left: 8px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; transition: all 0.2s ease;
-        }
-        .pwa-notification .pwa-dismiss:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-        }
-        .pwa-install-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer;
-            transition: all 0.3s ease; font-weight: 500; margin-left: 12px;
-        }
-        .pwa-install-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
-        }
-    `;
-    document.head.appendChild(style);
-
-    // --------------------------------------------------------------------
-    // 11. KEYBOARD SHORTCUTS (Escape, Ctrl/Cmd+R)
-    // --------------------------------------------------------------------
-    document.addEventListener('keydown', function(e) {
-        // Escape: clear threat selection
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.threat-item.selected').forEach(item => {
-                item.classList.remove('selected');
-            });
-        }
-        // Ctrl/Cmd+R: fake refresh
-        if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-            e.preventDefault();
-            const threatItems = document.querySelectorAll('.threat-item');
-            threatItems.forEach(item => { item.style.opacity = '0.5'; });
-            setTimeout(() => {
-                threatItems.forEach(item => { item.style.opacity = '1'; });
-            }, 500);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
+            navToggle.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
         }
     });
 
-    // --------------------------------------------------------------------
-    // 12. BACK TO TOP BUTTON
-    // --------------------------------------------------------------------
-    const setupBackToTop = () => {
-        const backToTopBtn = document.getElementById('back-to-top');
-        if (!backToTopBtn) return;
-        
-        const toggleBackToTop = () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        };
-        
-        window.addEventListener('scroll', toggleBackToTop);
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    };
-    
-    // --------------------------------------------------------------------
-    // 13. ENHANCED TERMINAL ANIMATION
-    // --------------------------------------------------------------------
-    const enhanceTerminalAnimation = () => {
-        const typingElement = document.querySelector('.typing-effect');
-        if (!typingElement) return;
-        
-        const originalText = typingElement.textContent;
-        let currentText = '';
-        let index = 0;
-        
-        const typeWriter = () => {
-            if (index < originalText.length) {
-                currentText += originalText.charAt(index);
-                typingElement.textContent = currentText;
-                index++;
-                setTimeout(typeWriter, 100 + Math.random() * 50); // Realistic typing speed
-            } else {
-                // Reset after pause
-                setTimeout(() => {
-                    currentText = '';
-                    index = 0;
-                    typingElement.textContent = '';
-                    setTimeout(typeWriter, 1000);
-                }, 3000);
-            }
-        };
-        
-        // Start typing animation after initial delay
-        setTimeout(() => {
-            typingElement.textContent = '';
-            typeWriter();
-        }, 2000);
-    };
-    
-    // --------------------------------------------------------------------
-    // 14. LOADING STATE IMPROVEMENTS
-    // --------------------------------------------------------------------
-    const enhanceLoadingStates = () => {
-        // Add loading states for images
-        document.querySelectorAll('img').forEach(img => {
-            if (!img.complete) {
-                img.style.opacity = '0';
-                img.addEventListener('load', () => {
-                    img.style.opacity = '1';
-                });
-            }
-        });
-        
-        // Simulate loading for threat feed items
-        const threatItems = document.querySelectorAll('.threat-item');
-        threatItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                item.style.transition = 'all 0.3s ease';
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, 200 * (index + 1));
-        });
-    };
-
-    // --------------------------------------------------------------------
-    // 15. INITIALIZE MAIN INTERFACE
-    // --------------------------------------------------------------------
-    function initializeInterface() {
-        setupLogoFallback();
-        getUserIP();
-        setupWRAVENModal();
-        setupClickHandlers();
-        checkDashboardStatus();
-        startRealTimeUpdates();
-        setupBackToTop();
-        enhanceTerminalAnimation();
-        enhanceLoadingStates();
-    }
-    
-    // --------------------------------------------------------------------
-    // INITIALIZE ALL FEATURES
-    // --------------------------------------------------------------------
-    initializeParticleEffect();
-    initializeScrollEffects();
-    setupLogoFallback();
-    getUserIP();
-    setupWRAVENModal();
-    setupClickHandlers();
-    startRealTimeUpdates();
-    registerServiceWorker();
-    checkDashboardStatus();
-    setupBackToTop();
-    enhanceTerminalAnimation();
-    enhanceLoadingStates();
-    
-    // Smooth fade-in on page load
-    setTimeout(() => {
-        const mainInterface = document.querySelector('.main-interface');
-        if (mainInterface) {
-            mainInterface.style.opacity = '1';
-        }
-    }, 100);
-
-    // --------------------------------------------------------------------
-    // (END)
-    // --------------------------------------------------------------------
 });

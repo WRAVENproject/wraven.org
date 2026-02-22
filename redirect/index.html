@@ -3,208 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="WRAVEN">
     <meta http-equiv="refresh" content="3; url=https://wraven.org/">
     <title>Redirecting | WRAVEN</title>
-    
-    <!-- Favicon -->
+    <meta name="description" content="Redirecting to the requested resource.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WRAVEN">
+    <meta property="og:description" content="Redirecting to the requested resource">
+    <meta property="og:image" content="https://wraven.org/imgs/og-image.png">
+
+    <!-- Icons -->
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
-    
-    <style>
-        :root {
-            --bg-primary: #0b0b0d;
-            --bg-secondary: #1a1a1d;
-            --text-primary: #ffffff;
-            --text-secondary: #b8b8b8;
-            --text-muted: #707070;
-            --accent-blue: #1e90ff;
-            --border-color: #333333;
-            --font-mono: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
-            --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
-        }
+    <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
+    <link rel="manifest" href="/manifest.json">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: var(--font-sans);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Animated grid background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(30, 144, 255, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.05) 0%, transparent 40%),
-                linear-gradient(rgba(30, 144, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30, 144, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            background-position: 0 0, 0 0, 0 0, 0 0;
-            pointer-events: none;
-            z-index: -1;
-            animation: gridFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes gridFloat {
-            0%, 100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                opacity: 0.85;
-                transform: translateY(-10px) scale(1.01);
-            }
-        }
-
-        .redirect-container {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .redirect-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), transparent);
-            animation: progressBar 3s linear;
-        }
-
-        @keyframes progressBar {
-            from { width: 0%; }
-            to { width: 100%; }
-        }
-
-        .logo {
-            margin-bottom: 2rem;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            filter: brightness(1.1);
-        }
-
-        .redirect-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .redirect-message {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-
-        .redirect-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent-blue);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-family: var(--font-mono);
-        }
-
-        .redirect-link:hover {
-            background: #1976d2;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
-        }
-
-        .spinner {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border-color);
-            border-top: 2px solid var(--accent-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .countdown {
-            font-family: var(--font-mono);
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .redirect-container {
-                padding: 2rem 1.5rem;
-                margin: 1rem;
-            }
-            
-            .redirect-title {
-                font-size: 1.25rem;
-            }
-            
-            .logo img {
-                height: 50px;
-            }
-        }
-    </style>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="redirect-container">
-        <div class="logo">
-            <img src="/imgs/widelogo.png" alt="WRAVEN" onerror="this.style.display='none'">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== NAV ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
+                <picture>
+                    <source srcset="/imgs/widelogo.webp" type="image/webp">
+                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager">
+                </picture>
+                <span class="nav-logo-text">WRAVEN</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#threats" class="nav-link">Threats</a>
+                <a href="/#operations" class="nav-link">Operations</a>
+                <a href="/#ctf" class="nav-link">CTF</a>
+                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                <a href="https://discord.gg/uYkvSU8DHy" class="nav-cta" target="_blank" rel="noopener noreferrer">Join Us</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
         </div>
-        
-        <div class="spinner"></div>
-        
-        <h1 class="redirect-title">Redirecting...</h1>
-        <p class="redirect-message">You're being redirected to the requested page.</p>
-        
-        <a href="https://wraven.org/" class="redirect-link">
-            <span>Continue Manually</span>
-            <span>→</span>
-        </a>
-        
-        <div class="countdown" id="countdown">Redirecting in 3 seconds</div>
+    </nav>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <a href="/#threats" class="mobile-link">Threats</a>
+            <a href="/#operations" class="mobile-link">Operations</a>
+            <a href="/#ctf" class="mobile-link">CTF</a>
+            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
+            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
+            <div class="mobile-divider"></div>
+            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        </div>
     </div>
 
+    <main id="main-content" class="subpage">
+        <div class="subpage-center">
+            <div class="redirect-card">
+                <div class="redirect-progress"></div>
+                <span class="redirect-icon">↗</span>
+                <div class="redirect-spinner"></div>
+                <h1 class="redirect-title">Redirecting</h1>
+                <p class="redirect-message">You're being redirected to the requested page.</p>
+                <a href="https://wraven.org/" class="btn btn-primary">Continue →</a>
+                <div class="redirect-countdown" id="countdown">Redirecting in 3 seconds</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand">WRAVEN</p>
+                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, &amp; Networks</p>
+                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Resources</p>
+                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
+                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
+                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Community</p>
+                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
+                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
+                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
+                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-heading">Security</p>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
+                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
+                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024&ndash;2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
+                <span class="footer-uptime">Uptime <code id="uptime">...</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
     <script>
         let seconds = 3;
         const countdown = document.getElementById('countdown');
-        
         const timer = setInterval(() => {
             seconds--;
             if (seconds > 0) {

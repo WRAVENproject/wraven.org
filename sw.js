@@ -1,13 +1,6 @@
-const CACHE_NAME = 'wraven-v1.0.1';
-const STATIC_CACHE_NAME = 'wraven-static-v1.0.1';
-const DYNAMIC_CACHE_NAME = 'wraven-dynamic-v1.0.1';
+const CACHE_VERSION = 'wraven-v1.1.0';
 
-// Files to cache immediately (static assets)
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
+const PRECACHE = [
   '/manifest.json',
   '/imgs/littlelogo.png',
   '/imgs/icon-192x192.png',
@@ -16,16 +9,7 @@ const STATIC_ASSETS = [
   '/imgs/og-image.png'
 ];
 
-// Files that should always be fresh (never cache)
-const NEVER_CACHE = [
-  '/index.html',
-  '/script.js',
-  '/styles.css',
-  '/sw.js'
-];
-
-// Domains/URLs that should bypass service worker entirely
-const BYPASS_SERVICE_WORKER = [
+const BYPASS_HOSTS = [
   'dashboard.wraven.org',
   'api.ipify.org',
   'ipapi.co',
@@ -33,250 +17,93 @@ const BYPASS_SERVICE_WORKER = [
   'ipinfo.io'
 ];
 
-// External resources that can be cached longer
-const EXTERNAL_CACHE_PATTERNS = [
-  /fonts\.googleapis\.com/,
-  /fonts\.gstatic\.com/,
-  /api\.ipify\.org/
+const FONT_HOSTS = [
+  'fonts.googleapis.com',
+  'fonts.gstatic.com'
 ];
 
-// Install event - cache static assets
 self.addEventListener('install', (event) => {
-  console.log('Service Worker installing...');
-  
   event.waitUntil(
-    caches.open(STATIC_CACHE_NAME)
-      .then((cache) => {
-        console.log('Caching static assets');
-        // Only cache truly static assets (not main files that change)
-        const staticOnly = STATIC_ASSETS.filter(asset => 
-          !NEVER_CACHE.includes(asset)
-        );
-        return cache.addAll(staticOnly);
-      })
-      .catch((error) => {
-        console.error('Failed to cache static assets:', error);
-      })
+    caches.open(CACHE_VERSION).then((cache) => cache.addAll(PRECACHE))
   );
-  
-  // Skip waiting to activate immediately
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker activating...');
-  
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          // Delete old caches
-          if (cacheName !== STATIC_CACHE_NAME && 
-              cacheName !== DYNAMIC_CACHE_NAME &&
-              cacheName.startsWith('wraven-')) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_VERSION).map((k) => caches.delete(k)))
+    )
   );
-  
-  // Take control of all pages immediately
   self.clients.claim();
 });
 
-// Fetch event - handle requests with intelligent caching
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
-  
-  // Skip non-GET requests
-  if (event.request.method !== 'GET') {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  if (request.method !== 'GET') return;
+  if (url.protocol === 'chrome-extension:') return;
+  if (BYPASS_HOSTS.some((h) => url.hostname.includes(h))) return;
+
+  if (FONT_HOSTS.some((h) => url.hostname.includes(h))) {
+    event.respondWith(cacheFirst(request));
     return;
   }
-  
-  // Skip chrome-extension requests
-  if (url.protocol === 'chrome-extension:') {
+
+  if (url.origin === self.location.origin) {
+    const isAsset = /\.(png|jpg|jpeg|webp|gif|svg|ico|woff2?|ttf|eot)$/i.test(url.pathname);
+    event.respondWith(isAsset ? staleWhileRevalidate(request) : networkFirst(request));
     return;
   }
-  
-  // Skip requests that should bypass service worker entirely
-  if (BYPASS_SERVICE_WORKER.some(domain => url.hostname.includes(domain))) {
-    return; // Let the request go through normally without service worker intervention
-  }
-  
-  event.respondWith(
-    handleRequest(event.request, url)
-  );
+
+  event.respondWith(networkFirst(request));
 });
 
-async function handleRequest(request, url) {
+async function networkFirst(request) {
   try {
-    let response;
-    
-    // Strategy 1: NEVER cache main content files (always fresh, no cache)
-    if (NEVER_CACHE.some(pattern => url.pathname.includes(pattern))) {
-      console.log('Fetching fresh (never cache):', url.pathname);
-      response = await fetch(request, { cache: 'no-store' });
-      return response;
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(CACHE_VERSION);
+      cache.put(request, response.clone());
     }
-    // Strategy 2: Cache external resources with network-first for freshness
-    else if (EXTERNAL_CACHE_PATTERNS.some(pattern => pattern.test(url.hostname))) {
-      response = await networkFirstStrategy(request, DYNAMIC_CACHE_NAME);
-    }
-    // Strategy 3: Cache static assets with cache-first
-    else if (STATIC_ASSETS.includes(url.pathname) && !NEVER_CACHE.includes(url.pathname)) {
-      response = await cacheFirstStrategy(request, STATIC_CACHE_NAME);
-    }
-    // Strategy 4: Everything else - network first with short cache
-    else {
-      response = await networkFirstStrategy(request, DYNAMIC_CACHE_NAME);
-    }
-    
     return response;
-    
-  } catch (error) {
-    console.error('Service Worker fetch error:', error);
-    
-    // Fallback to cache if available
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) {
-      return cachedResponse;
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    if (request.destination === 'document') {
+      return new Response('WRAVEN — Offline', { status: 503, headers: { 'Content-Type': 'text/plain' } });
     }
-    
-    // Ultimate fallback
-    if (url.pathname === '/' || url.pathname.includes('.html')) {
-      return new Response('WRAVEN - Service temporarily unavailable', {
-        status: 503,
-        headers: { 'Content-Type': 'text/plain' }
-      });
-    }
-    
-    throw error;
+    return Response.error();
   }
 }
 
-// Network-first strategy (always try network first, cache as backup)
-async function networkFirstStrategy(request, cacheName) {
-  try {
-    // Always try network first
-    const networkResponse = await fetch(request);
-    
-    // If successful, cache the response and return it
-    if (networkResponse.ok) {
-      const cache = await caches.open(cacheName);
-      // Clone the response before caching (responses can only be consumed once)
-      cache.put(request, networkResponse.clone());
-      return networkResponse;
-    }
-    
-    // If network fails, fall back to cache
-    const cachedResponse = await caches.match(request);
-    return cachedResponse || networkResponse;
-    
-  } catch (error) {
-    // Network failed, try cache
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) {
-      console.log('Network failed, serving from cache:', request.url);
-      return cachedResponse;
-    }
-    throw error;
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) {
+    const cache = await caches.open(CACHE_VERSION);
+    cache.put(request, response.clone());
   }
+  return response;
 }
 
-// Cache-first strategy (for static assets)
-async function cacheFirstStrategy(request, cacheName) {
-  const cachedResponse = await caches.match(request);
-  
-  if (cachedResponse) {
-    // Serve from cache, but update cache in background
-    updateCacheInBackground(request, cacheName);
-    return cachedResponse;
-  }
-  
-  // Not in cache, fetch from network
-  const networkResponse = await fetch(request);
-  
-  if (networkResponse.ok) {
-    const cache = await caches.open(cacheName);
-    cache.put(request, networkResponse.clone());
-  }
-  
-  return networkResponse;
-}
-
-// Update cache in background without blocking response
-async function updateCacheInBackground(request, cacheName) {
-  try {
-    const networkResponse = await fetch(request);
-    if (networkResponse.ok) {
-      const cache = await caches.open(cacheName);
-      cache.put(request, networkResponse);
-    }
-  } catch (error) {
-    console.log('Background cache update failed:', error);
-  }
-}
-
-// Fetch with fallback and timeout
-async function fetchWithFallback(request) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-  
-  try {
-    const response = await fetch(request, {
-      signal: controller.signal,
-      cache: 'no-store' // Force fresh fetch
-    });
-    clearTimeout(timeoutId);
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CACHE_VERSION);
+  const cached = await cache.match(request);
+  const fetched = fetch(request).then((response) => {
+    if (response.ok) cache.put(request, response.clone());
     return response;
-  } catch (error) {
-    clearTimeout(timeoutId);
-    
-    // If fetch fails, try cache as last resort
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) {
-      console.log('Fetch failed, serving stale cache:', request.url);
-      return cachedResponse;
-    }
-    
-    throw error;
-  }
-}
-
-// Listen for messages from the main thread
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-  
-  if (event.data && event.data.type === 'CLEAR_CACHE') {
-    // Clear all caches when requested
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName.startsWith('wraven-')) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    });
-  }
-});
-
-// Send updates to clients when new version is available
-self.addEventListener('updatefound', () => {
-  console.log('New version available!');
-  
-  // Notify all clients about the update
-  self.clients.matchAll().then(clients => {
-    clients.forEach(client => {
-      client.postMessage({
-        type: 'UPDATE_AVAILABLE',
-        message: 'A new version of WRAVEN is available. Refresh to update.'
-      });
-    });
   });
+  return cached || fetched;
+}
+
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+  if (event.data?.type === 'CLEAR_CACHE') {
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k.startsWith('wraven-')).map((k) => caches.delete(k)))
+    );
+  }
 });
