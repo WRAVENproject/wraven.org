@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="WRAVEN">
     <title>WRAVEN - WMU Cybersecurity</title>
-    <meta name="description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity org for CTF competitions, threat research, and hands-on security training at Western Michigan University.">
+    <meta name="description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity club for CTF competitions, threat research, and hands-on security training at Western Michigan University.">
     <meta name="keywords" content="WRAVEN, WMU cybersecurity, Western Michigan University cybersecurity, WMU, cybersecurity club WMU, WMU hacking, CTF WMU, cybersecurity research WMU, Western Michigan University security, WMU computer security, cybersecurity organization WMU, WMU student organizations, Hackerspace, RSO, WMU RSO, Cybersecurity Club">
     <meta name="robots" content="index, follow">
     <meta name="language" content="en">
-
+    
     <!-- Open Graph -->
     <meta property="og:title" content="WRAVEN - WMU Cybersecurity | Western Michigan University's Premier Cybersecurity Organization">
     <meta property="og:description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity club for CTF competitions, threat research, and hands-on security training.">
@@ -18,7 +18,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="WRAVEN">
     <meta property="og:locale" content="en_US">
-
+    
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="WRAVEN - WMU Cybersecurity | Western Michigan University's Premier Cybersecurity Organization">
@@ -26,40 +26,48 @@
     <meta name="twitter:image" content="https://wraven.org/imgs/og-image.png">
     <meta name="twitter:site" content="@wravenproject">
     <meta name="twitter:creator" content="@wravenproject">
-
+    
     <!-- Tor Metadata -->
     <meta http-equiv="onion-location" content="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion">
-
+    
     <!-- Theme & Canonical -->
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://wraven.org/">
-
+    
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json">
-
+    
+    <!-- Performance Optimizations -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Icons -->
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
     <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/imgs/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/imgs/icon-512x512.png">
-
+    
     <!-- PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="WRAVEN">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileColor" content="#0b0b0d">
     <meta name="msapplication-TileImage" content="/imgs/icon-192x192.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
+    
+    <!-- Preload critical resources -->
     <link rel="stylesheet" href="/styles.css">
-
-    <!-- Structured Data -->
+    <link rel="preload" href="/script.js" as="script">
+    
+    <!-- Fonts with display=swap for faster rendering -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -68,358 +76,764 @@
       "alternateName": ["Western Research Advisory for Vulnerabilities, Exploits, & Networks", "WMU Cybersecurity"],
       "url": "https://wraven.org",
       "logo": "https://wraven.org/imgs/widelogo.png",
-      "description": "WRAVEN is Western Michigan University's premier cybersecurity organization.",
+      "description": "WRAVEN is Western Michigan University's premier cybersecurity organization specializing in threat research, CTF competitions, and cybersecurity education.",
       "foundingLocation": {
         "@type": "Place",
         "name": "Western Michigan University",
-        "address": { "@type": "PostalAddress", "addressLocality": "Kalamazoo", "addressRegion": "MI", "addressCountry": "US" }
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kalamazoo",
+          "addressRegion": "MI",
+          "addressCountry": "US"
+        }
       },
-      "parentOrganization": { "@type": "EducationalOrganization", "name": "Western Michigan University", "alternateName": "WMU" },
-      "contactPoint": { "@type": "ContactPoint", "email": "contact@wraven.org", "contactType": "General Inquiries" },
+      "parentOrganization": {
+        "@type": "EducationalOrganization",
+        "name": "Western Michigan University",
+        "alternateName": "WMU"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@wraven.org",
+        "contactType": "General Inquiries"
+      },
       "sameAs": [
         "https://github.com/WRAVENproject",
         "https://linktr.ee/wravenproject",
         "https://experiencewmu.wmich.edu/organization/wraven",
         "https://discord.gg/uYkvSU8DHy"
+      ],
+      "knowsAbout": [
+        "Cybersecurity",
+        "Threat Intelligence",
+        "CTF Competitions",
+        "Vulnerability Research",
+        "Malware Analysis"
+      ]
+    }
+    </script>
+    
+    <!-- Sitelinks Structured Data for Google Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "WRAVEN",
+      "alternateName": "WMU Cybersecurity",
+      "url": "https://wraven.org",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://wraven.org/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://wraven.org/#organization"
+      }
+    }
+    </script>
+    
+    <!-- Navigation/Sitelinks Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SiteNavigationElement",
+      "name": "Main Navigation",
+      "url": "https://wraven.org",
+      "hasPart": [
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Watchtower - Threat Intelligence",
+          "description": "Real-time cybersecurity threat intelligence and monitoring dashboard",
+          "url": "https://wraven.org/watchtower/"
+        },
+        {
+          "@type": "SiteNavigationElement", 
+          "name": "Research Blog",
+          "description": "Latest cybersecurity research, threat analysis, and intelligence reports",
+          "url": "https://blog.wraven.org"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Discord Community", 
+          "description": "Join our cybersecurity community and participate in discussions",
+          "url": "https://wraven.org/discord/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "WRAVEN Store",
+          "description": "Official WRAVEN merchandise and cybersecurity resources",
+          "url": "https://wraven.org/store/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "QR Code Tools",
+          "description": "Cybersecurity-focused QR code generation and analysis tools",
+          "url": "https://wraven.org/qr/"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://wraven.org/"
+        }
       ]
     }
     </script>
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- ===== NAV ===== -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
-                <picture>
-                    <source srcset="/imgs/widelogo.webp" type="image/webp">
-                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager">
-                </picture>
-                <span class="nav-logo-text">WRAVEN</span>
-            </a>
-            <div class="nav-links">
-                <a href="#threats" class="nav-link">Threats</a>
-                <a href="#operations" class="nav-link">Operations</a>
-                <a href="#ctf" class="nav-link">CTF</a>
-                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                <a href="https://discord.gg/uYkvSU8DHy" class="nav-cta" target="_blank" rel="noopener noreferrer">Join Us</a>
+    
+    <!-- Main Interface -->
+    <div id="main-interface" class="main-interface">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="logo">
+                        <picture>
+                            <source srcset="https://wraven.org/imgs/widelogo.webp" type="image/webp">
+                            <img src="https://wraven.org/imgs/widelogo.png" alt="WRAVEN - Western Michigan University Cybersecurity Organization Logo" class="logo-image" loading="eager" onload="this.style.opacity='1'" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        </picture>
+                        <span class="logo-text">WRAVEN</span>
+                    </h1>
+                    <span class="subtitle">Western Research Advisory for Vulnerabilities, Exploits, & Networks</span>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicators">
+                        <div class="status-item" role="status" aria-label="Intel feed status">
+                            <span class="status-dot status-live"></span>
+                            <span>Intel Feed: Live</span>
+                        </div>
+                    </div>
+<a href="https://hcb.hackclub.com/donations/start/wraven" target="_blank" class="access-btn donate-btn" style="text-decoration:none;">Donate</a>
+                    <button class="access-btn" id="what-is-wraven-btn">What is WRAVEN?</button>
+                </div>
             </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span>
-            </button>
-        </div>
-    </nav>
+        </header>
 
-    <!-- ===== MOBILE MENU ===== -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner">
-            <a href="#threats" class="mobile-link">Threats</a>
-            <a href="#operations" class="mobile-link">Operations</a>
-            <a href="#ctf" class="mobile-link">CTF</a>
-            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
-            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
-            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
-            <div class="mobile-divider"></div>
-            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        <!-- Main Grid -->
+        <main class="main-grid" id="main-content" role="main">
+            <!-- Hero Call to Action -->
+            <section class="grid-item hero-cta">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">Western Michigan University's Premier Cybersecurity Organization</h2>
+                        <p class="hero-description">Join WRAVEN for cutting-edge threat research, ethical hacking, CTF competitions, & hands-on cybersecurity training. Be part of the next generation of cyber experts.</p>
+                        <div class="hero-actions">
+                            <a href="https://discord.gg/uYkvSU8DHy" target="_blank" class="hero-btn primary">
+                                <span class="btn-icon">💬</span>
+                                Join Our Discord
+                            </a>
+                            <a href="https://experiencewmu.wmich.edu/organization/wraven" target="_blank" class="hero-btn secondary">
+                                <span class="btn-icon">🎓</span>
+                                Get Involved
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">52</div>
+                                <div class="stat-label">Researchers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">11</div>
+                                <div class="stat-label">Completed Projects</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">∞</div>
+                                <div class="stat-label">CTF Events</div>
+                            </div>
+                        </div>
+                        <div class="hero-terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <div class="terminal-title">wraven@kalamazoo:~$</div>
+                            </div>
+                            <div class="terminal-content">
+                                <div class="terminal-line">
+                                    <span class="prompt">$ </span>
+                                    <span class="command">whoami</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="output">WRAVEN - Threat Intelligence & Research</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="prompt">$ </span>
+                                    <span class="command">mission --status</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="output success">✓ Defending digital infrastructure</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="output success">✓ Training next-gen security experts</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="prompt">$ </span>
+                                    <span class="command typing-effect">join_wraven --apply</span>
+                                    <span class="cursor">|</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Threat Overview  -->
+            <!-- Accepted Tags & Formatting Guide for Threat Overview
+
+            To add or edit threat items, please use the following structure:
+
+            <div class="threat-item">
+                <div class="threat-indicator [high|medium|low]"></div>
+                <div class="threat-content">
+                    <div class="threat-title">[Title of Threat]</div>
+                    <div class="threat-meta">[Short description or technique]</div>
+                    <div class="threat-footer">
+                        <div class="threat-tags">
+                            <span class="tag tag-apt">[APT Name]</span>
+                            <span class="tag tag-technique">[MITRE Technique]</span>
+                            <span class="tag tag-ioc">[Indicator]</span>
+                        </div>
+                        <div class="threat-time">[Date]</div>
+                    </div>
+                </div>
+            </div>
+
+            Threat Indicator Levels:
+                - high: Severe/critical threat
+                - medium: Moderate threat
+                - low: Low/minor threat
+
+            Available Tag Types (use as <span class="tag tag-...">Text</span>):
+                - tag-apt: Advanced Persistent Threat (e.g., UNC6148, LAZARUS)
+                - tag-cve: CVE identifier (e.g., CVE-2024-12345)
+                - tag-malware: Malware name/family (e.g., SystemBC)
+                - tag-exploit: Exploit name/type
+                - tag-technique: MITRE ATT&CK technique (e.g., T1041)
+                - tag-phishing: Phishing-related
+                - tag-ioc: Indicator of Compromise (e.g., SIM-SWAP, OVERSTEP)
+                - tag-saas: SaaS-related
+                - tag-sector: Targeted sector (e.g., Telecom, Finance)
+
+            Example Tags:
+                <span class="tag tag-apt">UNC6148</span>
+                <span class="tag tag-technique">T1190</span>
+                <span class="tag tag-ioc">OVERSTEP</span>
+                <span class="tag tag-malware">SystemBC</span>
+                <span class="tag tag-cve">CVE-2024-12345</span>
+                <span class="tag tag-phishing">PHISHING</span>
+                <span class="tag tag-sector">Telecom</span>
+
+                Date Format:
+                    - Use short month and day (e.g., Jul 23)
+
+                You can freely mix and match tags as needed for each threat item. -->
+
+            <!-- Threat Overview -->
+            <section class="grid-item threat-overview">
+                <div class="section-header">
+                    <h2>Threat Overview</h2>
+                    <div class="feed-status" role="status" aria-label="Threat feed status">
+                        <span class="status-dot status-live"></span>
+                        Online
+                    </div>
+                </div>
+                <div class="threat-feed" role="feed" aria-label="Live threat intelligence feed">
+
+                    <!-- OpenClaw Attackers use automation to spread attacks -->
+                    <div class="threat-item">
+                        <div class="threat-indicator medium"></div>
+                        <div class="threat-content">
+                            <div class="threat-title">OpenClaw Exploited: Over 335 AI-Driven Attacks Logged in Just 3 Days</div>
+                            <div class="threat-meta">OpenClaw is an AI agent that integrates with users emails, calendars, documents, and messaging platforms, and attackers were able to use OpenClaw to automate misconfigured instances to leak API keys, OAuth tokens, and plaintext credentials.</div>
+                            <div class="threat-footer">
+                                <div class="threat-tags">
+                                    <span class="tag tag-cve">CVE-2026-25253</span>
+                                    <span class="tag tag-cve">CVE-2026-25593</span>
+                                    <span class="tag tag-apt">ClawHavoc</span>
+                                </div>
+                                <div class="threat-time">Feb 20</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Cryptomining Campaign uses exploits to bypass security-->
+                    <div class="threat-item">
+                        <div class="threat-indicator medium"></div>
+                        <div class="threat-content">
+                            <div class="threat-title">New Self Spreading Cryptomining Campaign Uses Driver Exploits and Delayed Execution to Bypass Security</div>
+                            <div class="threat-meta">The attack is a stealthy self spreading parasite that hijacks computers for cryptocurrency mining that hunts for new victims while carrying tools to disable security software from the inside out.</div>
+                            <div class="threat-footer">
+                                <div class="threat-tags">
+                                    <span class="tag tag-technique">T1496</span>
+                                    <span class="tag tag-technique">T1068</span>
+                                    <span class="tag tag-malware">Worm</span>
+                                </div>
+                                <div class="threat-time">Feb 23</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attackers being able to gain full system control without needing any login credentials -->
+                    <div class="threat-item">
+                        <div class="threat-indicator high"></div>
+                        <div class="threat-content">
+                            <div class="threat-title">Massive Exploitation of BeyondTrust Flaw Targets Enterprise Remote Access</div>
+                            <div class="threat-meta">Attackers have been able to exploit a critical command injection flaw in BeyondTrust portals to gain full system control without needing any login credentials.</div>
+                            <div class="threat-footer">
+                                <div class="threat-tags">
+                                    <span class="tag tag-technique">T1133</span>
+                                    <span class="tag tag-technique">T1190</span>
+                                    <span class="tag tag-cve">CVE-2026-</span>
+                                </div>
+                                <div class="threat-time">Feb 20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Research Projects -->
+                <section class="grid-item research-projects">
+                    <div class="section-header">
+                        <h2>Active Projects</h2>
+                        <div class="project-count">2 Active | 11 Completed</div>
+                    </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">HURRICANE WATCH</div>
+                            <div class="project-status status-research">RESEARCHING</div>
+                        </div>
+                        <div class="project-description">Salt Typhoon re-analysis due to CISA & NSA guidance</div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="progress-text">95%</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">HORIZON</div>
+                            <div class="project-status status-testing">TESTING</div>
+                        </div>
+                        <div class="project-description">Student run security operations center, based on SecurityOnion</div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="progress-text">80%</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">LAZARUS-HUNT</div>
+                            <div class="project-status status-completed">COMPLETED</div>
+                        </div>
+                        <div class="project-description">Lazarus Group APT tracking and attribution methodology</div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="progress-text">100%</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">TYPHOON-TRACK</div>
+                            <div class="project-status status-completed">COMPLETED</div>
+                        </div>
+                        <div class="project-description">Salt Typhoon telecommunications infrastructure compromise analysis</div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="progress-text">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTF Operations -->
+            <section class="grid-item ctf-operations">
+                <div class="section-header">
+                    <h2>CTF Team: ECX Inc.</h2>
+                </div>
+                <div class="ctf-content">
+                    <div class="team-info-section">
+                        <div class="team-overview">
+                            <div class="team-description">
+                                <h3>ECX Inc.</h3>
+                                <p>CTF team run by Computer Club & WRAVEN @ WMU</p>
+                                <div class="team-aliases">
+                                    <span class="alias">WMU-CCLUB</span>
+                                    <span class="alias">WRAVEN</span>
+                                    <span class="alias">ecxinc</span>
+                                </div>
+                            </div>
+                            <div class="team-links">
+                                <a href="https://wravenproject.github.io/ECXIncSite/" class="ctf-link" target="_blank">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                    <span>CTF Team Page</span>
+                                    <span class="link-arrow">→</span>
+                                </a>
+                                <a href="https://ctftime.org/team/3602" class="ctf-link" target="_blank">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                    <span>CTFtime Profile</span>
+                                    <span class="link-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ctf-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="8" r="7"></circle>
+                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-value">11</div>
+                            <div class="stat-label">Recent Events</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <div class="stat-value">20.08</div>
+                            <div class="stat-label">Total Rating Points</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Years Active</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Intel Tools -->
+            <section class="grid-item intel-tools">
+                <div class="section-header">
+                    <h2>Public Tools</h2>
+                </div>
+                <div class="tools-grid">
+                    <a href="https://public.wraven.org" target="_blank" class="tool-btn">
+                        <div class="tool-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">WATCHTOWER</div>
+                        <div class="tool-desc">Real-time threat monitoring</div>
+                    </a>
+                    <button class="tool-btn">
+                        <div class="tool-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">HORIZON</div>
+                        <div class="tool-desc">Student Security Operations Center</div>
+                    </button>
+                    <button class="tool-btn">
+                        <div class="tool-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">ORBIT</div>
+                        <div class="tool-desc">Coming soon...</div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="grid-item quick-links">
+                <div class="section-header">
+                    <h2>Quick Access</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://blog.wraven.org" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <span class="link-text">Research Blog</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="https://github.com/WRAVENproject" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span class="link-text">GitHub Org</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="https://linktr.ee/wravenproject" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                        <span class="link-text">Linktree / Socials</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span class="link-text">ExperienceWMU</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="https://wraven.myspreadshop.com" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="link-text">Merch Store</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="https://discord.gg/uYkvSU8DHy" class="link-btn" target="_blank">
+                        <svg class="link-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                        <span class="link-text">WRAVEN Discord</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Privacy & Security Bento -->
+            <section class="grid-item privacy-tor-bento">
+                <div class="section-header">
+                    <h2>Privacy & Security</h2>
+                </div>
+                <div class="bento-box privacy-tor">
+                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="tor-access" target="_blank" title="Access via Tor">
+                        <span class="tor-icon">🧅</span>
+                        <span>Tor Access</span>
+                    </a>
+                    <a href="/privacy/" class="privacy-btn" title="Privacy Policy">
+                        <span class="privacy-icon">🔒</span>
+                        <span>Privacy Policy</span>
+                    </a>
+                    <a href="/keys/wraven.asc" class="privacy-btn" title="PGP Public Key">
+                        <span class="privacy-icon">📬</span>
+                        <span>PGP Contact Key</span>
+                    </a>
+                    <a href="/.well-known/security.txt" class="privacy-btn" title="Vulnerability Disclosure">
+                        <span class="privacy-icon">🛠️</span>
+                        <span>Security Policy</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sponsors Bento -->
+            <section class="grid-item sponsor-bento">
+                <div class="section-header sponsor-header">
+                    <h2>Sponsors & Partners</h2>
+                    <button class="sponsor-interest-btn" onclick="window.open('mailto:contact@wraven.org?subject=Sponsorship%20Interest','_blank')">Become a Sponsor or Partner</button>
+                </div>
+                <div class="bento-box sponsors">
+                    <div class="sponsor-list">
+                        <a class="sponsor-item" href="https://eff.org/" target="_blank" rel="noopener">
+                            <picture>
+                                <source srcset="/imgs/eff.webp" type="image/webp">
+                                <img src="/imgs/eff.png" alt="Electronic Frontier Foundation" class="sponsor-img" loading="lazy">
+                            </picture>
+                            <span class="sponsor-name">
+                                <span class="sponsor-title">Electronic Frontier Foundation</span>
+                                <span class="sponsor-subtitle">Leader in digital rights advocacy.</span>
+                            </span>
+                        </a>
+
+                        <a class="sponsor-item" href="https://hackclub.com/hcb" target="_blank" rel="noopener">
+                            <picture>
+                                <source srcset="/imgs/HCBicon.webp" type="image/webp">
+                                <img src="/imgs/HCBicon.png" alt="HCB - The Hack Foundation" class="sponsor-img" loading="lazy">
+                            </picture>
+                            <span class="sponsor-name">
+                                <span class="sponsor-title">The Hack Foundation (HCB)</span>
+                                <span class="sponsor-subtitle">The Hack Foundation "Hack Club"</span>
+                            </span>
+                        </a>
+
+                        <a class="sponsor-item" href="https://wmuwsa.org/allocations" target="_blank" rel="noopener">
+                            <picture>
+                                <source srcset="/imgs/WSAACicon.webp" type="image/webp">
+                                <img src="/imgs/WSAACicon.png" alt="WSAAC - Western Student Association Allocations Committee" class="sponsor-img" loading="lazy">
+                            </picture>
+                            <span class="sponsor-name">
+                                <span class="sponsor-title">WSAAC</span>
+                                <span class="sponsor-subtitle">Western Student Association Allocations Committee</span>
+                            </span>
+                        </a>
+
+                    <a class="sponsor-item" href="https://bugcrowd.com/" target="_blank" rel="noopener">
+                        <picture>
+                            <source srcset="/imgs/bugcrowd.webp" type="image/webp">
+                            <img src="/imgs/bugcrowd.png" alt="Bugcrowd" class="sponsor-img" loading="lazy">
+                        </picture>
+                        <span class="sponsor-name">
+                            <span class="sponsor-title">Bugcrowd</span>
+                            <span class="sponsor-subtitle">Leading crowdsourced security platform.</span>
+                        </span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="section-header">
+                        <h2>System Status</h2>
+                    </div>
+                    <div class="footer-grid">
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Connection</div>
+                            <div class="footer-stat-value">
+                                <span>From </span><code id="user-ip">Detecting...</code>
+                            </div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Uptime</div>
+                            <div class="footer-stat-value">
+                                <code class="uptime-code">127d 14h 32m</code>
+                            </div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Last Update</div>
+                            <div class="footer-stat-value">
+                                <code>WMU{not that easy...}</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <div class="section-header">
+                        <h2>Contact & Legal</h2>
+                    </div>
+                    <div class="footer-grid">
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Contact</div>
+                            <div class="footer-stat-value">
+                                <a href="mailto:contact@wraven.org" class="footer-link">contact@wraven.org</a>
+                            </div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Status</div>
+                            <div class="footer-stat-value">Registered Nonprofit</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-label">Fiscal Sponsor</div>
+                            <div class="footer-stat-value">
+                                <a href="https://hackclub.com/hcb" target="_blank" class="footer-link">Hack Club 501(c)(3)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Background Elements -->
+    <div class="background-grid"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <span>↑</span>
+    </button>
+
+    <!-- WRAVEN Info Modal -->
+    <div id="wraven-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>What is WRAVEN?</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="wraven-info">
+                    <div class="info-section">
+                        <h3>🛡️ WRAVEN's Mission at WMU</h3>
+                        <p>WRAVEN (Western Research Advisory for Vulnerabilities Exploits & Networks) is Western Michigan University's premier cybersecurity registered student organization. We're WMU's leading cybersecurity club & nonprofit, dedicated to advancing cybersecurity knowledge through hands-on research, competitive CTF participation, and real-world threat analysis at Western Michigan University.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>🎯 What WRAVEN Does at Western Michigan University</h3>
+                        <ul>
+                            <li><strong>Cybersecurity Threat Intelligence Research:</strong> We analyze emerging cybersecurity threats and develop countermeasures for the WMU community</li>
+                            <li><strong>WMU CTF Competitions:</strong> Our team ECX Inc. represents Western Michigan University in international Capture The Flag cybersecurity events</li>
+                            <li><strong>Vulnerability Research at WMU:</strong> We discover and responsibly disclose security vulnerabilities to protect WMU and beyond</li>
+                            <li><strong>WMU Cybersecurity Community Education:</strong> We share cybersecurity knowledge through workshops, presentations, and open-source tools for WMU students</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>🏛️ Academic Excellence at Western Michigan University</h3>
+                        <p>Founded in partnership with Western Michigan University's Computer Club, WRAVEN bridges the gap between academic cybersecurity education and real-world security challenges. Our WMU members gain practical cybersecurity experience that complements their formal education at Western Michigan University.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>🔗 Join WMU's Premier Cybersecurity Organization</h3>
+                        <p>Whether you're a WMU student, researcher, or cybersecurity professional, there are many ways to engage with WRAVEN:</p>
+                        <div class="involvement-links">
+                            <a href="https://experiencewmu.wmich.edu/organization/wraven" target="_blank">Join Our Organization</a>
+                            <a href="https://discord.gg/uYkvSU8DHy" target="_blank">Join Our Discord</a>
+                            <a href="https://blog.wraven.org" target="_blank">Read Our Research</a>
+                            <a href="mailto:contact@wraven.org">Contact Our Team</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <main id="main-content">
-
-        <!-- ===== HERO ===== -->
-        <section class="hero">
-            <div class="hero-bg">
-                <source srcset="/imgs/team-office.webp" type="image/webp">
-                <img src="/imgs/team-office.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.parentElement.classList.add('img-fallback')">
-                <div class="hero-overlay"></div>
-            </div>
-            <canvas id="hero-radar" class="hero-radar" aria-hidden="true"></canvas>
-            <div class="hero-content">
-                <p class="hero-eyebrow">Western Michigan University</p>
-                <h1 class="hero-title">Threat Intelligence.<br>Cyber Operations.</h1>
-                <p class="hero-sub">WRAVEN develops collegiate talent through threat research, cyber operations, and disciplined technical training.</p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">59</span>
-                        <span class="hero-stat-label">Operators</span>
-                    </div>
-                    <div class="hero-stat-div"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">12</span>
-                        <span class="hero-stat-label">Projects</span>
-                    </div>
-                    <div class="hero-stat-div"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">128</span>
-                        <span class="hero-stat-label">CTF Events</span>
-                    </div>
-                </div>
-                <div class="hero-actions">
-                    <a href="https://discord.gg/uYkvSU8DHy" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Involved</a>
-                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">University Page</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== ABOUT ===== -->
-        <section class="section" id="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p class="label-mono">About WRAVEN</p>
-                        <h2 class="about-headline">Western Research Advisory for Vulnerabilities, Exploits, & Networks</h2>
-                        <p class="about-body">WMU's cybersecurity research & operations team. We analyze emerging threats, compete in international CTF events, conduct vulnerability research, and build open-source security tools.</p>
-                        <p class="about-body text-muted">Founded in partnership with WMU's Computer Club. Registered 501(c)(3) nonprofit via Hack Club.</p>
-                    </div>
-                    <div class="about-image">
-                        <picture>
-                            <source srcset="/imgs/about-team.webp" type="image/webp">
-                            <img src="/imgs/about-team.jpg" alt="WRAVEN team" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== THREAT FEED ===== -->
-        <section class="section" id="threats">
-            <div class="container">
-                <div class="section-top">
-                    <p class="label-mono">Threat Feed</p>
-                    <a href="https://public.wraven.org" class="status-link" target="_blank" rel="noopener noreferrer">
-                        <span class="status-dot"></span>Watchtower&ensp;&rarr;
-                    </a>
-                </div>
-                <div class="threat-table" role="feed" aria-label="Live threat intelligence feed">
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
-                        <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-02-05</time>
-                        <span class="threat-type">SUPPLY-CHAIN</span>
-                        <span class="threat-title">Notepad++ Supply-Chain Compromise &mdash; Trojanized Updates Delivered to Targeted Users</span>
-                        <div class="threat-meta-tags">
-                            <span class="ttag">T1195.002</span>
-                        </div>
-                    </a>
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
-                        <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-02-05</time>
-                        <span class="threat-type">APT</span>
-                        <span class="threat-title">Salt Typhoon Compromises U.S. Telecom Providers & Government Networks</span>
-                        <div class="threat-meta-tags">
-                            <span class="ttag">Salt Typhoon</span>
-                            <span class="ttag">T1557</span>
-                        </div>
-                    </a>
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
-                        <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-02-05</time>
-                        <span class="threat-type">EXPLOIT</span>
-                        <span class="threat-title">WinRAR Zero-Day Campaign Targets Government & Law Enforcement</span>
-                        <div class="threat-meta-tags">
-                            <span class="ttag">Zero-Day</span>
-                            <span class="ttag">T1203</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== OPERATIONS & PLATFORMS ===== -->
-        <section class="section" id="operations">
-            <div class="container">
-                <div class="ops-platforms-split">
-                    <!-- Operations (left) -->
-                    <div class="ops-platforms-col">
-                        <div class="section-top">
-                            <p class="label-mono">Operations</p>
-                            <span class="ops-counter">2 Active &middot; 12 Completed</span>
-                        </div>
-                        <div class="ops-grid">
-                            <div class="ops-card">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-active">ACTIVE</span>
-                                    <span class="ops-pct">95%</span>
-                                </div>
-                                <h3 class="ops-name">HURRICANE WATCH</h3>
-                                <p class="ops-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:95%"></div></div>
-                            </div>
-                            <div class="ops-card">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-testing">TESTING</span>
-                                    <span class="ops-pct">80%</span>
-                                </div>
-                                <h3 class="ops-name">HORIZON</h3>
-                                <p class="ops-desc">Student-run SOC built on SecurityOnion</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:80%"></div></div>
-                            </div>
-                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">100%</span>
-                                </div>
-                                <h3 class="ops-name">LAZARUS-HUNT</h3>
-                                <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
-                            </a>
-                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">100%</span>
-                                </div>
-                                <h3 class="ops-name">TYPHOON-TRACK</h3>
-                                <p class="ops-desc">Salt Typhoon telecom compromise analysis</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Platforms (right) -->
-                    <div class="ops-platforms-col">
-                        <div class="section-top">
-                            <p class="label-mono">Platforms</p>
-                        </div>
-                        <div class="platforms-col">
-                            <a href="https://public.wraven.org" class="platform-card" target="_blank" rel="noopener noreferrer">
-                                <div>
-                                    <h3 class="platform-name">Watchtower</h3>
-                                    <p class="platform-desc">Real-time threat monitoring</p>
-                                </div>
-                                <span class="platform-arrow">&rarr;</span>
-                            </a>
-                            <div class="platform-card platform-locked">
-                                <div>
-                                    <h3 class="platform-name">Horizon <span class="platform-badge">Internal</span></h3>
-                                    <p class="platform-desc">Student SOC</p>
-                                </div>
-                            </div>
-                            <div class="platform-card platform-locked">
-                                <div>
-                                    <h3 class="platform-name">Orbit <span class="platform-badge">Soon</span></h3>
-                                    <p class="platform-desc">Recon & intel gathering</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== CTF ===== -->
-        <section class="section" id="ctf">
-            <div class="container">
-                <div class="ctf-split">
-                    <div class="ctf-info">
-                        <p class="label-mono">CTF Team</p>
-                        <h2 class="ctf-name">ECX Inc.</h2>
-                        <p class="ctf-desc">CTF team jointly operated by Computer Club & WRAVEN at WMU. Active on CTFtime since 2013.</p>
-                        <div class="ctf-aliases">
-                            <span class="alias">WMU-CCLUB</span>
-                            <span class="alias">WRAVEN</span>
-                            <span class="alias">ecxinc</span>
-                        </div>
-                        <div class="ctf-stats-row">
-                            <div class="ctf-stat"><span class="ctf-stat-num">128</span><span class="ctf-stat-lbl">Events</span></div>
-                            <div class="ctf-stat"><span class="ctf-stat-num">39</span><span class="ctf-stat-lbl">Hackers</span></div>
-                            <div class="ctf-stat"><span class="ctf-stat-num">13</span><span class="ctf-stat-lbl">Years</span></div>
-                        </div>
-                        <div class="ctf-actions">
-                            <a href="https://wravenproject.github.io/ECXIncSite/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Team Page &rarr;</a>
-                            <a href="https://ctftime.org/team/3602" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">CTFtime &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="ctf-image">
-                        <picture>
-                            <source srcset="/imgs/ctf-team.webp" type="image/webp">
-                            <img src="/imgs/ctf-team.jpg" alt="ECX Inc. CTF team" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PARTNERS ===== -->
-        <section class="section">
-            <div class="container">
-                <div class="section-top">
-                    <p class="label-mono">Partners</p>
-                    <a href="mailto:contact@wraven.org?subject=Sponsorship%20Interest" class="text-link">Become a Partner &rarr;</a>
-                </div>
-                <div class="partners-row">
-                    <a href="https://eff.org/" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/eff.webp" type="image/webp">
-                            <img src="/imgs/eff.png" alt="Electronic Frontier Foundation" class="partner-logo" loading="lazy">
-                        </picture>
-                        <span class="partner-name">EFF</span>
-                    </a>
-                    <a href="https://hackclub.com/hcb" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/HCBicon.webp" type="image/webp">
-                            <img src="/imgs/HCBicon.png" alt="Hack Club" class="partner-logo" loading="lazy">
-                        </picture>
-                        <span class="partner-name">Hack Club</span>
-                    </a>
-                    <a href="https://wmuwsa.org/allocations" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/WSAACicon.webp" type="image/webp">
-                            <img src="/imgs/WSAACicon.png" alt="WSAAC" class="partner-logo" loading="lazy">
-                        </picture>
-                        <span class="partner-name">WSAAC</span>
-                    </a>
-                    <a href="https://bugcrowd.com/" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/bugcrowd.webp" type="image/webp">
-                            <img src="/imgs/bugcrowd.png" alt="Bugcrowd" class="partner-logo" loading="lazy">
-                        </picture>
-                        <span class="partner-name">Bugcrowd</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <p class="footer-brand">WRAVEN</p>
-                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, & Networks</p>
-                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Resources</p>
-                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Community</p>
-                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
-                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
-                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
-                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Security</p>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
-                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
-                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2024&ndash;2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
-                <span class="footer-uptime">Uptime <code id="uptime">...</code></span>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Load JavaScript at the end for better performance -->
     <script src="/script.js"></script>
 </body>
 </html>
