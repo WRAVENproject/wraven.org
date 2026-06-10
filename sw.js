@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'wraven-v1.1.0';
+const CACHE_VERSION = 'wraven-v1.2.0';
 
 const PRECACHE = [
   '/manifest.json',

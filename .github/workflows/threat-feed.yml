@@ -1,0 +1,31 @@
+name: Weekly threat feed update
+
+on:
+  schedule:
+    # Every Monday at 13:00 UTC (9am ET)
+    - cron: "0 13 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update threat feed from CISA KEV
+        run: python3 scripts/update_threat_feed.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet index.html; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "wraven-bot"
+          git config user.email "contact@wraven.org"
+          git add index.html
+          git commit -m "chore: weekly threat feed update $(date -u +%Y-%m-%d)"
+          git push

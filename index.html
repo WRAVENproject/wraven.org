@@ -102,8 +102,9 @@
                 <a href="#threats" class="nav-link">Threats</a>
                 <a href="#operations" class="nav-link">Operations</a>
                 <a href="#ctf" class="nav-link">CTF</a>
+                <a href="#research" class="nav-link">Research</a>
                 <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                <a href="https://discord.gg/uYkvSU8DHy" class="nav-cta" target="_blank" rel="noopener noreferrer">Join Us</a>
+                <a href="#join" class="nav-cta">Join Us</a>
             </div>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
                 <span></span><span></span>
@@ -117,6 +118,8 @@
             <a href="#threats" class="mobile-link">Threats</a>
             <a href="#operations" class="mobile-link">Operations</a>
             <a href="#ctf" class="mobile-link">CTF</a>
+            <a href="#research" class="mobile-link">Research</a>
+            <a href="#join" class="mobile-link">Get Involved</a>
             <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
             <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
             <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -132,8 +135,10 @@
         <!-- ===== HERO ===== -->
         <section class="hero">
             <div class="hero-bg">
-                <source srcset="/imgs/team-office.webp" type="image/webp">
-                <img src="/imgs/team-office.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.parentElement.classList.add('img-fallback')">
+                <picture>
+                    <source srcset="/imgs/team-office.webp" type="image/webp">
+                    <img src="/imgs/team-office.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.parentElement.parentElement.classList.add('img-fallback')">
+                </picture>
                 <div class="hero-overlay"></div>
             </div>
             <canvas id="hero-radar" class="hero-radar" aria-hidden="true"></canvas>
@@ -148,8 +153,8 @@
                     </div>
                     <div class="hero-stat-div"></div>
                     <div class="hero-stat">
-                        <span class="hero-stat-num">12</span>
-                        <span class="hero-stat-label">Projects</span>
+                        <span class="hero-stat-num">14</span>
+                        <span class="hero-stat-label">Operations</span>
                     </div>
                     <div class="hero-stat-div"></div>
                     <div class="hero-stat">
@@ -194,37 +199,38 @@
                     </a>
                 </div>
                 <div class="threat-table" role="feed" aria-label="Live threat intelligence feed">
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="critical" target="_blank" rel="noopener noreferrer">
+                    <!-- THREAT-FEED:START — rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-7473" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-04-04</time>
+                        <time class="threat-date">2026-06-09</time>
                         <span class="threat-type">EXPLOIT</span>
-                        <span class="threat-title">Fortinet FortiClient EMS pre-authentication RCE via improper access control</span>
+                        <span class="threat-title">Arista Extensible Operating System Incomplete Comparison with Missing Factors Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">CVE-2026-35616</span>
+                            <span class="ttag">CVE-2026-7473</span>
                             <span class="ttag">T1190</span>
                         </div>
                     </a>
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="critical" target="_blank" rel="noopener noreferrer">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20245" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-04-09</time>
-                        <span class="threat-type">ZERO-DAY</span>
-                        <span class="threat-title">Adobe Acrobat Reader prototype pollution RCE exploited in the wild since Nov 2025</span>
+                        <time class="threat-date">2026-06-09</time>
+                        <span class="threat-type">EXPLOIT</span>
+                        <span class="threat-title">Cisco Catalyst SD-WAN Manager Improper Encoding or Escaping of Output Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">CVE-2026-34621</span>
-                            <span class="ttag">T1204.002</span>
+                            <span class="ttag">CVE-2026-20245</span>
+                            <span class="ttag">T1190</span>
                         </div>
                     </a>
-                    <a href="https://public.wraven.org" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-11645" class="threat-row" data-severity="critical" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-04-06</time>
-                        <span class="threat-type">PHISHING</span>
-                        <span class="threat-title">Large-scale OAuth device code phishing campaign compromises 340+ M365 orgs globally</span>
+                        <time class="threat-date">2026-06-09</time>
+                        <span class="threat-type">MEM-CORRUPT</span>
+                        <span class="threat-title">Google Chromium V8 Out-of-Bounds Read and Write Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">EvilTokens</span>
-                            <span class="ttag">T1566.002</span>
-                            <span class="ttag">T1528</span>
+                            <span class="ttag">CVE-2026-11645</span>
+                            <span class="ttag">T1203</span>
                         </div>
                     </a>
+                    <!-- THREAT-FEED:END -->
                 </div>
             </div>
         </section>
@@ -237,44 +243,40 @@
                     <div class="ops-platforms-col">
                         <div class="section-top">
                             <p class="label-mono">Operations</p>
-                            <span class="ops-counter">2 Active &middot; 12 Completed</span>
+                            <span class="ops-counter">1 Active &middot; 13 Completed</span>
                         </div>
                         <div class="ops-grid">
                             <div class="ops-card">
                                 <div class="ops-card-top">
                                     <span class="ops-badge badge-active">ACTIVE</span>
-                                    <span class="ops-pct">95%</span>
+                                    <span class="ops-pct">EST. 2025</span>
                                 </div>
                                 <h3 class="ops-name">HURRICANE WATCH</h3>
                                 <p class="ops-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:95%"></div></div>
                             </div>
                             <div class="ops-card">
                                 <div class="ops-card-top">
-                                    <span class="ops-badge badge-testing">TESTING</span>
-                                    <span class="ops-pct">80%</span>
+                                    <span class="ops-badge badge-live">LAUNCHED</span>
+                                    <span class="ops-pct">2026</span>
                                 </div>
                                 <h3 class="ops-name">HORIZON</h3>
-                                <p class="ops-desc">Student-run SOC built on SecurityOnion</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:80%"></div></div>
+                                <p class="ops-desc">Student-run SOC built on SecurityOnion &mdash; now live</p>
                             </div>
                             <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
                                 <div class="ops-card-top">
                                     <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">100%</span>
+                                    <span class="ops-pct">2025</span>
                                 </div>
                                 <h3 class="ops-name">LAZARUS-HUNT</h3>
                                 <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
                             </a>
                             <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
                                 <div class="ops-card-top">
                                     <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">100%</span>
+                                    <span class="ops-pct">2025</span>
                                 </div>
                                 <h3 class="ops-name">TYPHOON-TRACK</h3>
                                 <p class="ops-desc">Salt Typhoon telecom compromise analysis</p>
-                                <div class="ops-bar"><div class="ops-fill" style="width:100%"></div></div>
                             </a>
                         </div>
                     </div>
@@ -291,17 +293,12 @@
                                 </div>
                                 <span class="platform-arrow">&rarr;</span>
                             </a>
-                            <div class="platform-card platform-locked">
+                            <div class="platform-card">
                                 <div>
-                                    <h3 class="platform-name">Horizon <span class="platform-badge">Internal</span></h3>
-                                    <p class="platform-desc">Student SOC</p>
+                                    <h3 class="platform-name">Horizon <span class="platform-badge badge-live-text">Live &middot; Internal</span></h3>
+                                    <p class="platform-desc">Student-run SOC on SecurityOnion</p>
                                 </div>
-                            </div>
-                            <div class="platform-card platform-locked">
-                                <div>
-                                    <h3 class="platform-name">Orbit <span class="platform-badge">Soon</span></h3>
-                                    <p class="platform-desc">Recon & intel gathering</p>
-                                </div>
+                                <span class="status-dot" aria-hidden="true"></span>
                             </div>
                         </div>
                     </div>
@@ -337,6 +334,77 @@
                             <source srcset="/imgs/ctf-team.webp" type="image/webp">
                             <img src="/imgs/ctf-team.jpg" alt="ECX Inc. CTF team" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
                         </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED RESEARCH ===== -->
+        <section class="section" id="research">
+            <div class="container">
+                <div class="section-top">
+                    <p class="label-mono">Featured Research</p>
+                    <a href="https://blog.wraven.org" class="text-link" target="_blank" rel="noopener noreferrer">All Publications &rarr;</a>
+                </div>
+                <div class="research-grid">
+                    <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card" target="_blank" rel="noopener noreferrer">
+                        <span class="research-tag">APT Report</span>
+                        <h3 class="research-title">Scattered Spider: Tactics, Targets & Ongoing Tracking</h3>
+                        <p class="research-desc">How a small hacker crew pulls off multi-million dollar breaches &mdash; and how our students track them in real time.</p>
+                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
+                    </a>
+                    <a href="https://blog.wraven.org/p/disrupting-a-phishing-operation-technical-breakdown" class="research-card" target="_blank" rel="noopener noreferrer">
+                        <span class="research-tag">Red Team</span>
+                        <h3 class="research-title">Disrupting a Phishing Operation: Technical Breakdown</h3>
+                        <p class="research-desc">Finding, dissecting, and crippling an active phishing site targeting Illinois residents &mdash; backend exposed, data trashed.</p>
+                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
+                    </a>
+                    <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-card" target="_blank" rel="noopener noreferrer">
+                        <span class="research-tag">Intel Brief</span>
+                        <h3 class="research-title">Stryker Cyber Incident & Iran-Linked Handala Activity</h3>
+                        <p class="research-desc">Analysis of the Stryker incident and Handala / Iran-linked operations, with defensive takeaways.</p>
+                        <span class="research-meta">Mar 2026 &middot; 10 min read</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GET INVOLVED ===== -->
+        <section class="section" id="join">
+            <div class="container">
+                <p class="label-mono">Get Involved</p>
+                <div class="join-grid">
+                    <div class="join-intro">
+                        <h2 class="join-headline">No experience required. Seriously.</h2>
+                        <p class="join-body">Most of our members joined with zero security background. If you're a WMU student who's curious about how attacks work and how to stop them, you belong here.</p>
+                        <p class="join-body text-muted">Weekly meetings on campus &mdash; times and rooms are posted on Discord and ExperienceWMU each semester. Members go on to co-ops, internships, and security careers.</p>
+                        <div class="join-actions">
+                            <a href="https://discord.gg/uYkvSU8DHy" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+                            <a href="https://experiencewmu.wmich.edu/organization/wraven" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Register via WMU</a>
+                        </div>
+                    </div>
+                    <div class="join-steps">
+                        <div class="join-step">
+                            <span class="join-num">01</span>
+                            <div>
+                                <h3 class="join-step-title">Learn</h3>
+                                <p class="join-step-desc">Hands-on workshops: traffic analysis, OSINT, reverse engineering, web exploitation. We teach from zero.</p>
+                            </div>
+                        </div>
+                        <div class="join-step">
+                            <span class="join-num">02</span>
+                            <div>
+                                <h3 class="join-step-title">Compete</h3>
+                                <p class="join-step-desc">Play CTFs with ECX Inc. &mdash; 13 years on CTFtime. Beginner-friendly events every semester.</p>
+                            </div>
+                        </div>
+                        <div class="join-step">
+                            <span class="join-num">03</span>
+                            <div>
+                                <h3 class="join-step-title">Operate</h3>
+                                <p class="join-step-desc">Run shifts in Horizon, our student SOC. Publish threat research with your name on it.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
