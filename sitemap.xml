@@ -3,7 +3,7 @@
     <!-- Main Homepage -->
     <url>
         <loc>https://wraven.org/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-07-22</lastmod>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
     </url>
@@ -34,8 +34,20 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
+        <loc>https://wraven.org/partners/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://wraven.org/disclosure/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <priority>0.4</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
         <loc>https://wraven.org/privacy/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-07-22</lastmod>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>

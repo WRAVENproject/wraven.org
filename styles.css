@@ -13,8 +13,10 @@
     --border-hover: #2a2a2a;
     --text: #e5e5e5;
     --text-secondary: #999999;
-    --text-muted: #555555;
+    --text-muted: #858585; /* WCAG AA on near-black bg */
     --accent: #ffffff;
+    --blue: #007ACC;        /* brand Tech Blue: borders, accents, large text */
+    --blue-text: #35A3E8;   /* lighter tint for small text on dark bg (WCAG AA) */
     --green: #22c55e;
     --red: #ef4444;
     --amber: #f59e0b;
@@ -112,7 +114,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     gap: 0.5rem;
     transition: color 0.2s var(--ease);
 }
-.status-link:hover { color: var(--text); }
+.status-link:hover { color: var(--blue-text); }
 
 .status-dot {
     width: 6px; height: 6px;
@@ -128,7 +130,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     color: var(--text-secondary);
     transition: color 0.2s var(--ease);
 }
-.text-link:hover { color: var(--text); }
+.text-link:hover { color: var(--blue-text); }
 
 .text-muted { color: var(--text-muted); }
 
@@ -227,7 +229,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     transition: color 0.2s var(--ease);
     letter-spacing: 0.02em;
 }
-.nav-link:hover { color: var(--text); }
+.nav-link:hover { color: var(--blue-text); }
 
 .nav-cta {
     font-family: var(--mono);
@@ -401,6 +403,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .hero-stat { display: flex; flex-direction: column; }
 .hero-stat-num {
     font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
@@ -503,7 +506,7 @@ a.ops-done-card {
     cursor: pointer;
 }
 .threat-row:last-child { border-bottom: none; }
-.threat-row:hover { background: var(--bg-hover); }
+.threat-row:hover { background: var(--bg-hover); box-shadow: inset 0 0 0 1px rgba(0,122,204,0.4); }
 
 .threat-indicator {
     width: 4px;
@@ -589,7 +592,7 @@ a.ops-done-card {
     gap: 0.75rem;
     transition: background 0.15s var(--ease);
 }
-.ops-card:hover { background: var(--bg-hover); }
+.ops-card:hover { background: var(--bg-hover); box-shadow: inset 0 0 0 1px rgba(0,122,204,0.4); }
 
 .ops-done-card { cursor: pointer; }
 
@@ -708,9 +711,10 @@ a.ops-done-card {
     color: var(--text-muted);
     transition: transform 0.2s var(--ease), color 0.2s var(--ease);
 }
+a.platform-card:hover { box-shadow: inset 0 0 0 1px rgba(0,122,204,0.4); }
 .platform-card:hover .platform-arrow {
     transform: translateX(4px);
-    color: var(--text);
+    color: var(--blue-text);
 }
 
 /* ---- CTF ---- */
@@ -760,6 +764,7 @@ a.ops-done-card {
 .ctf-stat { display: flex; flex-direction: column; }
 .ctf-stat-num {
     font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
@@ -827,7 +832,7 @@ a.ops-done-card {
     transition: background 0.15s var(--ease);
     text-decoration: none;
 }
-.partner-card:hover { background: var(--bg-hover); }
+.partner-card:hover { background: var(--bg-hover); box-shadow: inset 0 0 0 1px rgba(0,122,204,0.4); }
 
 .partner-logo {
     height: 48px;
@@ -876,7 +881,7 @@ a.ops-done-card {
     color: var(--text-muted);
     transition: transform 0.2s var(--ease), color 0.2s var(--ease);
 }
-.research-card:hover { background: var(--bg-hover); }
+.research-card:hover { background: var(--bg-hover); box-shadow: inset 0 0 0 1px rgba(0,122,204,0.4); }
 .research-card:hover::after {
     transform: translateX(4px);
     color: var(--text);
@@ -1047,7 +1052,7 @@ a.ops-done-card {
     padding: 0.3rem 0;
     transition: color 0.15s var(--ease);
 }
-.footer-link:hover { color: var(--text); }
+.footer-link:hover { color: var(--blue-text); }
 
 .footer-bottom {
     display: flex;
@@ -1793,6 +1798,13 @@ a.ops-done-card {
 }
 
 /* ---- Increased Contrast ---- */
+@media (max-width: 1023px) {
+    .hero-radar { width: 700px; height: 700px; }
+}
+
+/* Inline links in footer text: underline so color is not the only cue */
+.footer-sub a, .footer-bottom a { text-decoration: underline; text-underline-offset: 2px; }
+
 @media (prefers-contrast: more) {
     :root {
         --text-muted:      #aaaaaa;   /* was #555555 (~2.6:1) → ~9.2:1 */
@@ -1813,3 +1825,7 @@ a.ops-done-card {
     .btn-primary      { forced-color-adjust: none; }
     .threat-indicator { forced-color-adjust: none; }
 }
+
+/* ---- Partners page ---- */
+.partners-row-page { margin-bottom: 2rem; }
+.doc-section .partners-row-page { margin-top: 1rem; }

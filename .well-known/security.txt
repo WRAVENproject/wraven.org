@@ -1,37 +1,14 @@
-# WRAVEN Vulnerability Disclosure Policy
-# https://wraven.org/.well-known/security.txt
+# WRAVEN security.txt (RFC 9116)
+# Full vulnerability disclosure policy: https://wraven.org/disclosure/
 
 Contact: mailto:contact@wraven.org
+Expires: 2027-08-22T00:00:00.000Z
 Encryption: https://wraven.org/keys/wraven.asc
 Preferred-Languages: en
 Canonical: https://wraven.org/.well-known/security.txt
-Policy: https://wraven.org/privacy/
+Policy: https://wraven.org/disclosure/
 Hiring: https://wraven.org/#join
 
-# Scope:
-# This disclosure policy applies to public-facing WRAVEN infrastructure, including:
-# - wraven.org and subdomains
-# - Services listed or linked on our official website
-# - Infrastructure owned or operated by WRAVEN (or clearly marked as such), unless otherwise stated
-
-# Out of Scope:
-# - Student personal systems
-# - WMU owned or operated infrastructure in any capacity
-# - Third-party services embedded via iframe or external widgets
-
-# Rules of Engagement:
-# - Do not intentionally access, modify, or delete data that is not yours.
-# - Do not use automated scanners that cause excessive traffic.
-# - Avoid any denial-of-service attacks (DoS/DDoS).
-# - Social engineering (e.g. phishing) against WRAVEN members or WMU is out of bounds.
-# - Automated, low-effort, or AI-generated reports and emails will be ignored.
-
-# Safe Harbor:
-# WRAVEN supports good-faith research and responsible disclosure.
-# If you follow this policy, we will not pursue legal action against you.
-# We are students—we appreciate your help, not hostility.
-
-# Response Timeline:
-# We aim to acknowledge reports within 3 business days and provide regular updates.
-
-# Thank you for helping us keep WRAVEN secure.
+# Scope, rules of engagement, safe harbor, and response timeline
+# are documented at https://wraven.org/disclosure/
+# We are students. We appreciate your help.

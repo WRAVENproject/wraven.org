@@ -1,6 +1,82 @@
 // WRAVEN.ORG
 
+/* ── Site data: single source of truth ─────────────────────────────
+   Edit numbers and featured posts here. Elements with a matching
+   data-stat attribute and the #research-grid section are populated
+   from these on load. index.html carries the same values as static
+   no-JS fallbacks; update them together. */
+
+const SITE_STATS = {
+    operators: 59,
+    operations: 14,
+    ctfEvents: 128,
+    opsActive: 1,
+    opsCompleted: 13,
+    ctfHackers: 39,
+    ctfYears: 13
+};
+
+const FEATURED_RESEARCH = [
+    {
+        url: 'https://blog.wraven.org/p/wraven-intel-brief-stryker-attack',
+        tag: 'Intel Brief',
+        title: 'Stryker Cyber Incident & Iran-Linked Handala Activity',
+        desc: 'Analysis of the Stryker incident and Handala / Iran-linked operations, with defensive takeaways.',
+        meta: 'Mar 2026 · 10 min read'
+    },
+    {
+        url: 'https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking',
+        tag: 'APT Report',
+        title: 'Scattered Spider: Tactics, Targets & Ongoing Tracking',
+        desc: 'How a small hacker crew pulls off multi-million dollar breaches, and how our students track them in real time.',
+        meta: 'Jul 2025 · 4 min read'
+    },
+    {
+        url: 'https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation',
+        tag: 'Research Paper',
+        title: 'Qilin: A Look Inside a Modern Ransomware Operation',
+        desc: 'Inside the operations of a fast-evolving ransomware-as-a-service network.',
+        meta: 'Oct 2025 · 2 min read'
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('[data-stat]').forEach(el => {
+        const key = el.getAttribute('data-stat');
+        if (key in SITE_STATS) el.textContent = SITE_STATS[key];
+    });
+
+    const researchGrid = document.getElementById('research-grid');
+    if (researchGrid && FEATURED_RESEARCH.length) {
+        researchGrid.textContent = '';
+        FEATURED_RESEARCH.forEach(post => {
+            const card = document.createElement('a');
+            card.className = 'research-card';
+            card.href = post.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+
+            const tag = document.createElement('span');
+            tag.className = 'research-tag';
+            tag.textContent = post.tag;
+
+            const title = document.createElement('h3');
+            title.className = 'research-title';
+            title.textContent = post.title;
+
+            const desc = document.createElement('p');
+            desc.className = 'research-desc';
+            desc.textContent = post.desc;
+
+            const meta = document.createElement('span');
+            meta.className = 'research-meta';
+            meta.textContent = post.meta;
+
+            card.append(tag, title, desc, meta);
+            researchGrid.appendChild(card);
+        });
+    }
 
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -44,10 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const startTime = new Date('2024-11-30T15:00:00-05:00');
         function updateUptime() {
             const ms = Date.now() - startTime.getTime();
+            if (!Number.isFinite(ms) || ms < 0) return;
             const d = Math.floor(ms / 86400000);
             const h = Math.floor((ms % 86400000) / 3600000);
             const m = Math.floor((ms % 3600000) / 60000);
             uptimeEl.textContent = `${d}d ${h}h ${m}m`;
+            const wrap = uptimeEl.closest('.footer-uptime');
+            if (wrap) wrap.hidden = false;
         }
         updateUptime();
         setInterval(updateUptime, 60000);
