@@ -1,0 +1,48 @@
+name: Weekly research mirror update
+
+on:
+  schedule:
+    # Every Monday at 13:15 UTC (9:15am ET), just after the threat feed
+    - cron: "15 13 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update research mirror from beehiiv
+        env:
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+        run: python3 scripts/update_research.py
+
+      - name: Commit and push if changed
+        run: |
+          today="$(date -u +%Y-%m-%d)"
+
+          if git diff --quiet research/index.html; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          # Keep sitemap <lastmod> for /research/ in sync with the auto-updated page.
+          python3 - <<'PY'
+          import datetime, re
+          from pathlib import Path
+
+          today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
+          path = Path('sitemap.xml')
+          xml = path.read_text(encoding='utf-8')
+          xml = re.sub(r'(<loc>https://wraven\.org/research/</loc>\s*<lastmod>)[0-9-]+(</lastmod>)', r'\g<1>'+today+r'\2', xml)
+          path.write_text(xml, encoding='utf-8')
+          PY
+
+          git config user.name "wraven-bot"
+          git config user.email "contact@wraven.org"
+          git add research/index.html sitemap.xml
+          git commit -m "chore: weekly research mirror update ${today}"
+          git push
