@@ -15,6 +15,7 @@ GitHub Actions (.github/workflows/threat-feed.yml) or manually:
 import json
 import re
 import sys
+import urllib.error
 import urllib.request
 from html import escape
 from pathlib import Path
@@ -22,6 +23,9 @@ from pathlib import Path
 KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
 INDEX = Path(__file__).resolve().parent.parent / "index.html"
 NUM_ENTRIES = 3
+
+# CISA's CDN rejects the default python-urllib User-Agent, so set our own.
+USER_AGENT = "wraven-threat-feed/1.0 (+https://wraven.org)"
 
 START = "<!-- THREAT-FEED:START - rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->"
 END = "<!-- THREAT-FEED:END -->"
@@ -93,9 +97,20 @@ def row(vuln):
                     </a>"""
 
 
+def fetch_kev():
+    req = urllib.request.Request(KEV_URL, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return json.load(resp)
+
+
 def main():
-    with urllib.request.urlopen(KEV_URL, timeout=60) as resp:
-        data = json.load(resp)
+    try:
+        data = fetch_kev()
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+        # A transient network/parse failure should not fail the workflow or
+        # clobber the existing feed. Leave index.html untouched and exit clean.
+        print(f"Could not fetch KEV catalog ({e}); leaving threat feed unchanged.")
+        return
 
     vulns = sorted(data["vulnerabilities"], key=lambda v: (v["dateAdded"], v["cveID"]), reverse=True)
     newest = vulns[:NUM_ENTRIES]
