@@ -22,12 +22,27 @@ jobs:
 
       - name: Commit and push if changed
         run: |
+          today="$(date -u +%Y-%m-%d)"
+
           if git diff --quiet research/index.html; then
             echo "No changes to commit."
             exit 0
           fi
+
+          # Keep sitemap <lastmod> for /research/ in sync with the auto-updated page.
+          python3 - <<'PY'
+          import datetime, re
+          from pathlib import Path
+
+          today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
+          path = Path('sitemap.xml')
+          xml = path.read_text(encoding='utf-8')
+          xml = re.sub(r'(<loc>https://wraven\.org/research/</loc>\s*<lastmod>)[0-9-]+(</lastmod>)', r'\g<1>'+today+r'\2', xml)
+          path.write_text(xml, encoding='utf-8')
+          PY
+
           git config user.name "wraven-bot"
           git config user.email "contact@wraven.org"
-          git add research/index.html
-          git commit -m "chore: weekly research mirror update $(date -u +%Y-%m-%d)"
+          git add research/index.html sitemap.xml
+          git commit -m "chore: weekly research mirror update ${today}"
           git push
