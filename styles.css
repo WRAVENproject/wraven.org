@@ -13,7 +13,7 @@
     --border-hover: #2a2a2a;
     --text: #e5e5e5;
     --text-secondary: #999999;
-    --text-muted: #555555;
+    --text-muted: #858585; /* WCAG AA on near-black bg */
     --accent: #ffffff;
     --blue: #007ACC;        /* brand Tech Blue: borders, accents, large text */
     --blue-text: #35A3E8;   /* lighter tint for small text on dark bg (WCAG AA) */

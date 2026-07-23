@@ -23,7 +23,7 @@ KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulner
 INDEX = Path(__file__).resolve().parent.parent / "index.html"
 NUM_ENTRIES = 3
 
-START = "<!-- THREAT-FEED:START — rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->"
+START = "<!-- THREAT-FEED:START - rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->"
 END = "<!-- THREAT-FEED:END -->"
 
 # (keyword in vulnerabilityName/shortDescription, type label, MITRE technique)
