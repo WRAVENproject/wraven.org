@@ -75,8 +75,8 @@ def display_tag(post):
 
 
 def post_url(post):
-    return post.get("web_url") or post.get("url") or ""
-
+    url = post.get("web_url") or post.get("url") or ""
+    return url if re.match(r"^https?://", url) else ""
 
 def post_date(post):
     """publish_date is a unix epoch (REST) or an ISO string; format 'Mon YYYY'."""
