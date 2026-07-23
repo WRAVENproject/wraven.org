@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="WRAVEN">
-    <title>WRAVEN - WMU Cybersecurity</title>
-    <meta name="description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity org for CTF competitions, threat research, and hands-on security training at Western Michigan University.">
-    <meta name="keywords" content="WRAVEN, WMU cybersecurity, Western Michigan University cybersecurity, WMU, cybersecurity club WMU, WMU hacking, CTF WMU, cybersecurity research WMU, Western Michigan University security, WMU computer security, cybersecurity organization WMU, WMU student organizations, Hackerspace, RSO, WMU RSO, Cybersecurity Club">
+    <title>WRAVEN | Threat Research & Cyber Operations at WMU</title>
+    <meta name="description" content="WRAVEN is a student-led threat research and cyber operations lab at Western Michigan University. APT tracking, CTF competition, vulnerability research, and a student-run SOC.">
     <meta name="robots" content="index, follow">
     <meta name="language" content="en">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="WRAVEN - WMU Cybersecurity | Western Michigan University's Premier Cybersecurity Organization">
-    <meta property="og:description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity club for CTF competitions, threat research, and hands-on security training.">
+    <meta property="og:title" content="WRAVEN | Threat Research & Cyber Operations at WMU">
+    <meta property="og:description" content="WRAVEN is a student-led threat research and cyber operations lab at Western Michigan University. APT tracking, CTF competition, vulnerability research, and a student-run SOC.">
     <meta property="og:image" content="https://wraven.org/imgs/og-image.png">
     <meta property="og:url" content="https://wraven.org">
     <meta property="og:type" content="website">
@@ -21,8 +20,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WRAVEN - WMU Cybersecurity | Western Michigan University's Premier Cybersecurity Organization">
-    <meta name="twitter:description" content="WRAVEN is Western Michigan University's premier cybersecurity organization. Join WMU's leading cybersecurity club for CTF competitions, threat research, and hands-on security training at Western Michigan University.">
+    <meta name="twitter:title" content="WRAVEN | Threat Research & Cyber Operations at WMU">
+    <meta name="twitter:description" content="WRAVEN is a student-led threat research and cyber operations lab at Western Michigan University. APT tracking, CTF competition, vulnerability research, and a student-run SOC.">
     <meta name="twitter:image" content="https://wraven.org/imgs/og-image.png">
     <meta name="twitter:site" content="@wravenproject">
     <meta name="twitter:creator" content="@wravenproject">
@@ -68,7 +67,7 @@
       "alternateName": ["Western Research Advisory for Vulnerabilities, Exploits, & Networks", "WMU Cybersecurity"],
       "url": "https://wraven.org",
       "logo": "https://wraven.org/imgs/widelogo.png",
-      "description": "WRAVEN is Western Michigan University's premier cybersecurity organization.",
+      "description": "Student-led threat research and cyber operations at Western Michigan University.",
       "foundingLocation": {
         "@type": "Place",
         "name": "Western Michigan University",
@@ -137,7 +136,7 @@
             <div class="hero-bg">
                 <picture>
                     <source srcset="/imgs/team-office.webp" type="image/webp">
-                    <img src="/imgs/team-office.jpg" alt="" class="hero-bg-img" loading="eager" onerror="this.parentElement.parentElement.classList.add('img-fallback')">
+                    <img src="/imgs/team-office.jpg" alt="WRAVEN members working on laptops during a meeting in the lab" class="hero-bg-img" loading="eager" onerror="this.parentElement.parentElement.classList.add('img-fallback')">
                 </picture>
                 <div class="hero-overlay"></div>
             </div>
@@ -146,19 +145,21 @@
                 <p class="hero-eyebrow">Western Michigan University</p>
                 <h1 class="hero-title">Threat Intelligence.<br>Cyber Operations.</h1>
                 <p class="hero-sub">WRAVEN develops collegiate talent through threat research, cyber operations, and disciplined technical training.</p>
+                <!-- Stats are populated from SITE_STATS at the top of /script.js.
+                     The numbers below are no-JS fallbacks; keep them in sync with SITE_STATS. -->
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="hero-stat-num">59</span>
+                        <span class="hero-stat-num" data-stat="operators">59</span>
                         <span class="hero-stat-label">Operators</span>
                     </div>
                     <div class="hero-stat-div"></div>
                     <div class="hero-stat">
-                        <span class="hero-stat-num">14</span>
+                        <span class="hero-stat-num" data-stat="operations">14</span>
                         <span class="hero-stat-label">Operations</span>
                     </div>
                     <div class="hero-stat-div"></div>
                     <div class="hero-stat">
-                        <span class="hero-stat-num">128</span>
+                        <span class="hero-stat-num" data-stat="ctfEvents">128</span>
                         <span class="hero-stat-label">CTF Events</span>
                     </div>
                 </div>
@@ -182,7 +183,7 @@
                     <div class="about-image">
                         <picture>
                             <source srcset="/imgs/about-team.webp" type="image/webp">
-                            <img src="/imgs/about-team.jpg" alt="WRAVEN team" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+                            <img src="/imgs/about-team.jpg" alt="WRAVEN members posing for a group photo in a WMU lecture hall" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
                         </picture>
                     </div>
                 </div>
@@ -243,7 +244,7 @@
                     <div class="ops-platforms-col">
                         <div class="section-top">
                             <p class="label-mono">Operations</p>
-                            <span class="ops-counter">1 Active &middot; 13 Completed</span>
+                            <span class="ops-counter"><span data-stat="opsActive">1</span> Active &middot; <span data-stat="opsCompleted">13</span> Completed</span>
                         </div>
                         <div class="ops-grid">
                             <div class="ops-card">
@@ -260,9 +261,9 @@
                                     <span class="ops-pct">2026</span>
                                 </div>
                                 <h3 class="ops-name">HORIZON</h3>
-                                <p class="ops-desc">Student-run SOC built on SecurityOnion &mdash; now live</p>
+                                <p class="ops-desc">Student-run SOC built on SecurityOnion. Now live</p>
                             </div>
-                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
+                            <a href="https://blog.wraven.org/p/lazarus-investigation" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
                                 <div class="ops-card-top">
                                     <span class="ops-badge badge-done">COMPLETED</span>
                                     <span class="ops-pct">2025</span>
@@ -270,7 +271,7 @@
                                 <h3 class="ops-name">LAZARUS-HUNT</h3>
                                 <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
                             </a>
-                            <a href="https://blog.wraven.org" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
+                            <a href="https://blog.wraven.org/p/malware-report-ghostspider" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
                                 <div class="ops-card-top">
                                     <span class="ops-badge badge-done">COMPLETED</span>
                                     <span class="ops-pct">2025</span>
@@ -320,9 +321,9 @@
                             <span class="alias">ecxinc</span>
                         </div>
                         <div class="ctf-stats-row">
-                            <div class="ctf-stat"><span class="ctf-stat-num">128</span><span class="ctf-stat-lbl">Events</span></div>
-                            <div class="ctf-stat"><span class="ctf-stat-num">39</span><span class="ctf-stat-lbl">Hackers</span></div>
-                            <div class="ctf-stat"><span class="ctf-stat-num">13</span><span class="ctf-stat-lbl">Years</span></div>
+                            <div class="ctf-stat"><span class="ctf-stat-num" data-stat="ctfEvents">128</span><span class="ctf-stat-lbl">Events</span></div>
+                            <div class="ctf-stat"><span class="ctf-stat-num" data-stat="ctfHackers">39</span><span class="ctf-stat-lbl">Hackers</span></div>
+                            <div class="ctf-stat"><span class="ctf-stat-num" data-stat="ctfYears">13</span><span class="ctf-stat-lbl">Years</span></div>
                         </div>
                         <div class="ctf-actions">
                             <a href="https://wravenproject.github.io/ECXIncSite/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Team Page &rarr;</a>
@@ -332,7 +333,7 @@
                     <div class="ctf-image">
                         <picture>
                             <source srcset="/imgs/ctf-team.webp" type="image/webp">
-                            <img src="/imgs/ctf-team.jpg" alt="ECX Inc. CTF team" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+                            <img src="/imgs/ctf-team.jpg" alt="Two ECX team members working at laptops during a CTF event" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
                         </picture>
                     </div>
                 </div>
@@ -346,24 +347,27 @@
                     <p class="label-mono">Featured Research</p>
                     <a href="https://blog.wraven.org" class="text-link" target="_blank" rel="noopener noreferrer">All Publications &rarr;</a>
                 </div>
-                <div class="research-grid">
-                    <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card" target="_blank" rel="noopener noreferrer">
-                        <span class="research-tag">APT Report</span>
-                        <h3 class="research-title">Scattered Spider: Tactics, Targets & Ongoing Tracking</h3>
-                        <p class="research-desc">How a small hacker crew pulls off multi-million dollar breaches &mdash; and how our students track them in real time.</p>
-                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
-                    </a>
-                    <a href="https://blog.wraven.org/p/disrupting-a-phishing-operation-technical-breakdown" class="research-card" target="_blank" rel="noopener noreferrer">
-                        <span class="research-tag">Red Team</span>
-                        <h3 class="research-title">Disrupting a Phishing Operation: Technical Breakdown</h3>
-                        <p class="research-desc">Finding, dissecting, and crippling an active phishing site targeting Illinois residents &mdash; backend exposed, data trashed.</p>
-                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
-                    </a>
+                <!-- Cards are rendered from FEATURED_RESEARCH at the top of /script.js.
+                     Edit that array to swap featured posts. The markup below is the
+                     no-JS fallback; keep it in sync with the array. -->
+                <div class="research-grid" id="research-grid">
                     <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-card" target="_blank" rel="noopener noreferrer">
                         <span class="research-tag">Intel Brief</span>
                         <h3 class="research-title">Stryker Cyber Incident & Iran-Linked Handala Activity</h3>
                         <p class="research-desc">Analysis of the Stryker incident and Handala / Iran-linked operations, with defensive takeaways.</p>
                         <span class="research-meta">Mar 2026 &middot; 10 min read</span>
+                    </a>
+                    <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card" target="_blank" rel="noopener noreferrer">
+                        <span class="research-tag">APT Report</span>
+                        <h3 class="research-title">Scattered Spider: Tactics, Targets & Ongoing Tracking</h3>
+                        <p class="research-desc">How a small hacker crew pulls off multi-million dollar breaches, and how our students track them in real time.</p>
+                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
+                    </a>
+                    <a href="https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation" class="research-card" target="_blank" rel="noopener noreferrer">
+                        <span class="research-tag">Research Paper</span>
+                        <h3 class="research-title">Qilin: A Look Inside a Modern Ransomware Operation</h3>
+                        <p class="research-desc">Inside the operations of a fast-evolving ransomware-as-a-service network.</p>
+                        <span class="research-meta">Oct 2025 &middot; 2 min read</span>
                     </a>
                 </div>
             </div>
@@ -377,7 +381,7 @@
                     <div class="join-intro">
                         <h2 class="join-headline">No experience required. Seriously.</h2>
                         <p class="join-body">Most of our members joined with zero security background. If you're a WMU student who's curious about how attacks work and how to stop them, you belong here.</p>
-                        <p class="join-body text-muted">Weekly meetings on campus &mdash; times and rooms are posted on Discord and ExperienceWMU each semester. Members go on to co-ops, internships, and security careers.</p>
+                        <p class="join-body text-muted">Weekly meetings on campus. Times and rooms are posted on Discord and ExperienceWMU each semester. Members go on to co-ops, internships, and security careers.</p>
                         <div class="join-actions">
                             <a href="https://discord.gg/uYkvSU8DHy" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join the Discord</a>
                             <a href="https://experiencewmu.wmich.edu/organization/wraven" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Register via WMU</a>
@@ -395,7 +399,7 @@
                             <span class="join-num">02</span>
                             <div>
                                 <h3 class="join-step-title">Compete</h3>
-                                <p class="join-step-desc">Play CTFs with ECX Inc. &mdash; 13 years on CTFtime. Beginner-friendly events every semester.</p>
+                                <p class="join-step-desc">Play CTFs with ECX Inc. Thirteen years on CTFtime. Beginner-friendly events every semester.</p>
                             </div>
                         </div>
                         <div class="join-step">
@@ -415,7 +419,7 @@
             <div class="container">
                 <div class="section-top">
                     <p class="label-mono">Partners</p>
-                    <a href="mailto:contact@wraven.org?subject=Sponsorship%20Interest" class="text-link">Become a Partner &rarr;</a>
+                    <a href="/partners/" class="text-link">Become a Partner &rarr;</a>
                 </div>
                 <div class="partners-row">
                     <a href="https://eff.org/" class="partner-card" target="_blank" rel="noopener">
@@ -473,19 +477,21 @@
                     <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
                     <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
                     <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
+                    <a href="/partners/" class="footer-link">Partners</a>
                     <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
                 </div>
                 <div class="footer-col">
                     <p class="footer-heading">Security</p>
                     <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/disclosure/" class="footer-link">Disclosure Policy</a>
                     <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
                     <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
                     <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2024&ndash;2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
-                <span class="footer-uptime">Uptime <code id="uptime">...</code></span>
+                <span>&copy; 2024-2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
+                <span class="footer-uptime" hidden>Uptime <code id="uptime"></code></span>
             </div>
         </div>
     </footer>
