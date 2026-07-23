@@ -10,6 +10,12 @@
     
     <!-- Main Site Pages -->
     <url>
+        <loc>https://wraven.org/research/</loc>
+        <lastmod>2026-07-23</lastmod>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
         <loc>https://wraven.org/watchtower/</loc>
         <lastmod>2026-02-21</lastmod>
         <priority>0.9</priority>
