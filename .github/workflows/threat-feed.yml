@@ -1,9 +1,9 @@
-name: Weekly threat feed update
+name: Daily threat feed update
 
 on:
   schedule:
-    # Every Monday at 13:00 UTC (9am ET)
-    - cron: "0 13 * * 1"
+    # Every day at 13:00 UTC (9am ET)
+    - cron: "0 13 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -27,5 +27,5 @@ jobs:
           git config user.name "wraven-bot"
           git config user.email "contact@wraven.org"
           git add index.html
-          git commit -m "chore: weekly threat feed update $(date -u +%Y-%m-%d)"
+          git commit -m "chore: daily threat feed update $(date -u +%Y-%m-%d)"
           git push

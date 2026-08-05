@@ -1,10 +1,10 @@
 // WRAVEN.ORG
 
 /* ── Site data: single source of truth ─────────────────────────────
-   Edit numbers and featured posts here. Elements with a matching
-   data-stat attribute and the #research-grid section are populated
-   from these on load. index.html carries the same values as static
-   no-JS fallbacks; update them together. */
+   Edit numbers, operations, and featured posts here. Elements with a
+   matching data-stat attribute, the #ops-timeline section, and the
+   #research-grid section are populated from these on load. index.html
+   carries the same values as static no-JS fallbacks; update them together. */
 
 const SITE_STATS = {
     operators: 59,
@@ -14,6 +14,45 @@ const SITE_STATS = {
     opsCompleted: 13,
     ctfHackers: 39,
     ctfYears: 13
+};
+
+/* Listed oldest first: the desktop treatment reads left to right as a time
+   axis. status is one of 'active', 'launched', 'completed'. */
+const OPERATIONS = [
+    {
+        codename: 'HURRICANE WATCH',
+        year: '2025',
+        status: 'active',
+        desc: 'Salt Typhoon re-analysis per CISA & NSA guidance',
+        url: null
+    },
+    {
+        codename: 'LAZARUS-HUNT',
+        year: '2025',
+        status: 'completed',
+        desc: 'Lazarus Group APT tracking & attribution',
+        url: 'https://blog.wraven.org/p/lazarus-investigation'
+    },
+    {
+        codename: 'TYPHOON-TRACK',
+        year: '2025',
+        status: 'completed',
+        desc: 'Salt Typhoon telecom compromise analysis',
+        url: 'https://blog.wraven.org/p/malware-report-ghostspider'
+    },
+    {
+        codename: 'HORIZON',
+        year: '2026',
+        status: 'launched',
+        desc: 'Student-run SOC built on SecurityOnion. Now live',
+        url: null
+    }
+];
+
+const STATUS_LABELS = {
+    active: 'Active',
+    launched: 'Launched',
+    completed: 'Completed'
 };
 
 const FEATURED_RESEARCH = [
@@ -47,25 +86,76 @@ document.addEventListener('DOMContentLoaded', () => {
         if (key in SITE_STATS) el.textContent = SITE_STATS[key];
     });
 
+    const opsTimeline = document.getElementById('ops-timeline');
+    if (opsTimeline && OPERATIONS.length) {
+        opsTimeline.textContent = '';
+        OPERATIONS.forEach(op => {
+            const event = document.createElement(op.url ? 'a' : 'div');
+            event.className = op.url ? 'ops-event ops-event-link' : 'ops-event';
+            event.setAttribute('data-status', op.status);
+            if (op.url) {
+                event.href = op.url;
+                event.target = '_blank';
+                event.rel = 'noopener noreferrer';
+            }
+
+            const name = document.createElement('h3');
+            name.className = 'ops-event-name';
+            name.textContent = op.codename;
+
+            const marker = document.createElement('span');
+            marker.className = 'ops-event-marker';
+            marker.setAttribute('aria-hidden', 'true');
+
+            const meta = document.createElement('p');
+            meta.className = 'ops-event-meta';
+            const year = document.createElement('span');
+            year.className = 'ops-event-year';
+            year.textContent = op.year;
+            const status = document.createElement('span');
+            status.className = 'ops-event-status';
+            status.textContent = STATUS_LABELS[op.status] || op.status;
+            meta.append(year, status);
+
+            const desc = document.createElement('p');
+            desc.className = 'ops-event-desc';
+            desc.textContent = op.desc;
+
+            event.append(name, marker, meta, desc);
+            opsTimeline.appendChild(event);
+        });
+    }
+
     const researchGrid = document.getElementById('research-grid');
     if (researchGrid && FEATURED_RESEARCH.length) {
         researchGrid.textContent = '';
-        FEATURED_RESEARCH.forEach(post => {
-            const card = document.createElement('a');
-            card.className = 'research-card';
-            card.href = post.url;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
+        FEATURED_RESEARCH.forEach((post, i) => {
+            const item = document.createElement('li');
+            item.className = 'research-item';
+
+            const link = document.createElement('a');
+            link.className = 'research-link';
+            link.href = post.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+
+            const num = document.createElement('span');
+            num.className = 'research-num';
+            num.setAttribute('aria-hidden', 'true');
+            num.textContent = String(i + 1).padStart(2, '0');
+
+            const body = document.createElement('span');
+            body.className = 'research-body';
 
             const tag = document.createElement('span');
             tag.className = 'research-tag';
             tag.textContent = post.tag;
 
-            const title = document.createElement('h3');
+            const title = document.createElement('span');
             title.className = 'research-title';
             title.textContent = post.title;
 
-            const desc = document.createElement('p');
+            const desc = document.createElement('span');
             desc.className = 'research-desc';
             desc.textContent = post.desc;
 
@@ -73,9 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
             meta.className = 'research-meta';
             meta.textContent = post.meta;
 
-            card.append(tag, title, desc, meta);
-            researchGrid.appendChild(card);
+            body.append(tag, title, desc, meta);
+            link.append(num, body);
+            item.appendChild(link);
+            researchGrid.appendChild(item);
         });
+    }
+
+    /* Threat feed staleness. The date is written by scripts/update_threat_feed.py
+       from the newest row, so it cannot disagree with the rows. Past 21 days the
+       indicator shifts from muted to amber. */
+    const feedUpdated = document.querySelector('.feed-updated');
+    if (feedUpdated) {
+        const stamp = Date.parse(feedUpdated.getAttribute('datetime') + 'T00:00:00Z');
+        if (!Number.isNaN(stamp) && Date.now() - stamp > 21 * 24 * 60 * 60 * 1000) {
+            feedUpdated.classList.add('is-stale');
+        }
     }
 
     const navToggle = document.getElementById('nav-toggle');
@@ -135,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Scroll-reveal: staggered children with subtle blur-lift ── */
     const revealContainers = document.querySelectorAll(
-        '.about-grid, .threat-table, .ops-grid, .platforms-row, .ctf-split, .partners-row'
+        '.about-grid, .threat-table, .ops-timeline, .platform-panels, .ctf-split, .research-index, .partner-groups, .security-links'
     );
 
     if (revealContainers.length && 'IntersectionObserver' in window) {

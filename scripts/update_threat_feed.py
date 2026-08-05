@@ -6,7 +6,7 @@ Pulls the newest entries from the CISA Known Exploited Vulnerabilities (KEV)
 catalog and rewrites the homepage threat feed between the
 THREAT-FEED:START / THREAT-FEED:END markers in index.html.
 
-No AI, no judgment calls — KEV is structured, curated data. Runs weekly via
+No AI, no judgment calls — KEV is structured, curated data. Runs daily via
 GitHub Actions (.github/workflows/threat-feed.yml) or manually:
 
     python3 scripts/update_threat_feed.py
@@ -27,8 +27,13 @@ NUM_ENTRIES = 3
 # CISA's CDN rejects the default python-urllib User-Agent, so set our own.
 USER_AGENT = "wraven-threat-feed/1.0 (+https://wraven.org)"
 
-START = "<!-- THREAT-FEED:START - rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->"
+START = "<!-- THREAT-FEED:START - rows below are auto-updated daily from the CISA KEV catalog. Do not edit by hand. -->"
 END = "<!-- THREAT-FEED:END -->"
+
+# The last-updated stamp is written by this same run, so it can never disagree
+# with the rows. It carries the newest row's dateAdded, not the run date.
+UPDATED_START = "<!-- FEED-UPDATED:START -->"
+UPDATED_END = "<!-- FEED-UPDATED:END -->"
 
 # (keyword in vulnerabilityName/shortDescription, type label, MITRE technique)
 TYPE_RULES = [
@@ -112,23 +117,48 @@ def main():
         print(f"Could not fetch KEV catalog ({e}); leaving threat feed unchanged.")
         return
 
-    vulns = sorted(data["vulnerabilities"], key=lambda v: (v["dateAdded"], v["cveID"]), reverse=True)
+    catalog = data.get("vulnerabilities")
+    if not isinstance(catalog, list):
+        sys.exit("ERROR: KEV response has no 'vulnerabilities' list; index.html left unchanged.")
+
+    vulns = sorted(catalog, key=lambda v: (v["dateAdded"], v["cveID"]), reverse=True)
     newest = vulns[:NUM_ENTRIES]
 
+    # An empty or truncated catalog must never overwrite a good feed with a
+    # partial one. Fail the run and leave the previous rows in place.
+    if len(newest) < NUM_ENTRIES:
+        sys.exit(
+            f"ERROR: KEV catalog returned {len(newest)} entries, expected {NUM_ENTRIES}; "
+            "index.html left unchanged."
+        )
+
     html = INDEX.read_text(encoding="utf-8")
+
     pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.DOTALL)
     if not pattern.search(html):
         sys.exit("ERROR: threat feed markers not found in index.html")
 
+    stamp_pattern = re.compile(re.escape(UPDATED_START) + r".*?" + re.escape(UPDATED_END), re.DOTALL)
+    if not stamp_pattern.search(html):
+        sys.exit("ERROR: feed-updated markers not found in index.html")
+
     block = START + "\n" + "\n".join(row(v) for v in newest) + "\n                    " + END
     updated = pattern.sub(lambda _: block, html)
+
+    newest_date = escape(newest[0]["dateAdded"])
+    stamp = (
+        UPDATED_START
+        + f'\n                        <time class="feed-updated" datetime="{newest_date}">Updated {newest_date}</time>\n'
+        + "                        " + UPDATED_END
+    )
+    updated = stamp_pattern.sub(lambda _: stamp, updated)
 
     if updated == html:
         print("Feed already up to date — no changes.")
         return
 
     INDEX.write_text(updated, encoding="utf-8")
-    print(f"Updated threat feed with: {', '.join(v['cveID'] for v in newest)}")
+    print(f"Updated threat feed with: {', '.join(v['cveID'] for v in newest)} (as of {newest_date})")
 
 
 if __name__ == "__main__":

@@ -102,6 +102,7 @@
                 <a href="#operations" class="nav-link">Operations</a>
                 <a href="#ctf" class="nav-link">CTF</a>
                 <a href="#research" class="nav-link">Research</a>
+                <a href="#security" class="nav-link">Security</a>
                 <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
                 <a href="#join" class="nav-cta">Join Us</a>
             </div>
@@ -118,6 +119,7 @@
             <a href="#operations" class="mobile-link">Operations</a>
             <a href="#ctf" class="mobile-link">CTF</a>
             <a href="#research" class="mobile-link">Research</a>
+            <a href="#security" class="mobile-link">Security</a>
             <a href="#join" class="mobile-link">Get Involved</a>
             <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
             <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
@@ -178,7 +180,7 @@
                         <p class="label-mono">About WRAVEN</p>
                         <h2 class="about-headline">Western Research Advisory for Vulnerabilities, Exploits, & Networks</h2>
                         <p class="about-body">WMU's cybersecurity research & operations team. We analyze emerging threats, compete in international CTF events, conduct vulnerability research, and build open-source security tools.</p>
-                        <p class="about-body text-muted">Founded in partnership with WMU's Computer Club. Registered 501(c)(3) nonprofit via Hack Club.</p>
+                        <p class="about-body text-muted">Founded in partnership with WMU's Computer Club. Fiscally sponsored by Hack Club (The Hack Foundation), a 501(c)(3).</p>
                     </div>
                     <div class="about-image">
                         <picture>
@@ -195,39 +197,44 @@
             <div class="container">
                 <div class="section-top">
                     <p class="label-mono">Threat Feed</p>
-                    <a href="https://public.wraven.org" class="status-link" target="_blank" rel="noopener noreferrer">
-                        <span class="status-dot"></span>Watchtower&ensp;&rarr;
-                    </a>
+                    <div class="feed-meta">
+                        <!-- FEED-UPDATED:START -->
+                        <time class="feed-updated" datetime="2026-08-05">Updated 2026-08-05</time>
+                        <!-- FEED-UPDATED:END -->
+                        <a href="https://public.wraven.org" class="status-link" target="_blank" rel="noopener noreferrer">
+                            <span class="status-dot"></span>Watchtower&ensp;&rarr;
+                        </a>
+                    </div>
                 </div>
                 <div class="threat-table">
-                    <!-- THREAT-FEED:START - rows below are auto-updated weekly from the CISA KEV catalog. Do not edit by hand. -->
-                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20316" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
+                    <!-- THREAT-FEED:START - rows below are auto-updated daily from the CISA KEV catalog. Do not edit by hand. -->
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63077" class="threat-row" data-severity="critical" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-07-29</time>
+                        <time class="threat-date">2026-08-05</time>
                         <span class="threat-type">EXPLOIT</span>
-                        <span class="threat-title">Cisco Secure Firewall Management Center (FMC): Cisco Secure Firewall Management Center Use of Hard-coded Pa…</span>
+                        <span class="threat-title">JetBrains TeamCity Deserialization of Untrusted Data Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">CVE-2026-20316</span>
+                            <span class="ttag">CVE-2026-63077</span>
                             <span class="ttag">T1190</span>
                         </div>
                     </a>
-                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-16812" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9198" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-07-27</time>
+                        <time class="threat-date">2026-08-04</time>
                         <span class="threat-type">INJECTION</span>
-                        <span class="threat-title">Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability</span>
+                        <span class="threat-title">IBM Langflow Code Injection Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">CVE-2026-16812</span>
+                            <span class="ttag">CVE-2026-9198</span>
                             <span class="ttag">T1190</span>
                         </div>
                     </a>
-                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68686" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34486" class="threat-row" data-severity="high" target="_blank" rel="noopener noreferrer">
                         <div class="threat-indicator"></div>
-                        <time class="threat-date">2026-07-27</time>
+                        <time class="threat-date">2026-08-04</time>
                         <span class="threat-type">EXPLOIT</span>
-                        <span class="threat-title">Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability</span>
+                        <span class="threat-title">Apache Tomcat Missing Encryption of Sensitive Data Vulnerability</span>
                         <div class="threat-meta-tags">
-                            <span class="ttag">CVE-2025-68686</span>
+                            <span class="ttag">CVE-2026-34486</span>
                             <span class="ttag">T1190</span>
                         </div>
                     </a>
@@ -236,72 +243,69 @@
             </div>
         </section>
 
-        <!-- ===== OPERATIONS & PLATFORMS ===== -->
+        <!-- ===== OPERATIONS ===== -->
         <section class="section" id="operations">
             <div class="container">
-                <div class="ops-platforms-split">
-                    <!-- Operations (left) -->
-                    <div class="ops-platforms-col">
-                        <div class="section-top">
-                            <p class="label-mono">Operations</p>
-                            <span class="ops-counter"><span data-stat="opsActive">1</span> Active &middot; <span data-stat="opsCompleted">13</span> Completed</span>
-                        </div>
-                        <div class="ops-grid">
-                            <div class="ops-card">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-active">ACTIVE</span>
-                                    <span class="ops-pct">EST. 2025</span>
-                                </div>
-                                <h3 class="ops-name">HURRICANE WATCH</h3>
-                                <p class="ops-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
-                            </div>
-                            <div class="ops-card">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-live">LAUNCHED</span>
-                                    <span class="ops-pct">2026</span>
-                                </div>
-                                <h3 class="ops-name">HORIZON</h3>
-                                <p class="ops-desc">Student-run SOC built on SecurityOnion. Now live</p>
-                            </div>
-                            <a href="https://blog.wraven.org/p/lazarus-investigation" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">2025</span>
-                                </div>
-                                <h3 class="ops-name">LAZARUS-HUNT</h3>
-                                <p class="ops-desc">Lazarus Group APT tracking & attribution</p>
-                            </a>
-                            <a href="https://blog.wraven.org/p/malware-report-ghostspider" class="ops-card ops-done-card" target="_blank" rel="noopener noreferrer">
-                                <div class="ops-card-top">
-                                    <span class="ops-badge badge-done">COMPLETED</span>
-                                    <span class="ops-pct">2025</span>
-                                </div>
-                                <h3 class="ops-name">TYPHOON-TRACK</h3>
-                                <p class="ops-desc">Salt Typhoon telecom compromise analysis</p>
-                            </a>
-                        </div>
+                <div class="section-top">
+                    <p class="label-mono">Operations</p>
+                    <span class="ops-counter"><span data-stat="opsActive">1</span> Active &middot; <span data-stat="opsCompleted">13</span> Completed</span>
+                </div>
+                <!-- Markers are rendered from OPERATIONS at the top of /script.js.
+                     Add an operation there. The markup below is the no-JS
+                     fallback; keep it in sync with the array. -->
+                <div class="ops-timeline" id="ops-timeline">
+                    <div class="ops-event" data-status="active">
+                        <h3 class="ops-event-name">HURRICANE WATCH</h3>
+                        <span class="ops-event-marker" aria-hidden="true"></span>
+                        <p class="ops-event-meta"><span class="ops-event-year">2025</span><span class="ops-event-status">Active</span></p>
+                        <p class="ops-event-desc">Salt Typhoon re-analysis per CISA & NSA guidance</p>
                     </div>
-                    <!-- Platforms (right) -->
-                    <div class="ops-platforms-col">
-                        <div class="section-top">
-                            <p class="label-mono">Platforms</p>
-                        </div>
-                        <div class="platforms-col">
-                            <a href="https://public.wraven.org" class="platform-card" target="_blank" rel="noopener noreferrer">
-                                <div>
-                                    <h3 class="platform-name">Watchtower</h3>
-                                    <p class="platform-desc">Real-time threat monitoring</p>
-                                </div>
-                                <span class="platform-arrow">&rarr;</span>
-                            </a>
-                            <div class="platform-card">
-                                <div>
-                                    <h3 class="platform-name">Horizon <span class="platform-badge badge-live-text">Live &middot; Internal</span></h3>
-                                    <p class="platform-desc">Student-run SOC on SecurityOnion</p>
-                                </div>
-                                <span class="status-dot" aria-hidden="true"></span>
-                            </div>
-                        </div>
+                    <a href="https://blog.wraven.org/p/lazarus-investigation" class="ops-event ops-event-link" data-status="completed" target="_blank" rel="noopener noreferrer">
+                        <h3 class="ops-event-name">LAZARUS-HUNT</h3>
+                        <span class="ops-event-marker" aria-hidden="true"></span>
+                        <p class="ops-event-meta"><span class="ops-event-year">2025</span><span class="ops-event-status">Completed</span></p>
+                        <p class="ops-event-desc">Lazarus Group APT tracking & attribution</p>
+                    </a>
+                    <a href="https://blog.wraven.org/p/malware-report-ghostspider" class="ops-event ops-event-link" data-status="completed" target="_blank" rel="noopener noreferrer">
+                        <h3 class="ops-event-name">TYPHOON-TRACK</h3>
+                        <span class="ops-event-marker" aria-hidden="true"></span>
+                        <p class="ops-event-meta"><span class="ops-event-year">2025</span><span class="ops-event-status">Completed</span></p>
+                        <p class="ops-event-desc">Salt Typhoon telecom compromise analysis</p>
+                    </a>
+                    <div class="ops-event" data-status="launched">
+                        <h3 class="ops-event-name">HORIZON</h3>
+                        <span class="ops-event-marker" aria-hidden="true"></span>
+                        <p class="ops-event-meta"><span class="ops-event-year">2026</span><span class="ops-event-status">Launched</span></p>
+                        <p class="ops-event-desc">Student-run SOC built on SecurityOnion. Now live</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PLATFORMS ===== -->
+        <section class="section" id="platforms">
+            <div class="container">
+                <div class="section-top">
+                    <p class="label-mono">Platforms</p>
+                </div>
+                <div class="platform-panels">
+                    <a href="https://public.wraven.org" class="platform-panel" target="_blank" rel="noopener noreferrer">
+                        <p class="platform-panel-status">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span class="platform-panel-state">Live</span>
+                        </p>
+                        <h3 class="platform-panel-name">Watchtower</h3>
+                        <p class="platform-panel-desc">Real-time threat monitoring, updated continuously and open to the public.</p>
+                        <span class="platform-panel-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <div class="platform-panel platform-panel-static">
+                        <p class="platform-panel-status">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span class="platform-panel-state">Live</span>
+                            <span class="platform-panel-chip">Internal</span>
+                        </p>
+                        <h3 class="platform-panel-name">Horizon</h3>
+                        <p class="platform-panel-desc">Student-operated SOC on Security Onion. Members run monitoring shifts on live telemetry.</p>
                     </div>
                 </div>
             </div>
@@ -347,29 +351,44 @@
                     <p class="label-mono">Featured Research</p>
                     <a href="/research/" class="text-link">All Research &rarr;</a>
                 </div>
-                <!-- Cards are rendered from FEATURED_RESEARCH at the top of /script.js.
+                <!-- Rows are rendered from FEATURED_RESEARCH at the top of /script.js.
                      Edit that array to swap featured posts. The markup below is the
                      no-JS fallback; keep it in sync with the array. -->
-                <div class="research-grid" id="research-grid">
-                    <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-card" target="_blank" rel="noopener noreferrer">
-                        <span class="research-tag">Intel Brief</span>
-                        <h3 class="research-title">Stryker Cyber Incident & Iran-Linked Handala Activity</h3>
-                        <p class="research-desc">Analysis of the Stryker incident and Handala / Iran-linked operations, with defensive takeaways.</p>
-                        <span class="research-meta">Mar 2026 &middot; 10 min read</span>
-                    </a>
-                    <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card" target="_blank" rel="noopener noreferrer">
-                        <span class="research-tag">APT Report</span>
-                        <h3 class="research-title">Scattered Spider: Tactics, Targets & Ongoing Tracking</h3>
-                        <p class="research-desc">How a small hacker crew pulls off multi-million dollar breaches, and how our students track them in real time.</p>
-                        <span class="research-meta">Jul 2025 &middot; 4 min read</span>
-                    </a>
-                    <a href="https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation" class="research-card" target="_blank" rel="noopener noreferrer">
-                        <span class="research-tag">Research Paper</span>
-                        <h3 class="research-title">Qilin: A Look Inside a Modern Ransomware Operation</h3>
-                        <p class="research-desc">Inside the operations of a fast-evolving ransomware-as-a-service network.</p>
-                        <span class="research-meta">Oct 2025 &middot; 2 min read</span>
-                    </a>
-                </div>
+                <ol class="research-index" id="research-grid">
+                    <li class="research-item">
+                        <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-link" target="_blank" rel="noopener noreferrer">
+                            <span class="research-num" aria-hidden="true">01</span>
+                            <span class="research-body">
+                                <span class="research-tag">Intel Brief</span>
+                                <span class="research-title">Stryker Cyber Incident & Iran-Linked Handala Activity</span>
+                                <span class="research-desc">Analysis of the Stryker incident and Handala / Iran-linked operations, with defensive takeaways.</span>
+                                <span class="research-meta">Mar 2026 &middot; 10 min read</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="research-item">
+                        <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-link" target="_blank" rel="noopener noreferrer">
+                            <span class="research-num" aria-hidden="true">02</span>
+                            <span class="research-body">
+                                <span class="research-tag">APT Report</span>
+                                <span class="research-title">Scattered Spider: Tactics, Targets & Ongoing Tracking</span>
+                                <span class="research-desc">How a small hacker crew pulls off multi-million dollar breaches, and how our students track them in real time.</span>
+                                <span class="research-meta">Jul 2025 &middot; 4 min read</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="research-item">
+                        <a href="https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation" class="research-link" target="_blank" rel="noopener noreferrer">
+                            <span class="research-num" aria-hidden="true">03</span>
+                            <span class="research-body">
+                                <span class="research-tag">Research Paper</span>
+                                <span class="research-title">Qilin: A Look Inside a Modern Ransomware Operation</span>
+                                <span class="research-desc">Inside the operations of a fast-evolving ransomware-as-a-service network.</span>
+                                <span class="research-meta">Oct 2025 &middot; 2 min read</span>
+                            </span>
+                        </a>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -415,41 +434,59 @@
         </section>
 
         <!-- ===== PARTNERS ===== -->
-        <section class="section">
+        <section class="section" id="partners">
             <div class="container">
                 <div class="section-top">
                     <p class="label-mono">Partners</p>
                     <a href="/partners/" class="text-link">Become a Partner &rarr;</a>
                 </div>
-                <div class="partners-row">
-                    <a href="https://eff.org/" class="partner-card" target="_blank" rel="noopener noreferrer">
-                        <picture>
-                            <source srcset="/imgs/eff.webp" type="image/webp">
-                            <img src="/imgs/eff.png" alt="Electronic Frontier Foundation" class="partner-logo" loading="lazy" width="600" height="187">
-                        </picture>
-                        <span class="partner-name">EFF</span>
-                    </a>
-                    <a href="https://hackclub.com/hcb" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/HCBicon.webp" type="image/webp">
-                            <img src="/imgs/HCBicon.png" alt="Hack Club" class="partner-logo" loading="lazy" width="512" height="512">
-                        </picture>
-                        <span class="partner-name">Hack Club</span>
-                    </a>
-                    <a href="https://wmuwsa.org/allocations" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/WSAACicon.webp" type="image/webp">
-                            <img src="/imgs/WSAACicon.png" alt="WSAAC" class="partner-logo" loading="lazy" width="666" height="991">
-                        </picture>
-                        <span class="partner-name">WSAAC</span>
-                    </a>
-                    <a href="https://bugcrowd.com/" class="partner-card" target="_blank" rel="noopener">
-                        <picture>
-                            <source srcset="/imgs/bugcrowd.webp" type="image/webp">
-                            <img src="/imgs/bugcrowd.png" alt="Bugcrowd" class="partner-logo" loading="lazy" width="1280" height="1280">
-                        </picture>
-                        <span class="partner-name">Bugcrowd</span>
-                    </a>
+                <div class="partner-groups">
+                    <div class="partner-group">
+                        <h3 class="partner-group-title">Affiliations</h3>
+                        <dl class="partner-list">
+                            <div class="partner-entry">
+                                <dt class="partner-entry-name"><a href="https://eff.org/" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation</a></dt>
+                                <dd class="partner-entry-rel">Electronic Frontier Alliance member</dd>
+                            </div>
+                            <div class="partner-entry">
+                                <dt class="partner-entry-name"><a href="https://bugcrowd.com/" target="_blank" rel="noopener noreferrer">Bugcrowd</a></dt>
+                                <dd class="partner-entry-rel">Partner organization</dd>
+                            </div>
+                            <div class="partner-entry">
+                                <dt class="partner-entry-name"><a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></dt>
+                                <dd class="partner-entry-rel">Fiscal sponsor, via The Hack Foundation</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="partner-group">
+                        <h3 class="partner-group-title">Funding</h3>
+                        <dl class="partner-list">
+                            <div class="partner-entry">
+                                <dt class="partner-entry-name"><a href="https://wmuwsa.org/allocations" target="_blank" rel="noopener noreferrer">WSAAC</a></dt>
+                                <dd class="partner-entry-rel">Western Student Association Allocations Committee</dd>
+                            </div>
+                            <div class="partner-entry">
+                                <dt class="partner-entry-name">CEAS Dean's Fund</dt>
+                                <dd class="partner-entry-rel">WMU College of Engineering and Applied Sciences</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECURITY ===== -->
+        <section class="section" id="security">
+            <div class="container">
+                <div class="section-top">
+                    <p class="label-mono">Security</p>
+                </div>
+                <p class="security-body">WRAVEN operates a coordinated disclosure process. Report a vulnerability in our infrastructure or research through the channels below.</p>
+                <div class="security-links">
+                    <a href="/disclosure/" class="security-link">Disclosure Policy</a>
+                    <a href="/.well-known/security.txt" class="security-link">security.txt</a>
+                    <a href="/keys/wraven.asc" class="security-link">PGP Key</a>
+                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="security-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
                 </div>
             </div>
         </section>
