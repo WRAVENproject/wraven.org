@@ -46,9 +46,25 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 
 ::selection { background: rgba(34,197,94,0.25); color: #fff; }
-/* Hide scrollbars everywhere while keeping scrolling functional */
-html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
-::-webkit-scrollbar { width: 0; height: 0; display: none; }
+/* Scrollbar: the track is never painted, so no gutter is ever visible. The
+   thumb fades in only while scrolling — .is-scrolling is toggled in script.js. */
+html { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+html.is-scrolling { scrollbar-color: var(--border-hover) transparent; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    background-clip: content-box;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.35s var(--ease);
+}
+html.is-scrolling::-webkit-scrollbar-thumb,
+html.is-scrolling ::-webkit-scrollbar-thumb { background-color: var(--border-hover); }
+html.is-scrolling::-webkit-scrollbar-thumb:hover,
+html.is-scrolling ::-webkit-scrollbar-thumb:hover { background-color: var(--text-muted); }
 
 /* ---- Accessibility ---- */
 .skip-link {
@@ -114,14 +130,6 @@ html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
     transition: color 0.2s var(--ease);
 }
 .status-link:hover { color: var(--blue-text); }
-
-.status-dot {
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 6px var(--green);
-}
 
 .text-link {
     font-family: var(--mono);
@@ -2035,7 +2043,6 @@ a.partner-card:hover .partner-logo {
 
 /* ---- Forced Colors (Windows High Contrast) ---- */
 @media (forced-colors: active) {
-    .status-dot        { forced-color-adjust: none; }
     .hero-radar        { display: none !important; }
     .btn-primary       { forced-color-adjust: none; }
     .threat-indicator  { forced-color-adjust: none; }

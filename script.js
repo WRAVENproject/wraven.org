@@ -480,6 +480,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } // end !isMobile
     }
 
+    /* Scrollbar thumb is painted only while the page is actually moving.
+       The track stays transparent at all times — see styles.css. */
+    let scrollIdleTimer;
+    const root = document.documentElement;
+    window.addEventListener('scroll', () => {
+        root.classList.add('is-scrolling');
+        clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = setTimeout(() => root.classList.remove('is-scrolling'), 700);
+    }, { passive: true });
+
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
     }
