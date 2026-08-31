@@ -1547,6 +1547,11 @@ a.partner-card:hover .partner-logo {
     padding-left: 1.5rem;
 }
 
+.doc-section ol {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
 .doc-section li {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -1591,6 +1596,19 @@ a.partner-card:hover .partner-logo {
 
 .doc-callout-accent .doc-callout-heading {
     color: var(--green);
+}
+
+/* Inline links inside policy pages need to be visible against body text. */
+.doc-section a,
+.doc-callout a {
+    color: var(--blue-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 0.2s var(--ease);
+}
+.doc-section a:hover,
+.doc-callout a:hover {
+    color: var(--text);
 }
 
 /* ---- SUBPAGE RESPONSIVE ---- */

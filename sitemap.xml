@@ -34,12 +34,6 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://wraven.org/qr/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.7</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
         <loc>https://wraven.org/partners/</loc>
         <lastmod>2026-07-22</lastmod>
         <priority>0.7</priority>
@@ -55,6 +49,18 @@
         <loc>https://wraven.org/privacy/</loc>
         <lastmod>2026-07-22</lastmod>
         <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://wraven.org/code_of_conduct</loc>
+        <lastmod>2026-08-31</lastmod>
+        <priority>0.4</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://wraven.org/ethics_agreement</loc>
+        <lastmod>2026-08-31</lastmod>
+        <priority>0.4</priority>
         <changefreq>yearly</changefreq>
     </url>
     
