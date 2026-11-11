@@ -63,6 +63,12 @@
         <priority>0.4</priority>
         <changefreq>yearly</changefreq>
     </url>
+    <url>
+        <loc>https://wraven.org/verify/</loc>
+        <lastmod>2026-11-11</lastmod>
+        <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
     
     <!-- External Blog (hosted separately) -->
     <url>
