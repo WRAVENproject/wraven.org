@@ -281,7 +281,8 @@ code, kbd { font-family: var(--code); font-size: .9em; }
   .utility .wrap { padding-block: .45rem; }
   .utility .wide-only { display: none; }
   .site-head .bar { flex-direction: column; align-items: flex-start; gap: .6rem; padding-block: .85rem .9rem; }
-  .site-nav { gap: .35rem 1.2rem; }
+  /* Five links do not fit on one line on a phone. Even columns keep the two rows aligned. */
+  .site-nav { display: grid; grid-template-columns: repeat(3, minmax(max-content, 1fr)); gap: .1rem 1rem; }
   .site-nav a { padding-block: .3rem; }
   .statement h1 { font-size: clamp(2.1rem, 9.5vw, 3rem); }
   .first { min-height: 0; }
@@ -344,7 +345,7 @@ code, kbd { font-family: var(--code); font-size: .9em; }
 }
 .table-scroll { overflow-x: auto; }
 .utility .cal { display: inline-block; padding-block: .2rem; margin-left: .5rem; }
-@media (max-width: 760px) { .utility .cal { margin-left: 0; } .utility .wrap > span { display: flex; flex-wrap: wrap; column-gap: .5rem; } }
+@media (max-width: 760px) { .utility .cal { margin-left: 0; } .utility .wrap > span { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .5rem; } }
 @media print {
   .first { min-height: 0; }
   .invert, .invert a, .invert dt, .invert p { color: #000 !important; }
