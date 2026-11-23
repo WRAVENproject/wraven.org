@@ -83,7 +83,10 @@ code, kbd { font-family: var(--code); font-size: .9em; }
 .first { min-height: calc(100svh - 6.6rem); display: flex; flex-direction: column; }
 .statement .wrap { display: grid; grid-template-columns: var(--label) var(--content); gap: var(--gap); padding-block: clamp(1.5rem, 5svh, 4rem) clamp(1.25rem, 3.5svh, 2.5rem); }
 .where { color: var(--fg-2); font-size: .9375rem; margin: .55rem 0 0; }
-.statement h1 { font-weight: 300; font-size: min(4.7vw, 7.4svh, 5.4rem); line-height: 1.05; letter-spacing: -0.033em; max-width: 22ch; }
+/* macOS draws light text on dark backgrounds thicker than phones and Windows do.
+   Turn that off for the large display text, so every device shows the same weight. */
+.statement h1, .doc-hero h1, .when, .result .n { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.statement h1 { font-weight: 400; font-size: min(4.7vw, 7.4svh, 5.4rem); line-height: 1.05; letter-spacing: -0.033em; max-width: 22ch; }
 .statement .sub { color: var(--fg-2); font-size: 1.1875rem; max-width: 38rem; margin: 1.1rem 0 0; }
 .statement .go { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.4rem; }
 .hero-photo { flex: 1; min-height: 58svh; margin: 0; display: flex; flex-direction: column; }
@@ -120,8 +123,8 @@ code, kbd { font-family: var(--code); font-size: .9em; }
 
 /* One result, in proportion. */
 .result { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1.5rem; }
-.result .n { font-weight: 250; font-size: clamp(3.75rem, 8vw, 7rem); line-height: .9; letter-spacing: -0.05em; }
-.result .n sup { font-size: .34em; vertical-align: .9em; letter-spacing: -0.01em; font-weight: 300; }
+.result .n { font-weight: 350; font-size: clamp(3.75rem, 8vw, 7rem); line-height: .9; letter-spacing: -0.05em; }
+.result .n sup { font-size: .34em; vertical-align: .9em; letter-spacing: -0.01em; font-weight: 400; }
 .result p { margin: 0; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.35; max-width: 36ch; }
 
 /* Lists of dated items. */
@@ -148,7 +151,7 @@ code, kbd { font-family: var(--code); font-size: .9em; }
 
 /* Meeting block. */
 .meet { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
-.when { font-weight: 300; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 .9rem; }
+.when { font-weight: 400; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 .9rem; }
 .where-line { color: var(--fg-2); font-size: 1.0625rem; }
 .ticks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .ticks li { padding: .8rem 0; border-bottom: 1px solid var(--rule); color: var(--fg-2); }
@@ -198,7 +201,7 @@ code, kbd { font-family: var(--code); font-size: .9em; }
 
 /* ---------- Document pages ---------- */
 .doc-hero .wrap { display: grid; grid-template-columns: var(--label) var(--content); gap: var(--gap); padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 5vw, 3.5rem); }
-.doc-hero h1 { font-weight: 300; font-size: clamp(2.4rem, 5.5vw, 5rem); line-height: 1.04; letter-spacing: -0.035em; max-width: 18ch; }
+.doc-hero h1 { font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 5rem); line-height: 1.04; letter-spacing: -0.035em; max-width: 18ch; }
 .doc-hero .intro { color: var(--fg-2); font-size: 1.1875rem; max-width: 40rem; margin: 1.4rem 0 0; }
 .doc-hero .meta { color: var(--fg-3); font-size: .9375rem; margin: .7rem 0 0; }
 /* A page hero without a label keeps its text in the content column. */
