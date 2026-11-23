@@ -33,6 +33,11 @@ from pathlib import Path
 PUBLICATION_ID = os.environ.get("BEEHIIV_PUBLICATION_ID", "pub_ec6a0878-0aa7-484d-992b-554fb80ef3fa")
 API_BASE = "https://api.beehiiv.com/v2"
 PAGE = Path(__file__).resolve().parent.parent / "research" / "index.html"
+# The homepage shows the newest posts too, between its own markers.
+HOME = Path(__file__).resolve().parent.parent / "index.html"
+HOME_START = "<!-- HOME-RESEARCH:START - the newest posts, written by scripts/update_research.py. Do not edit by hand. -->"
+HOME_END = "<!-- HOME-RESEARCH:END -->"
+HOME_COUNT = 4
 MAX_CARDS = 24
 USER_AGENT = "wraven-research-mirror/1.0 (+https://wraven.org)"
 
@@ -48,7 +53,14 @@ def slugify(text):
 
 
 RESEARCH_SLUGS = [slugify(t) for t in RESEARCH_TAGS]
-TAG_DISPLAY = dict(zip(RESEARCH_SLUGS, RESEARCH_TAGS))
+# Labels shown on the site. The blog's "APT Report" tag also covers crime
+# groups such as Scattered Spider, so the site says "Threat report".
+TAG_DISPLAY = {
+    "research-paper": "Research paper",
+    "apt-report": "Threat report",
+    "malware-report": "Malware report",
+    "red-team": "Red team",
+}
 
 
 def tag_slugs(post):
@@ -60,6 +72,18 @@ def tag_slugs(post):
         else:
             slugs.append(slugify(str(tag)))
     return slugs
+
+
+# Posts that stay on the blog but are not shown in the /research/ mirror.
+# Match on the URL slug, so a title edit does not bring a post back.
+EXCLUDED_SLUGS = {
+    "disrupting-a-phishing-operation-technical-breakdown",
+}
+
+
+def is_excluded(post):
+    url = post_url(post)
+    return any(url.rstrip("/").endswith("/p/" + slug) for slug in EXCLUDED_SLUGS)
 
 
 def is_research(post):
@@ -77,6 +101,45 @@ def display_tag(post):
 def post_url(post):
     url = post.get("web_url") or post.get("url") or ""
     return url if re.match(r"^https?://", url) else ""
+
+def post_datetime(post):
+    value = post.get("publish_date") or post.get("displayed_date") or post.get("scheduled_at")
+    if value is None:
+        return None
+    try:
+        if isinstance(value, (int, float)):
+            return datetime.fromtimestamp(value, tz=timezone.utc)
+        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    except (ValueError, OSError, OverflowError):
+        return None
+
+
+def home_item(post):
+    url = post_url(post)
+    slug = post_slug(post)
+    title = TITLES.get(slug) or post.get("title", "").strip()
+    desc = SUBTITLES.get(slug) or trim(post.get("subtitle") or post.get("preview_text") or "", 90)
+    dt = post_datetime(post)
+    month = dt.strftime("%Y-%m") if dt else ""
+    label = dt.strftime("%b %Y") if dt else ""
+    return (f'                    <li><time datetime="{month}">{escape(label)}</time>'
+            f'<span><a href="{escape(url, quote=True)}">{escape(title)}</a><span class="desc">{escape(desc)}</span></span>'
+            f'<span class="kind">{escape(display_tag(post))}</span></li>')
+
+
+def update_home(research):
+    html = HOME.read_text(encoding="utf-8")
+    pattern = re.compile(re.escape(HOME_START) + r".*?" + re.escape(HOME_END), re.DOTALL)
+    if not pattern.search(html):
+        print("Homepage research markers not found; leaving index.html unchanged.")
+        return
+    block = HOME_START + "\n" + "\n".join(home_item(p) for p in research[:HOME_COUNT]) + "\n                    " + HOME_END
+    updated = pattern.sub(lambda _: block, html)
+    if updated != html:
+        HOME.write_text(updated, encoding="utf-8")
+        print("Updated the homepage research list.")
+
 
 def post_date(post):
     """publish_date is a unix epoch (REST) or an ISO string; format 'Mon YYYY'."""
@@ -113,17 +176,48 @@ def trim(text, limit=200):
     return cut + "…"
 
 
+# Plain titles and subtitles for the site, keyed by the post's URL slug. The
+# blog keeps its own text. A post that is not listed here uses the blog's
+# title and subtitle. Add a line here when a new post's subtitle needs work.
+TITLES = {
+    "wraven-threat-report-loki-c2": "WRAVEN Threat Report: Loki C2",
+    "lazarus-group-apt-update": "Lazarus Group: APT Update",
+    "the-ransomware-boom-isn-t-slowing-down-here-s-who-s-getting-hit-84ee": "The Ransomware Boom Isn't Slowing Down",
+}
+SUBTITLES = {
+    "the-phone-is-the-payload": "Silent Ransom Group's callback extortion against law firms",
+    "wraven-intel-brief-stryker-attack": "The Stryker incident and Iran-linked Handala activity",
+    "qilin-a-look-inside-a-modern-ransomware-operation": "How a ransomware-as-a-service group runs",
+    "the-ransomware-boom-isn-t-slowing-down-here-s-who-s-getting-hit-84ee": "Which organizations ransomware groups hit in 2025, and how Michigan is affected",
+    "iranian-cyber-actors-escalate-targeting-of-u-s-networks": "Iran-aligned activity against U.S. networks",
+    "scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking": "How a small crew pulls off multi-million dollar breaches",
+    "red-team-corner-phishing": "What makes a phishing lure believable, from a red team's view",
+    "wraven-threat-report-loki-c2": "How the Loki C2 red-team tool hides inside signed Electron apps",
+    "lazarus-investigation": "A multi-month investigation of the North Korean group",
+    "lazarus-group-apt-update": "Recent activity of the North Korean group",
+    "applejeus-malware-report": "Malware that the Lazarus Group spreads through fake trading apps",
+    "malware-report-ghostspider": "A backdoor used by the Chinese group Salt Typhoon",
+}
+
+
+def post_slug(post):
+    return post_url(post).rstrip("/").rsplit("/p/", 1)[-1]
+
+
 def card(post):
     url = post_url(post)
+    slug = post_slug(post)
     tag = display_tag(post)
-    title = post.get("title", "").strip()
-    desc = trim(post.get("subtitle") or post.get("preview_text") or "")
+    title = TITLES.get(slug) or post.get("title", "").strip()
+    desc = SUBTITLES.get(slug) or trim(post.get("subtitle") or post.get("preview_text") or "")
     date = post_date(post)
-    return f"""                <a href="{escape(url, quote=True)}" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">{escape(tag)}</span>
+    # The title comes first in the source, so a screen reader hears it first.
+    # The stylesheet places the date on the left.
+    return f"""                <a href="{escape(url, quote=True)}" class="research-card">
                     <h3 class="research-title">{escape(title)}</h3>
                     <p class="research-desc">{escape(desc)}</p>
                     <span class="research-meta">{escape(date)}</span>
+                    <span class="research-tag">{escape(tag)}</span>
                 </a>"""
 
 
@@ -172,6 +266,7 @@ def main():
         and not p.get("hidden_from_feed")
         and not p.get("hide_from_feed")
         and post_url(p)
+        and not is_excluded(p)
     ]
     research.sort(key=sort_key, reverse=True)
     research = research[:MAX_CARDS]
@@ -187,6 +282,8 @@ def main():
 
     block = START + "\n" + "\n".join(card(p) for p in research) + "\n                " + END
     updated = pattern.sub(lambda _: block, html)
+
+    update_home(research)
 
     if updated == html:
         print("Research mirror already up to date — no changes.")

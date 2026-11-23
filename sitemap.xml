@@ -1,114 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Main Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>https://wraven.org/</loc>
-        <lastmod>2026-07-22</lastmod>
-        <priority>1.0</priority>
-        <changefreq>weekly</changefreq>
-    </url>
-    
-    <!-- Main Site Pages -->
-    <url>
-        <loc>https://wraven.org/research/</loc>
-        <lastmod>2026-07-23</lastmod>
-        <priority>0.9</priority>
-        <changefreq>weekly</changefreq>
+        <loc>https://wraven.org/</loc><lastmod>2026-11-23</lastmod>
+        <image:image><image:loc>https://wraven.org/imgs/2026/about-team.jpg</image:loc></image:image>
+        <image:image><image:loc>https://wraven.org/imgs/2026/club-night-1600.jpg</image:loc></image:image>
+        <image:image><image:loc>https://wraven.org/imgs/2026/outreach-table-1600.jpg</image:loc></image:image>
     </url>
     <url>
-        <loc>https://wraven.org/watchtower/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.9</priority>
-        <changefreq>daily</changefreq>
+        <loc>https://wraven.org/join/</loc><lastmod>2026-11-23</lastmod>
+        <image:image><image:loc>https://wraven.org/imgs/team-office.jpg</image:loc></image:image>
+        <image:image><image:loc>https://wraven.org/imgs/2026/lab-1600.jpg</image:loc></image:image>
     </url>
     <url>
-        <loc>https://wraven.org/discord/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.8</priority>
-        <changefreq>weekly</changefreq>
+        <loc>https://wraven.org/work-with-us/</loc><lastmod>2026-11-23</lastmod>
+        <image:image><image:loc>https://wraven.org/imgs/2026/talk-1600.jpg</image:loc></image:image>
     </url>
+    <url><loc>https://wraven.org/research/</loc><lastmod>2026-11-22</lastmod></url>
     <url>
-        <loc>https://wraven.org/store/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.7</priority>
-        <changefreq>monthly</changefreq>
+        <loc>https://wraven.org/partners/</loc><lastmod>2026-11-23</lastmod>
+        <image:image><image:loc>https://wraven.org/imgs/2026/group-1600.jpg</image:loc></image:image>
     </url>
-    <url>
-        <loc>https://wraven.org/partners/</loc>
-        <lastmod>2026-07-22</lastmod>
-        <priority>0.7</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.org/disclosure/</loc>
-        <lastmod>2026-07-22</lastmod>
-        <priority>0.4</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.org/privacy/</loc>
-        <lastmod>2026-07-22</lastmod>
-        <priority>0.3</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.org/code_of_conduct</loc>
-        <lastmod>2026-08-31</lastmod>
-        <priority>0.4</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.org/ethics_agreement</loc>
-        <lastmod>2026-08-31</lastmod>
-        <priority>0.4</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.org/verify/</loc>
-        <lastmod>2026-11-11</lastmod>
-        <priority>0.3</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    
-    <!-- External Blog (hosted separately) -->
-    <url>
-        <loc>https://blog.wraven.org/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.8</priority>
-        <changefreq>weekly</changefreq>
-    </url>
-    
-    <!-- Public Resources -->
-    <url>
-        <loc>https://public.wraven.org/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.6</priority>
-        <changefreq>weekly</changefreq>
-    </url>
-    
-    <!-- External Links (Lower Priority) -->
-    <url>
-        <loc>https://wravenproject.github.io/ECXIncSite/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.5</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://github.com/WRAVENproject</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.4</priority>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://experiencewmu.wmich.edu/organization/wraven</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.6</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://wraven.myspreadshop.com/</loc>
-        <lastmod>2026-02-21</lastmod>
-        <priority>0.4</priority>
-        <changefreq>monthly</changefreq>
-    </url>
+    <url><loc>https://wraven.org/ethics_agreement/</loc><lastmod>2026-11-22</lastmod></url>
+    <url><loc>https://wraven.org/code_of_conduct/</loc><lastmod>2026-11-22</lastmod></url>
+    <url><loc>https://wraven.org/disclosure/</loc><lastmod>2026-11-22</lastmod></url>
+    <url><loc>https://wraven.org/privacy/</loc><lastmod>2026-11-22</lastmod></url>
+    <url><loc>https://wraven.org/verify/</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>

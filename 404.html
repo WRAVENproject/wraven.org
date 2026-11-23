@@ -2,140 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="WRAVEN">
-    <title>404 - Not Found | WRAVEN</title>
-    <meta name="description" content="The requested resource could not be located.">
-    <meta name="robots" content="noindex, nofollow">
-
-    <!-- Theme -->
-    <meta name="theme-color" content="#000000">
-
-    <!-- Icons -->
+    <title>Page not found | WRAVEN</title>
+    <meta name="description" content="There is no page at this address on wraven.org.">
+    <meta name="robots" content="noindex">
+    <!-- CHROME:HEAD:START -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <!-- The site is already dark. This tells the Dark Reader extension to leave it alone. -->
+    <meta name="darkreader-lock">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="onion-location" content="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion">
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
     <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
     <link rel="manifest" href="/manifest.json">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" href="/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css?v=1cdeadeeb5">
+    <script src="/assets/site.js?v=350fa56091" defer data-cfasync="false"></script>
+    <meta property="og:title" content="Page not found | WRAVEN">
+    <meta property="og:description" content="There is no page at this address on wraven.org.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://wraven.org/imgs/og-2026.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="WRAVEN">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The WRAVEN raven and wordmark on a dark background.">
+    <!-- CHROME:HEAD:END -->
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- ===== NAV ===== -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
-                <picture>
-                    <source srcset="/imgs/widelogo.webp" type="image/webp">
-                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager" width="3371" height="540">
-                </picture>
-                <span class="nav-logo-text">WRAVEN</span>
-            </a>
-            <div class="nav-links">
-                <a href="/#threats" class="nav-link">Threats</a>
-                <a href="/#operations" class="nav-link">Operations</a>
-                <a href="/#ctf" class="nav-link">CTF</a>
-                <a href="/#research" class="nav-link">Research</a>
-                <a href="/#security" class="nav-link">Security</a>
-                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                <a href="/#join" class="nav-cta">Join Us</a>
-            </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- ===== MOBILE MENU ===== -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner">
-            <a href="/#threats" class="mobile-link">Threats</a>
-            <a href="/#operations" class="mobile-link">Operations</a>
-            <a href="/#ctf" class="mobile-link">CTF</a>
-            <a href="/#research" class="mobile-link">Research</a>
-            <a href="/#security" class="mobile-link">Security</a>
-            <a href="/#join" class="mobile-link">Get Involved</a>
-            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
-            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
-            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
-            <div class="mobile-divider"></div>
-            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
-        </div>
-    </div>
-
-    <main id="main-content" class="subpage">
-        <div class="subpage-center">
-            <div class="error-card">
-                <div class="error-header">
-                    <div class="error-code">404</div>
-                    <span class="error-status">Not Found</span>
-                </div>
-                <div class="error-body">
-                    <p class="error-desc">Nothing here. This endpoint may have been moved, decommissioned, or never existed.</p>
-                    <div class="error-actions">
-                        <a href="/" class="btn btn-primary btn-sm">Return to Base</a>
-                        <a href="https://blog.wraven.org" class="btn btn-ghost btn-sm">Blog</a>
-                        <a href="https://discord.gg/uYkvSU8DHy" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Discord</a>
-                    </div>
-                </div>
-                <div class="error-divider"></div>
-                <div class="error-meta">
-                    <span>WRAVEN // wraven.org</span>
-                    <span>HTTP 404</span>
-                </div>
+    <!-- CHROME:HEADER:START -->
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+        <div class="utility">
+            <div class="wrap">
+                <span>Next meeting: <strong><time data-next-meeting="short">Mondays, 6:00 p.m.</time></strong><span class="wide-only">, 2225 Kohrman Hall</span> <a class="cal" href="/join/wraven-meetings.ics">Add to calendar</a></span>
+                <a class="wide-only" href="mailto:contact@wraven.org">contact@wraven.org</a>
             </div>
         </div>
+        <div class="wrap bar">
+            <a class="home" href="/" aria-label="WRAVEN home"><span class="mark" aria-hidden="true"></span><span class="home-word" aria-hidden="true"></span></a>
+            <nav class="site-nav" aria-label="Main">
+                <a href="/research/">Research</a>
+                <a href="/join/">Join</a>
+                <a href="/work-with-us/">Work with us</a>
+                <a href="/ethics_agreement/">Our rules</a>
+                <a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a>
+            </nav>
+        </div>
+    </header>
+    <!-- CHROME:HEADER:END -->
+    <main id="main" tabindex="-1">
+        <section class="doc-hero">
+            <div class="wrap">
+                <p class="label">Error 404</p>
+                <div>
+                    <h1>There is no page at this address</h1>
+                    <p class="intro">Check the address for a typo, or go to one of these pages.</p>
+                </div>
+            </div>
+        </section>
+        <section class="row dense" aria-labelledby="pages-h">
+            <div class="wrap">
+                <h2 class="label" id="pages-h">Pages</h2>
+                <div>
+                    <ul class="ticks">
+                        <li><strong><a href="/">The WRAVEN home page</a></strong></li>
+                        <li><strong><a href="/research/">Research</a></strong>, the threat reports that members write.</li>
+                        <li><strong><a href="/join/">Join</a></strong>, for the meeting time, the room, and what to bring.</li>
+                        <li><strong><a href="/work-with-us/">Work with us</a></strong>, for organizations, sponsors, and schools.</li>
+                    </ul>
+                    <p class="body" style="margin-top:1.5rem">If you are testing this site, read our <a href="/disclosure/">disclosure policy</a> first.</p>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <p class="footer-brand">WRAVEN</p>
-                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, & Networks</p>
-                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+    <!-- CHROME:FOOTER:START -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-id">
+                <p>WRAVEN, the Western Research Advisory for Vulnerabilities, Exploits &amp; Networks.</p>
+                <p>A registered student organization at Western Michigan University, Kalamazoo, Michigan.</p>
+                <p><a href="mailto:contact@wraven.org">contact@wraven.org</a></p>
+            </div>
+            <div class="foot-cols">
+                <div>
+                    <h2>Read</h2>
+                    <ul>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="https://blog.wraven.org">Blog</a></li>
+                        <li><a href="https://public.wraven.org">Watchtower</a></li>
+                        <li><a href="https://github.com/WRAVENproject">GitHub</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Resources</p>
-                    <a href="/research/" class="footer-link">Research</a>
-                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                <div>
+                    <h2>Take part</h2>
+                    <ul>
+                        <li><a href="/join/">Join</a></li>
+                        <li><a href="/work-with-us/">Work with us</a></li>
+                        <li><a href="/partners/">Supporters</a></li>
+                        <li><a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a></li>
+                        <li><a href="https://discord.gg/uYkvSU8DHy">Discord</a></li>
+                        <li><a href="https://experiencewmu.wmich.edu/organization/wraven">ExperienceWMU</a></li>
+                        <li><a href="https://linktr.ee/wravenproject">Linktree</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Community</p>
-                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
-                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
-                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
-                    <a href="/partners/" class="footer-link">Partners</a>
-                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Security</p>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/disclosure/" class="footer-link">Disclosure Policy</a>
-                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
-                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
-                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                <div>
+                    <h2>Rules</h2>
+                    <ul>
+                        <li><a href="/ethics_agreement/">Ethics agreement</a></li>
+                        <li><a href="/code_of_conduct/">Code of conduct</a></li>
+                        <li><a href="/disclosure/">Report a vulnerability</a></li>
+                        <li><a href="/privacy/">Privacy</a></li>
+                        <li><a href="/keys/wraven.asc">PGP key</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <span>&copy; 2024-2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
-                <span class="footer-uptime" hidden>Uptime <code id="uptime"></code></span>
+            <div class="foot-legal">
+                <span>&copy; 2024&ndash;2026 WRAVEN.</span>
+                <span>Fiscally sponsored by The Hack Foundation, a 501(c)(3) nonprofit.</span>
             </div>
         </div>
+        <span class="foot-word" aria-hidden="true"></span>
     </footer>
-
-    <script src="/script.js"></script>
+    <!-- Prerender likely next pages when a reader hovers a link. Pages with
+         third-party scripts or redirects are left out on purpose. -->
+    <script type="speculationrules" data-cfasync="false">
+    {"prerender": [{"where": {"or": [
+      {"href_matches": "/"}, {"href_matches": "/join/"}, {"href_matches": "/research/"},
+      {"href_matches": "/partners/"}, {"href_matches": "/disclosure/"}, {"href_matches": "/privacy/"},
+      {"href_matches": "/code_of_conduct/"}, {"href_matches": "/ethics_agreement/"}
+    ]}, "eagerness": "moderate"}]}
+    </script>
+    <!-- CHROME:FOOTER:END -->
 </body>
 </html>

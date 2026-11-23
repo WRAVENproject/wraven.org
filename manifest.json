@@ -1,19 +1,18 @@
 {
-  "name": "WRAVEN - Western Research Advisory for Vulnerabilities, Exploits, & Networks",
+  "name": "WRAVEN",
   "short_name": "WRAVEN",
-  "description": "Student-led cybersecurity research and CTF team at Western Michigan University.",
+  "description": "Student security research at Western Michigan University.",
   "lang": "en-US",
-
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-
-  "background_color": "#0b0b0d",
-  "theme_color": "#0b0b0d",
-
-  "categories": ["education", "security", "research"],
-
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "categories": [
+    "education",
+    "security",
+    "research"
+  ],
   "icons": [
     {
       "src": "/imgs/icon-192x192.png",
@@ -40,14 +39,36 @@
       "purpose": "maskable"
     }
   ],
-
   "screenshots": [
     {
-      "src": "/imgs/og-image.png",
+      "src": "/imgs/og-2026.png",
       "sizes": "1200x630",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "WRAVEN platform overview"
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Join a meeting",
+      "short_name": "Join",
+      "url": "/join/",
+      "icons": [
+        {
+          "src": "/imgs/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Work with us",
+      "short_name": "Work with us",
+      "url": "/work-with-us/",
+      "icons": [
+        {
+          "src": "/imgs/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

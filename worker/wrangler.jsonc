@@ -1,0 +1,20 @@
+{
+  // WRAVEN inquiry Worker.
+  // Local demo: `npx wrangler dev --port 8788` from this folder serves the
+  // whole site from the repository root and runs src/index.js for /api/*.
+  // Local demo only. Never deploy this file: its "assets" block uploads the
+  // whole repo. Production uses wrangler.production.jsonc.
+  "name": "wraven-inquiry",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "..",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "wraven-inquiries", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "migrations" }
+  ],
+  "observability": { "enabled": true }
+}

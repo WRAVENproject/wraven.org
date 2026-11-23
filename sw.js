@@ -1,20 +1,18 @@
-const CACHE_VERSION = 'wraven-v1.2.0';
+const CACHE_VERSION = 'wraven-v2.0.0';
 
 const PRECACHE = [
   '/manifest.json',
   '/imgs/littlelogo.png',
   '/imgs/icon-192x192.png',
   '/imgs/icon-512x512.png',
-  '/imgs/widelogo.png',
-  '/imgs/og-image.png'
+  '/fonts/Archivo-latin.woff2',
+  '/assets/site.css',
+  '/assets/site.js'
 ];
 
 const BYPASS_HOSTS = [
   'dashboard.wraven.org',
-  'api.ipify.org',
-  'ipapi.co',
-  'httpbin.org',
-  'ipinfo.io'
+  'challenges.cloudflare.com'
 ];
 
 const FONT_HOSTS = [
@@ -72,7 +70,7 @@ async function networkFirst(request) {
     const cached = await caches.match(request);
     if (cached) return cached;
     if (request.destination === 'document') {
-      return new Response('WRAVEN — Offline', { status: 503, headers: { 'Content-Type': 'text/plain' } });
+      return new Response('WRAVEN — Offline', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
     return Response.error();
   }

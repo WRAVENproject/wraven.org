@@ -1,0 +1,56 @@
+name: Publish site
+
+# Publishes wraven.org to GitHub Pages without comments.
+# scripts/publish/build.mjs makes the clean copy. The repository keeps its comments.
+
+on:
+  push:
+    branches: [main]
+  # The feed bots push with the default token, and those pushes do not start
+  # other workflows. So publish again each time a feed workflow finishes.
+  workflow_run:
+    workflows: ["Daily threat feed update", "Weekly research mirror update"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install the publish tools
+        working-directory: scripts/publish
+        run: npm ci --no-audit --no-fund
+
+      - name: Make the clean copy
+        run: node scripts/publish/build.mjs _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

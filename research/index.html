@@ -2,231 +2,247 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="WRAVEN">
-    <title>Threat Research | WRAVEN</title>
-    <meta name="description" content="WRAVEN threat research from Western Michigan University students: APT tracking, malware analysis, ransomware breakdowns, and red-team writeups. Updated weekly from our beehiiv newsletter.">
-    <meta name="robots" content="index, follow">
+    <title>Threat research by WMU students | WRAVEN</title>
+    <meta name="description" content="Threat reports, research papers, and malware reports written by WRAVEN members at Western Michigan University. The full text of each one is on blog.wraven.org.">
     <link rel="canonical" href="https://wraven.org/research/">
-
-    <!-- Theme -->
-    <meta name="theme-color" content="#000000">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Threat Research | WRAVEN">
-    <meta property="og:description" content="APT tracking, malware analysis, ransomware breakdowns, and red-team writeups from WRAVEN students at Western Michigan University.">
-    <meta property="og:image" content="https://wraven.org/imgs/og-image.png">
+    <meta property="og:title" content="Threat research by WMU students | WRAVEN">
+    <meta property="og:description" content="Threat research written by WRAVEN members at Western Michigan University.">
+    <meta property="og:image" content="https://wraven.org/imgs/og-2026.png">
     <meta property="og:url" content="https://wraven.org/research/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="WRAVEN">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Threat Research | WRAVEN">
-    <meta name="twitter:description" content="APT tracking, malware analysis, ransomware breakdowns, and red-team writeups from WRAVEN students at Western Michigan University.">
-    <meta name="twitter:image" content="https://wraven.org/imgs/og-image.png">
-
-    <!-- Icons -->
+    <!-- CHROME:HEAD:START -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <!-- The site is already dark. This tells the Dark Reader extension to leave it alone. -->
+    <meta name="darkreader-lock">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="onion-location" content="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion">
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
     <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
     <link rel="manifest" href="/manifest.json">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" href="/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css?v=1cdeadeeb5">
+    <script src="/assets/site.js?v=350fa56091" defer data-cfasync="false"></script>
+    <meta property="og:site_name" content="WRAVEN">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The WRAVEN raven and wordmark on a dark background.">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "WRAVEN", "item": "https://wraven.org/"}, {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://wraven.org/research/"}]}</script>
+    <!-- CHROME:HEAD:END -->
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- ===== NAV ===== -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
-                <picture>
-                    <source srcset="/imgs/widelogo.webp" type="image/webp">
-                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager" width="3371" height="540">
-                </picture>
-                <span class="nav-logo-text">WRAVEN</span>
-            </a>
-            <div class="nav-links">
-                <a href="/#threats" class="nav-link">Threats</a>
-                <a href="/#operations" class="nav-link">Operations</a>
-                <a href="/#ctf" class="nav-link">CTF</a>
-                <a href="/#research" class="nav-link">Research</a>
-                <a href="/#security" class="nav-link">Security</a>
-                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                <a href="/#join" class="nav-cta">Join Us</a>
+    <!-- CHROME:HEADER:START -->
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+        <div class="utility">
+            <div class="wrap">
+                <span>Next meeting: <strong><time data-next-meeting="short">Mondays, 6:00 p.m.</time></strong><span class="wide-only">, 2225 Kohrman Hall</span> <a class="cal" href="/join/wraven-meetings.ics">Add to calendar</a></span>
+                <a class="wide-only" href="mailto:contact@wraven.org">contact@wraven.org</a>
             </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span>
-            </button>
         </div>
-    </nav>
-
-    <!-- ===== MOBILE MENU ===== -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner">
-            <a href="/#threats" class="mobile-link">Threats</a>
-            <a href="/#operations" class="mobile-link">Operations</a>
-            <a href="/#ctf" class="mobile-link">CTF</a>
-            <a href="/#research" class="mobile-link">Research</a>
-            <a href="/#security" class="mobile-link">Security</a>
-            <a href="/#join" class="mobile-link">Get Involved</a>
-            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
-            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
-            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
-            <div class="mobile-divider"></div>
-            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        <div class="wrap bar">
+            <a class="home" href="/" aria-label="WRAVEN home"><span class="mark" aria-hidden="true"></span><span class="home-word" aria-hidden="true"></span></a>
+            <nav class="site-nav" aria-label="Main">
+                <a href="/research/" aria-current="page">Research</a>
+                <a href="/join/">Join</a>
+                <a href="/work-with-us/">Work with us</a>
+                <a href="/ethics_agreement/">Our rules</a>
+                <a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a>
+            </nav>
         </div>
-    </div>
-
-    <main id="main-content" class="subpage">
-        <div class="doc-container">
-            <a href="/" class="doc-back">&larr; Back to WRAVEN</a>
-
-            <div class="doc-header">
-                <p class="label-mono">Research</p>
-                <h1 class="doc-title">Threat Research</h1>
+    </header>
+    <!-- CHROME:HEADER:END -->
+    <main id="main" tabindex="-1">
+        <section class="doc-hero">
+            <div class="wrap">
+                <p class="label">Since February 2025</p>
+                <div>
+                    <h1>Threat research</h1>
+                    <p class="intro">Members write these reports. The full text of each one is on <a href="https://blog.wraven.org">blog.wraven.org</a>.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="doc-section">
-                <p>WRAVEN students publish threat research on <a href="https://blog.wraven.org" target="_blank" rel="noopener noreferrer">blog.wraven.org</a>. This page mirrors our APT reports, malware analysis, ransomware breakdowns, and red-team writeups, and refreshes automatically each week.</p>
-                <p><a href="https://blog.wraven.org" class="text-link" target="_blank" rel="noopener noreferrer">All publications &rarr;</a></p>
-            </div>
-
-            <div class="research-grid">
+        <section class="row" aria-labelledby="reports-h">
+            <div class="wrap">
+                <div>
+                    <h2 class="label" id="reports-h">Reports</h2>
+                    <p class="label"><a href="https://blog.wraven.org">All posts on the blog</a></p>
+                </div>
+                <div class="research-grid">
                 <!-- RESEARCH-FEED:START - cards below are auto-updated weekly from beehiiv. Do not edit by hand. -->
-                <a href="https://blog.wraven.org/p/the-phone-is-the-payload" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
+                <a href="https://blog.wraven.org/p/the-phone-is-the-payload" class="research-card">
                     <h3 class="research-title">The Phone Is the Payload</h3>
-                    <p class="research-desc">Silent Ransom Group&#x27;s Callback Extortion Against Law Firms</p>
+                    <p class="research-desc">Silent Ransom Group&#x27;s callback extortion against law firms</p>
                     <span class="research-meta">Jun 2026</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
+                <a href="https://blog.wraven.org/p/wraven-intel-brief-stryker-attack" class="research-card">
                     <h3 class="research-title">WRAVEN Intel Brief</h3>
-                    <p class="research-desc">Stryker Cyber Incident and Handala / Iran-Linked Activity</p>
+                    <p class="research-desc">The Stryker incident and Iran-linked Handala activity</p>
                     <span class="research-meta">Mar 2026</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Research Paper</span>
+                <a href="https://blog.wraven.org/p/qilin-a-look-inside-a-modern-ransomware-operation" class="research-card">
                     <h3 class="research-title">Qilin: A Look Inside a Modern Ransomware Operation</h3>
-                    <p class="research-desc">Inside the operations of a fast-evolving ransomware-as-a-service network.</p>
+                    <p class="research-desc">How a ransomware-as-a-service group runs</p>
                     <span class="research-meta">Oct 2025</span>
+                    <span class="research-tag">Research paper</span>
                 </a>
-                <a href="https://blog.wraven.org/p/disrupting-a-phishing-operation-technical-breakdown" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Red Team</span>
-                    <h3 class="research-title">Disrupting a Phishing Operation: Technical Breakdown</h3>
-                    <p class="research-desc">How we found, dissected, and crippled an active phishing site targeting Illinois residents: breaking down their scam, exposing their backend, and trashing their data.</p>
+                <a href="https://blog.wraven.org/p/the-ransomware-boom-isn-t-slowing-down-here-s-who-s-getting-hit-84ee" class="research-card">
+                    <h3 class="research-title">The Ransomware Boom Isn&#x27;t Slowing Down</h3>
+                    <p class="research-desc">Which organizations ransomware groups hit in 2025, and how Michigan is affected</p>
                     <span class="research-meta">Jul 2025</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/the-ransomware-boom-isn-t-slowing-down-here-s-who-s-getting-hit-84ee" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
-                    <h3 class="research-title">The Ransomware Boom Isn&#x27;t Slowing Down: Here&#x27;s Who&#x27;s Getting Hit</h3>
-                    <p class="research-desc">Ransomware attacks in the U.S. are up 49% in 2025, with SMBs as primary targets. WRAVEN breaks down who’s behind it, why it’s working, and how Michigan is being hit.</p>
-                    <span class="research-meta">Jul 2025</span>
-                </a>
-                <a href="https://blog.wraven.org/p/iranian-cyber-actors-escalate-targeting-of-u-s-networks" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
+                <a href="https://blog.wraven.org/p/iranian-cyber-actors-escalate-targeting-of-u-s-networks" class="research-card">
                     <h3 class="research-title">Iranian Cyber Actors Escalate Targeting of U.S. Networks</h3>
-                    <p class="research-desc">U.S. networks face a growing wave of Iranian-aligned cyber activity.</p>
+                    <p class="research-desc">Iran-aligned activity against U.S. networks</p>
                     <span class="research-meta">Jul 2025</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
+                <a href="https://blog.wraven.org/p/scattered-spider-tactics-targets-and-wraven-s-ongoing-threat-intel-tracking" class="research-card">
                     <h3 class="research-title">Scattered Spider: Tactics, Targets, and WRAVEN’s Ongoing Threat Intel Tracking</h3>
-                    <p class="research-desc">How is a small hacker crew pulling off multi-million dollar breaches, and how are our WMU students tracking them in real time?</p>
+                    <p class="research-desc">How a small crew pulls off multi-million dollar breaches</p>
                     <span class="research-meta">Jul 2025</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/red-team-corner-phishing" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Red Team</span>
+                <a href="https://blog.wraven.org/p/red-team-corner-phishing" class="research-card">
                     <h3 class="research-title">Red Team Corner: Phishing</h3>
-                    <p class="research-desc">Crafting Phishing Payloads That Actually Get Clicked</p>
+                    <p class="research-desc">What makes a phishing lure believable, from a red team's view</p>
                     <span class="research-meta">May 2025</span>
+                    <span class="research-tag">Red team</span>
                 </a>
-                <a href="https://blog.wraven.org/p/wraven-threat-report-loki-c2" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Malware Report</span>
-                    <h3 class="research-title">WRAVEN Threat Report -Loki C2</h3>
-                    <p class="research-desc">How Malware Can Hide Inside Trusted Apps</p>
+                <a href="https://blog.wraven.org/p/wraven-threat-report-loki-c2" class="research-card">
+                    <h3 class="research-title">WRAVEN Threat Report: Loki C2</h3>
+                    <p class="research-desc">How the Loki C2 red-team tool hides inside signed Electron apps</p>
                     <span class="research-meta">Apr 2025</span>
+                    <span class="research-tag">Malware report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/lazarus-investigation" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Research Paper</span>
+                <a href="https://blog.wraven.org/p/lazarus-investigation" class="research-card">
                     <h3 class="research-title">Analyzing the Behavior of the APT Lazarus Group</h3>
-                    <p class="research-desc">A multi-month investigation by the WRAVEN Team.</p>
+                    <p class="research-desc">A multi-month investigation of the North Korean group</p>
                     <span class="research-meta">Mar 2025</span>
+                    <span class="research-tag">Research paper</span>
                 </a>
-                <a href="https://blog.wraven.org/p/lazarus-group-apt-update" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">APT Report</span>
-                    <h3 class="research-title">Lazarus Group: APT UPDATE</h3>
-                    <p class="research-desc">What&#x27;s been happening with the notorious North Korean group</p>
+                <a href="https://blog.wraven.org/p/lazarus-group-apt-update" class="research-card">
+                    <h3 class="research-title">Lazarus Group: APT Update</h3>
+                    <p class="research-desc">Recent activity of the North Korean group</p>
                     <span class="research-meta">Mar 2025</span>
+                    <span class="research-tag">Threat report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/applejeus-malware-report" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Malware Report</span>
+                <a href="https://blog.wraven.org/p/applejeus-malware-report" class="research-card">
                     <h3 class="research-title">AppleJeus Malware Report</h3>
-                    <p class="research-desc">AppleJeus is a C2 connected malware spread by the North Korean &quot;Lazarus&quot; group.</p>
+                    <p class="research-desc">Malware that the Lazarus Group spreads through fake trading apps</p>
                     <span class="research-meta">Feb 2025</span>
+                    <span class="research-tag">Malware report</span>
                 </a>
-                <a href="https://blog.wraven.org/p/malware-report-ghostspider" class="research-card" target="_blank" rel="noopener noreferrer">
-                    <span class="research-tag">Malware Report</span>
+                <a href="https://blog.wraven.org/p/malware-report-ghostspider" class="research-card">
                     <h3 class="research-title">Malware Report: GhostSpider</h3>
-                    <p class="research-desc">Learn about Chinese malware from the APT &quot;SaltTyphoon&quot;</p>
+                    <p class="research-desc">A backdoor used by the Chinese group Salt Typhoon</p>
                     <span class="research-meta">Feb 2025</span>
+                    <span class="research-tag">Malware report</span>
                 </a>
                 <!-- RESEARCH-FEED:END -->
+                </div>
             </div>
+        </section>
 
-        </div>
+        <section class="row" aria-labelledby="tools-h">
+            <div class="wrap">
+                <div>
+                    <h2 class="label" id="tools-h">Tools and data</h2>
+                    <p class="label"><a href="https://github.com/WRAVENproject">WRAVEN on GitHub</a></p>
+                </div>
+                <div class="tools">
+                    <div>
+                        <h3><a href="https://public.wraven.org">Watchtower</a></h3>
+                        <div>
+                            <p>A public threat-intelligence dashboard that we run on OpenCTI. Anyone can open it. It collects public threat feeds such as abuse.ch ThreatFox and URLhaus, the CISA Known Exploited Vulnerabilities catalog, MITRE ATT&amp;CK, and the NIST National Vulnerability Database.</p>
+                            <p>On November 21, 2026, it showed more than 500,000 indicators of compromise.</p>
+                            <figure>
+                                <picture><source type="image/webp" srcset="/imgs/2026/watchtower-1200.webp 1200w" sizes="(min-width: 1100px) 44rem, 100vw"><img src="/imgs/2026/watchtower-1200.jpg" srcset="/imgs/2026/watchtower-1200.jpg 1200w" sizes="(min-width: 1100px) 44rem, 100vw" width="2400" height="1742" loading="lazy" alt="Screenshot of the Watchtower dashboard. A row of counts for vulnerabilities, reports, threat actors, indicators of compromise, malware samples, and URLs sits above charts of targeted countries, active threat actors, and trending malware."></picture>
+                                <figcaption>The Watchtower dashboard at <a href="https://public.wraven.org">public.wraven.org</a>.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div>
+                        <h3><a href="https://github.com/WRAVENproject/slantwise">slantwise</a></h3>
+                        <div>
+                            <p>Estimates where an audio recording was made. It matches the Doppler curves of propeller planes in the recording against public ADS-B flight data.</p>
+                            <p>Open source under AGPL-3.0. Released in November 2026, and still in beta.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3><a href="https://github.com/WRAVENproject/field-ops-docs">field-ops-docs</a></h3>
+                        <div>
+                            <p>Cheat sheets that sync to members' Kali machines. &ldquo;If it's in here, it's because someone actually used it.&rdquo; (from its README)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <p class="footer-brand">WRAVEN</p>
-                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, & Networks</p>
-                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+    <!-- CHROME:FOOTER:START -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-id">
+                <p>WRAVEN, the Western Research Advisory for Vulnerabilities, Exploits &amp; Networks.</p>
+                <p>A registered student organization at Western Michigan University, Kalamazoo, Michigan.</p>
+                <p><a href="mailto:contact@wraven.org">contact@wraven.org</a></p>
+            </div>
+            <div class="foot-cols">
+                <div>
+                    <h2>Read</h2>
+                    <ul>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="https://blog.wraven.org">Blog</a></li>
+                        <li><a href="https://public.wraven.org">Watchtower</a></li>
+                        <li><a href="https://github.com/WRAVENproject">GitHub</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Resources</p>
-                    <a href="/research/" class="footer-link">Research</a>
-                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                <div>
+                    <h2>Take part</h2>
+                    <ul>
+                        <li><a href="/join/">Join</a></li>
+                        <li><a href="/work-with-us/">Work with us</a></li>
+                        <li><a href="/partners/">Supporters</a></li>
+                        <li><a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a></li>
+                        <li><a href="https://discord.gg/uYkvSU8DHy">Discord</a></li>
+                        <li><a href="https://experiencewmu.wmich.edu/organization/wraven">ExperienceWMU</a></li>
+                        <li><a href="https://linktr.ee/wravenproject">Linktree</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Community</p>
-                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
-                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
-                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
-                    <a href="/partners/" class="footer-link">Partners</a>
-                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Security</p>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/disclosure/" class="footer-link">Disclosure Policy</a>
-                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
-                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
-                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                <div>
+                    <h2>Rules</h2>
+                    <ul>
+                        <li><a href="/ethics_agreement/">Ethics agreement</a></li>
+                        <li><a href="/code_of_conduct/">Code of conduct</a></li>
+                        <li><a href="/disclosure/">Report a vulnerability</a></li>
+                        <li><a href="/privacy/">Privacy</a></li>
+                        <li><a href="/keys/wraven.asc">PGP key</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <span>&copy; 2024-2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
-                <span class="footer-uptime" hidden>Uptime <code id="uptime"></code></span>
+            <div class="foot-legal">
+                <span>&copy; 2024&ndash;2026 WRAVEN.</span>
+                <span>Fiscally sponsored by The Hack Foundation, a 501(c)(3) nonprofit.</span>
             </div>
         </div>
+        <span class="foot-word" aria-hidden="true"></span>
     </footer>
-
-    <script src="/script.js"></script>
+    <!-- Prerender likely next pages when a reader hovers a link. Pages with
+         third-party scripts or redirects are left out on purpose. -->
+    <script type="speculationrules" data-cfasync="false">
+    {"prerender": [{"where": {"or": [
+      {"href_matches": "/"}, {"href_matches": "/join/"}, {"href_matches": "/research/"},
+      {"href_matches": "/partners/"}, {"href_matches": "/disclosure/"}, {"href_matches": "/privacy/"},
+      {"href_matches": "/code_of_conduct/"}, {"href_matches": "/ethics_agreement/"}
+    ]}, "eagerness": "moderate"}]}
+    </script>
+    <!-- CHROME:FOOTER:END -->
 </body>
 </html>

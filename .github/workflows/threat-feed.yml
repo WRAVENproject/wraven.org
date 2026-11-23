@@ -6,6 +6,11 @@ on:
     - cron: "0 13 * * *"
   workflow_dispatch: {}
 
+# Both bots commit index.html, so they share one queue.
+concurrency:
+  group: site-bots
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -28,4 +33,5 @@ jobs:
           git config user.email "contact@wraven.org"
           git add index.html
           git commit -m "chore: daily threat feed update $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push

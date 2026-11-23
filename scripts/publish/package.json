@@ -1,0 +1,11 @@
+{
+  "name": "wraven-publish",
+  "private": true,
+  "type": "module",
+  "description": "Makes the published copy of wraven.org without comments.",
+  "dependencies": {
+    "clean-css": "5.3.3",
+    "html-minifier-terser": "7.2.0",
+    "terser": "5.36.0"
+  }
+}

@@ -9,3 +9,9 @@ Thumbs.db
 # Python
 __pycache__/
 *.pyc
+
+# Publish build
+_site/
+scripts/publish/node_modules/
+
+worker/node_modules/

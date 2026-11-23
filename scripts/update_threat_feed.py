@@ -36,14 +36,16 @@ UPDATED_START = "<!-- FEED-UPDATED:START -->"
 UPDATED_END = "<!-- FEED-UPDATED:END -->"
 
 # (keyword in vulnerabilityName/shortDescription, type label, MITRE technique)
+# The first match wins. Specific weakness classes come first. The broad
+# auth words come last, because KEV descriptions often say "unauthenticated
+# attacker" for bugs that are not authentication bypasses.
 TYPE_RULES = [
+    ("deserialization", "DESERIALIZATION", "T1190"),
+    ("hard-coded credentials", "HARDCODED-CREDS", "T1078"),
+    ("hardcoded credentials", "HARDCODED-CREDS", "T1078"),
     ("command injection", "INJECTION", "T1190"),
     ("sql injection", "INJECTION", "T1190"),
     ("injection", "INJECTION", "T1190"),
-    ("authentication", "AUTH-BYPASS", "T1190"),
-    ("authorization", "AUTH-BYPASS", "T1190"),
-    ("access control", "AUTH-BYPASS", "T1190"),
-    ("deserialization", "EXPLOIT", "T1190"),
     ("path traversal", "TRAVERSAL", "T1190"),
     ("directory traversal", "TRAVERSAL", "T1190"),
     ("ssrf", "SSRF", "T1190"),
@@ -57,6 +59,11 @@ TYPE_RULES = [
     ("type confusion", "MEM-CORRUPT", "T1203"),
     ("code execution", "EXPLOIT", "T1190"),
     ("phishing", "PHISHING", "T1566"),
+    ("authentication bypass", "AUTH-BYPASS", "T1190"),
+    ("missing authentication", "AUTH-BYPASS", "T1190"),
+    ("improper authentication", "AUTH-BYPASS", "T1190"),
+    ("authorization", "AUTH-BYPASS", "T1190"),
+    ("access control", "AUTH-BYPASS", "T1190"),
 ]
 
 
@@ -68,37 +75,28 @@ def classify(vuln):
     return "EXPLOIT", "T1190"
 
 
-def severity(vuln):
-    # Everything in KEV is exploited in the wild; ransomware-linked = critical.
-    if vuln.get("knownRansomwareCampaignUse", "").lower() == "known":
-        return "critical"
-    text = vuln.get("vulnerabilityName", "").lower()
-    if any(k in text for k in ("remote code execution", "authentication", "out-of-bounds", "deserialization")):
-        return "critical"
-    return "high"
+def ransomware(vuln):
+    # The only rating shown on the site is CISA's own field: whether the flaw
+    # is known to be used in ransomware campaigns. WRAVEN adds no severity.
+    return vuln.get("knownRansomwareCampaignUse", "").lower() == "known"
 
 
 def row(vuln):
     cve = vuln["cveID"]
-    label, technique = classify(vuln)
-    sev = severity(vuln)
-    title = f'{vuln["vendorProject"]} {vuln["product"]}: {vuln["vulnerabilityName"]}'
-    # Trim redundant vendor/product prefixes KEV often duplicates in the name
+    used = ransomware(vuln)
+    product = f'{vuln["vendorProject"]} {vuln["product"]}'
     name = vuln["vulnerabilityName"]
-    prefix = f'{vuln["vendorProject"]} {vuln["product"]}'
-    if name.lower().startswith(prefix.lower()):
-        title = name
-    if len(title) > 110:
-        title = title[:107].rstrip() + "…"
-    return f"""                    <a href="https://nvd.nist.gov/vuln/detail/{escape(cve)}" class="threat-row" data-severity="{sev}" target="_blank" rel="noopener noreferrer">
-                        <div class="threat-indicator"></div>
+    # KEV names often repeat the vendor and product. Show them once.
+    if name.lower().startswith(product.lower()):
+        name = name[len(product):].lstrip(" :-")
+    if len(name) > 110:
+        name = name[:107].rstrip() + "…"
+    flag = '\n                        <span class="threat-flag">Used in ransomware</span>' if used else ""
+    return f"""                    <a href="https://nvd.nist.gov/vuln/detail/{escape(cve)}" class="threat-row" data-ransomware="{'yes' if used else 'no'}" target="_blank" rel="noopener noreferrer">
                         <time class="threat-date">{escape(vuln["dateAdded"])}</time>
-                        <span class="threat-type">{escape(label)}</span>
-                        <span class="threat-title">{escape(title)}</span>
-                        <div class="threat-meta-tags">
-                            <span class="ttag">{escape(cve)}</span>
-                            <span class="ttag">{escape(technique)}</span>
-                        </div>
+                        <span class="threat-product">{escape(product)}</span>
+                        <span class="threat-title">{escape(name)}</span>
+                        <span class="threat-cve">{escape(cve)}</span>{flag}
                     </a>"""
 
 

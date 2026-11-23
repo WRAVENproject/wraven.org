@@ -6,6 +6,11 @@ on:
     - cron: "15 13 * * 1"
   workflow_dispatch: {}
 
+# Both bots commit index.html, so they share one queue.
+concurrency:
+  group: site-bots
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -24,7 +29,7 @@ jobs:
         run: |
           today="$(date -u +%Y-%m-%d)"
 
-          if git diff --quiet research/index.html; then
+          if git diff --quiet research/index.html index.html; then
             echo "No changes to commit."
             exit 0
           fi
@@ -43,6 +48,7 @@ jobs:
 
           git config user.name "wraven-bot"
           git config user.email "contact@wraven.org"
-          git add research/index.html sitemap.xml
+          git add research/index.html index.html sitemap.xml
           git commit -m "chore: weekly research mirror update ${today}"
+          git pull --rebase origin main
           git push

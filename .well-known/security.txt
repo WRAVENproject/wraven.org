@@ -7,7 +7,7 @@ Encryption: https://wraven.org/keys/wraven.asc
 Preferred-Languages: en
 Canonical: https://wraven.org/.well-known/security.txt
 Policy: https://wraven.org/disclosure/
-Hiring: https://wraven.org/#join
+Hiring: https://wraven.org/work-with-us/#recruiters
 
 # Scope, rules of engagement, safe harbor, and response timeline
 # are documented at https://wraven.org/disclosure/

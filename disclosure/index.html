@@ -2,195 +2,213 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="WRAVEN">
-    <title>Vulnerability Disclosure Policy | WRAVEN</title>
-    <meta name="description" content="WRAVEN's vulnerability disclosure policy: scope, rules of engagement, safe harbor, and response timeline for reporting security issues in WRAVEN infrastructure.">
-    <meta name="robots" content="index, follow">
+    <title>Vulnerability disclosure policy | WRAVEN</title>
+    <meta name="description" content="How to report a security vulnerability in WRAVEN infrastructure, what is in scope, and how fast we acknowledge reports.">
     <link rel="canonical" href="https://wraven.org/disclosure/">
-
-    <!-- Theme -->
-    <meta name="theme-color" content="#000000">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Vulnerability Disclosure Policy | WRAVEN">
-    <meta property="og:description" content="Scope, rules of engagement, safe harbor, and response timeline for reporting security issues in WRAVEN infrastructure.">
-    <meta property="og:image" content="https://wraven.org/imgs/og-image.png">
-    <meta property="og:url" content="https://wraven.org/disclosure/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="WRAVEN">
-
-    <!-- Icons -->
+    <meta property="og:title" content="Vulnerability disclosure policy | WRAVEN">
+    <meta property="og:image" content="https://wraven.org/imgs/og-2026.png">
+    <!-- CHROME:HEAD:START -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <!-- The site is already dark. This tells the Dark Reader extension to leave it alone. -->
+    <meta name="darkreader-lock">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="onion-location" content="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion">
     <link rel="icon" type="image/png" href="/imgs/littlelogo.png">
     <link rel="apple-touch-icon" href="/imgs/icon-192x192.png">
     <link rel="manifest" href="/manifest.json">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" href="/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css?v=1cdeadeeb5">
+    <script src="/assets/site.js?v=350fa56091" defer data-cfasync="false"></script>
+    <meta property="og:description" content="How to report a security vulnerability in WRAVEN infrastructure, what is in scope, and how fast we acknowledge reports.">
+    <meta property="og:url" content="https://wraven.org/disclosure/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="WRAVEN">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The WRAVEN raven and wordmark on a dark background.">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "WRAVEN", "item": "https://wraven.org/"}, {"@type": "ListItem", "position": 2, "name": "Vulnerability disclosure", "item": "https://wraven.org/disclosure/"}]}</script>
+    <!-- CHROME:HEAD:END -->
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- ===== NAV ===== -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo" aria-label="WRAVEN Home">
-                <picture>
-                    <source srcset="/imgs/widelogo.webp" type="image/webp">
-                    <img src="/imgs/widelogo.png" alt="WRAVEN" class="nav-logo-img" loading="eager" width="3371" height="540">
-                </picture>
-                <span class="nav-logo-text">WRAVEN</span>
-            </a>
-            <div class="nav-links">
-                <a href="/#threats" class="nav-link">Threats</a>
-                <a href="/#operations" class="nav-link">Operations</a>
-                <a href="/#ctf" class="nav-link">CTF</a>
-                <a href="/#research" class="nav-link">Research</a>
-                <a href="/#security" class="nav-link">Security</a>
-                <a href="https://blog.wraven.org" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                <a href="/#join" class="nav-cta">Join Us</a>
+    <!-- CHROME:HEADER:START -->
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+        <div class="utility">
+            <div class="wrap">
+                <span>Next meeting: <strong><time data-next-meeting="short">Mondays, 6:00 p.m.</time></strong><span class="wide-only">, 2225 Kohrman Hall</span> <a class="cal" href="/join/wraven-meetings.ics">Add to calendar</a></span>
+                <a class="wide-only" href="mailto:contact@wraven.org">contact@wraven.org</a>
             </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span>
-            </button>
         </div>
-    </nav>
-
-    <!-- ===== MOBILE MENU ===== -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner">
-            <a href="/#threats" class="mobile-link">Threats</a>
-            <a href="/#operations" class="mobile-link">Operations</a>
-            <a href="/#ctf" class="mobile-link">CTF</a>
-            <a href="/#research" class="mobile-link">Research</a>
-            <a href="/#security" class="mobile-link">Security</a>
-            <a href="/#join" class="mobile-link">Get Involved</a>
-            <a href="https://blog.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Blog</a>
-            <a href="https://public.wraven.org" class="mobile-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-            <a href="https://github.com/WRAVENproject" class="mobile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://wraven.myspreadshop.com" class="mobile-link" target="_blank" rel="noopener noreferrer">Store</a>
-            <a href="https://hcb.hackclub.com/donations/start/wraven" class="mobile-link" target="_blank" rel="noopener noreferrer">Donate</a>
-            <div class="mobile-divider"></div>
-            <a href="https://discord.gg/uYkvSU8DHy" class="mobile-link mobile-cta" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        <div class="wrap bar">
+            <a class="home" href="/" aria-label="WRAVEN home"><span class="mark" aria-hidden="true"></span><span class="home-word" aria-hidden="true"></span></a>
+            <nav class="site-nav" aria-label="Main">
+                <a href="/research/">Research</a>
+                <a href="/join/">Join</a>
+                <a href="/work-with-us/">Work with us</a>
+                <a href="/ethics_agreement/" aria-current="true">Our rules</a>
+                <a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a>
+            </nav>
         </div>
-    </div>
-
-    <main id="main-content" class="subpage">
-        <div class="doc-container">
-            <a href="/" class="doc-back">&larr; Back to WRAVEN</a>
-
-            <div class="doc-header">
-                <h1 class="doc-title">Vulnerability Disclosure Policy</h1>
-                <p class="doc-meta">Last Updated: July 22, 2026</p>
+    </header>
+    <!-- CHROME:HEADER:END -->
+    <main id="main" tabindex="-1">
+        <section class="doc-hero">
+            <div class="wrap">
+                <p class="label">For wraven.org and its subdomains</p>
+                <div>
+                    <h1>Vulnerability disclosure policy</h1>
+                    <p class="meta">Version 1.2. In effect since <time datetime="2026-07-22">July 22, 2026</time>.</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Overview -->
-            <div class="doc-section">
-                <h2 class="doc-section-heading">Overview</h2>
-                <p>WRAVEN supports good-faith security research and responsible disclosure. If you find a vulnerability in our infrastructure, report it to <a href="mailto:contact@wraven.org">contact@wraven.org</a>. Encrypt sensitive reports with our <a href="/keys/wraven.asc">PGP key</a>.</p>
-                <p>Machine-readable version: <a href="/.well-known/security.txt"><code>/.well-known/security.txt</code></a></p>
+        <section class="doc-row" aria-labelledby="overview-h">
+            <div class="wrap">
+                <h2 id="overview-h">Overview</h2>
+                <div class="text">
+                    <p>If you find a vulnerability in wraven.org or another WRAVEN system, email the details to <a href="mailto:contact@wraven.org">contact@wraven.org</a>. Encrypt sensitive reports with our <a href="/keys/wraven.asc">PGP key</a>.</p>
+                    <p>Machine-readable version: <a href="/.well-known/security.txt"><code class="nowrap">/.well-known/security.txt</code></a></p>
+                </div>
             </div>
+        </section>
 
-            <!-- Scope -->
-            <div class="doc-section">
-                <h2 class="doc-section-heading">Scope</h2>
-                <p>This policy applies to public-facing WRAVEN infrastructure, including:</p>
-                <ul>
-                    <li>wraven.org and its subdomains</li>
-                    <li>Services listed or linked on our official website</li>
-                    <li>Infrastructure owned or operated by WRAVEN, or clearly marked as such, unless otherwise stated</li>
-                </ul>
-
-                <h3 class="doc-section-subheading">Out of Scope</h3>
-                <ul>
-                    <li>Student personal systems</li>
-                    <li>WMU owned or operated infrastructure in any capacity</li>
-                    <li>Third-party services embedded via iframe or external widgets</li>
-                </ul>
+        <section class="doc-row" aria-labelledby="scope-h">
+            <div class="wrap">
+                <h2 id="scope-h">Scope</h2>
+                <div class="text">
+                    <p>This policy applies to public-facing WRAVEN infrastructure, including:</p>
+                    <ul>
+                        <li>wraven.org and its subdomains</li>
+                        <li>Services listed or linked on our official website</li>
+                        <li>Infrastructure owned or operated by WRAVEN, or clearly marked as such, unless otherwise stated</li>
+                    </ul>
+                    <h3>Out of scope</h3>
+                    <ul>
+                        <li>Student personal systems</li>
+                        <li>WMU owned or operated infrastructure in any capacity</li>
+                        <li>Third-party services embedded via iframe or external widgets</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- Rules of Engagement -->
-            <div class="doc-section">
-                <h2 class="doc-section-heading">Rules of Engagement</h2>
-                <ul>
-                    <li>Do not intentionally access, modify, or delete data that is not yours.</li>
-                    <li>Do not use automated scanners that cause excessive traffic.</li>
-                    <li>Avoid any denial-of-service attacks (DoS/DDoS).</li>
-                    <li>Social engineering (e.g. phishing) against WRAVEN members or WMU is out of bounds.</li>
-                    <li>Automated, low-effort, or AI-generated reports and emails will be ignored.</li>
-                </ul>
+        <section class="doc-row" aria-labelledby="rules-h">
+            <div class="wrap">
+                <h2 id="rules-h">Rules of engagement</h2>
+                <div class="text">
+                    <ul>
+                        <li>Do not intentionally access, modify, or delete data that is not yours.</li>
+                        <li>Do not use automated scanners that cause excessive traffic.</li>
+                        <li>Do not run denial-of-service attacks.</li>
+                        <li>Social engineering (e.g. phishing) against WRAVEN members or WMU is out of bounds.</li>
+                        <li>Automated, low-effort, or AI-generated reports and emails will be ignored.</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- Safe Harbor -->
-            <div class="doc-section">
-                <h2 class="doc-section-heading">Safe Harbor</h2>
-                <p>If you follow this policy, we will not pursue legal action against you. We are students. We appreciate your help.</p>
+        <section class="doc-row" aria-labelledby="harbor-h">
+            <div class="wrap">
+                <h2 id="harbor-h">Safe harbor</h2>
+                <div class="text">
+                    <p>If you follow this policy, we will not pursue legal action against you. We are students. We appreciate your help.</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Response Timeline -->
-            <div class="doc-section">
-                <h2 class="doc-section-heading">Response Timeline</h2>
-                <p>We aim to acknowledge reports within 3 business days and provide regular updates until the issue is resolved.</p>
+        <section class="doc-row" aria-labelledby="timeline-h">
+            <div class="wrap">
+                <h2 id="timeline-h">Response timeline</h2>
+                <div class="text">
+                    <p>We aim to acknowledge reports within 3 business days and provide regular updates until the issue is resolved.</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Contact -->
-            <div class="doc-callout doc-callout-accent">
-                <p class="doc-callout-heading">Report a Vulnerability</p>
-                <ul>
-                    <li><strong>Email:</strong> <code>contact@wraven.org</code></li>
-                    <li><strong>PGP:</strong> <a href="/keys/wraven.asc"><code>wraven.asc</code></a></li>
-                </ul>
+        <section class="doc-row" aria-labelledby="report-h">
+            <div class="wrap">
+                <h2 id="report-h">Report a vulnerability</h2>
+                <div class="text">
+                    <p><strong>Email:</strong> <a href="mailto:contact@wraven.org">contact@wraven.org</a></p>
+                    <p><strong>PGP:</strong> <a href="/keys/wraven.asc"><code>wraven.asc</code></a></p>
+                </div>
             </div>
+        </section>
 
-        </div>
+        <nav class="doc-row no-print" aria-labelledby="related-h" data-added="nav">
+            <div class="wrap">
+                <h2 id="related-h">Related</h2>
+                <div class="text">
+                    <ul>
+                        <li><a href="/code_of_conduct/">Code of conduct</a></li>
+                        <li><a href="/ethics_agreement/">White Hat, Research Ethics, and Responsible Disclosure Agreement</a></li>
+                        <li><a href="/privacy/">Privacy policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <p class="footer-brand">WRAVEN</p>
-                    <p class="footer-sub">Western Research Advisory for Vulnerabilities, Exploits, & Networks</p>
-                    <p class="footer-sub text-muted">501(c)(3) via <a href="https://hackclub.com/hcb" target="_blank" rel="noopener noreferrer">Hack Club</a></p>
+    <!-- CHROME:FOOTER:START -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-id">
+                <p>WRAVEN, the Western Research Advisory for Vulnerabilities, Exploits &amp; Networks.</p>
+                <p>A registered student organization at Western Michigan University, Kalamazoo, Michigan.</p>
+                <p><a href="mailto:contact@wraven.org">contact@wraven.org</a></p>
+            </div>
+            <div class="foot-cols">
+                <div>
+                    <h2>Read</h2>
+                    <ul>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="https://blog.wraven.org">Blog</a></li>
+                        <li><a href="https://public.wraven.org">Watchtower</a></li>
+                        <li><a href="https://github.com/WRAVENproject">GitHub</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Resources</p>
-                    <a href="/research/" class="footer-link">Research</a>
-                    <a href="https://blog.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                    <a href="https://public.wraven.org" class="footer-link" target="_blank" rel="noopener noreferrer">Watchtower</a>
-                    <a href="https://github.com/WRAVENproject" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://wraven.myspreadshop.com" class="footer-link" target="_blank" rel="noopener noreferrer">Store</a>
+                <div>
+                    <h2>Take part</h2>
+                    <ul>
+                        <li><a href="/join/">Join</a></li>
+                        <li><a href="/work-with-us/">Work with us</a></li>
+                        <li><a href="/partners/">Supporters</a></li>
+                        <li><a href="https://hcb.hackclub.com/donations/start/wraven">Donate</a></li>
+                        <li><a href="https://discord.gg/uYkvSU8DHy">Discord</a></li>
+                        <li><a href="https://experiencewmu.wmich.edu/organization/wraven">ExperienceWMU</a></li>
+                        <li><a href="https://linktr.ee/wravenproject">Linktree</a></li>
+                    </ul>
                 </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Community</p>
-                    <a href="https://discord.gg/uYkvSU8DHy" class="footer-link" target="_blank" rel="noopener noreferrer">Discord</a>
-                    <a href="https://experiencewmu.wmich.edu/organization/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">ExperienceWMU</a>
-                    <a href="https://linktr.ee/wravenproject" class="footer-link" target="_blank" rel="noopener noreferrer">Linktree</a>
-                    <a href="/partners/" class="footer-link">Partners</a>
-                    <a href="https://hcb.hackclub.com/donations/start/wraven" class="footer-link" target="_blank" rel="noopener noreferrer">Donate</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-heading">Security</p>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/disclosure/" class="footer-link">Disclosure Policy</a>
-                    <a href="/keys/wraven.asc" class="footer-link">PGP Key</a>
-                    <a href="/.well-known/security.txt" class="footer-link">security.txt</a>
-                    <a href="http://fxyk2rjld5uqnkpqazbgt6w6yvq27vejjrg3brgtcdl3dm2bmq5c4nyd.onion" class="footer-link" target="_blank" rel="noopener noreferrer">Tor Mirror</a>
+                <div>
+                    <h2>Rules</h2>
+                    <ul>
+                        <li><a href="/ethics_agreement/">Ethics agreement</a></li>
+                        <li><a href="/code_of_conduct/">Code of conduct</a></li>
+                        <li><a href="/disclosure/">Report a vulnerability</a></li>
+                        <li><a href="/privacy/">Privacy</a></li>
+                        <li><a href="/keys/wraven.asc">PGP key</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <span>&copy; 2024-2026 WRAVEN &middot; <a href="mailto:contact@wraven.org">contact@wraven.org</a></span>
-                <span class="footer-uptime" hidden>Uptime <code id="uptime"></code></span>
+            <div class="foot-legal">
+                <span>&copy; 2024&ndash;2026 WRAVEN.</span>
+                <span>Fiscally sponsored by The Hack Foundation, a 501(c)(3) nonprofit.</span>
             </div>
         </div>
+        <span class="foot-word" aria-hidden="true"></span>
     </footer>
-
-    <script src="/script.js"></script>
+    <!-- Prerender likely next pages when a reader hovers a link. Pages with
+         third-party scripts or redirects are left out on purpose. -->
+    <script type="speculationrules" data-cfasync="false">
+    {"prerender": [{"where": {"or": [
+      {"href_matches": "/"}, {"href_matches": "/join/"}, {"href_matches": "/research/"},
+      {"href_matches": "/partners/"}, {"href_matches": "/disclosure/"}, {"href_matches": "/privacy/"},
+      {"href_matches": "/code_of_conduct/"}, {"href_matches": "/ethics_agreement/"}
+    ]}, "eagerness": "moderate"}]}
+    </script>
+    <!-- CHROME:FOOTER:END -->
 </body>
 </html>

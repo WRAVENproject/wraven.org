@@ -1,0 +1,21 @@
+{
+  // WRAVEN inquiry Worker, production. Deployed 2026-11-21 to the WRAVEN
+  // Cloudflare account. Deploy with:
+  //   npx wrangler deploy -c wrangler.production.jsonc
+  // This file has no "assets" block. GitHub Pages serves every path except
+  // wraven.org/api/*. Never deploy wrangler.jsonc: it uploads the whole repo.
+  // Worker secrets, not in this repo: TURNSTILE_SECRET and DISCORD_WEBHOOK.
+  "name": "wraven-inquiry",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "account_id": "911e5561aa75f70287077a45e273fe35",
+  "workers_dev": false,
+  "routes": [{ "pattern": "wraven.org/api/*", "zone_name": "wraven.org" }],
+  "triggers": { "crons": ["17 7 * * *"] },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "wraven-inquiries", "database_id": "a6d87148-7f94-4934-9bd6-f46ce304ad4f", "migrations_dir": "migrations" }
+  ],
+  // Alerts: the Worker secret DISCORD_WEBHOOK (an officer-only channel).
+  // Email alerts need the Workers Paid plan. See README.md.
+  "observability": { "enabled": true }
+}
