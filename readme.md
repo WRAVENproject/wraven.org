@@ -28,7 +28,7 @@ Then open <http://localhost:8000>. The contact form needs the Worker. To run the
 
 - Disclosure policy: [wraven.org/disclosure](https://wraven.org/disclosure/) and `/.well-known/security.txt`
 - PGP key: `keys/wraven.asc`
-- The site has no trackers and no analytics.
+- The site has no ad scripts or trackers. It uses Cloudflare Web Analytics, which sets no cookies, for security and traffic analysis.
 
 ## Contact
 
